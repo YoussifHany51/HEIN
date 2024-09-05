@@ -12,11 +12,7 @@
 		090E79B32C877E6800F0BECD /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E79B22C877E6800F0BECD /* MeViewController.swift */; };
 		090E79B62C878DA800F0BECD /* Currency-API-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090E79B42C878DA800F0BECD /* Currency-API-Keys.plist */; };
 		090E79B72C878DA800F0BECD /* API-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090E79B52C878DA800F0BECD /* API-Keys.plist */; };
-
-
 		0929263E2C88E123000E5488 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0929263D2C88E123000E5488 /* SignUpViewController.swift */; };
-		098D9EC22C87583E00EC6053 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 098D9EC12C87583E00EC6053 /* Alamofire */; };
-
 		098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D9EC32C875E3D00EC6053 /* HomeScreenViewController.swift */; };
 		098D9EC82C87680F00EC6053 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D9EC72C87680F00EC6053 /* TabBarController.swift */; };
 		099AD4E62C87518F00E2191D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099AD4E52C87518F00E2191D /* AppDelegate.swift */; };
@@ -57,6 +53,8 @@
 		1EB071EC2C88FD5300AEFD0F /* AdsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB071EB2C88FD5300AEFD0F /* AdsCVC.swift */; };
 		1EB071EF2C88FF3800AEFD0F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1EB071EE2C88FF3800AEFD0F /* Kingfisher */; };
 		1EB071F12C8913E900AEFD0F /* BrandsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EB071F02C8913E900AEFD0F /* BrandsCVC.xib */; };
+		F482E6D62C89E154007AA066 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F482E6D52C89E154007AA066 /* CartTableViewCell.xib */; };
+		F482E6D72C89E154007AA066 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482E6D42C89E154007AA066 /* CartTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +122,8 @@
 		1EB071E82C88E97D00AEFD0F /* ReachabilityManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManger.swift; sourceTree = "<group>"; };
 		1EB071EB2C88FD5300AEFD0F /* AdsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCVC.swift; sourceTree = "<group>"; };
 		1EB071F02C8913E900AEFD0F /* BrandsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandsCVC.xib; sourceTree = "<group>"; };
+		F482E6D42C89E154007AA066 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		F482E6D52C89E154007AA066 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +258,8 @@
 			children = (
 				099AD51E2C8751F700E2191D /* CartScreen.storyboard */,
 				090E79AE2C877C2700F0BECD /* CartViewController.swift */,
+				F482E6D42C89E154007AA066 /* CartTableViewCell.swift */,
+				F482E6D52C89E154007AA066 /* CartTableViewCell.xib */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -505,6 +507,7 @@
 				099AD5312C8751F700E2191D /* HomeScreen.storyboard in Resources */,
 				099AD5332C8751F700E2191D /* MasterStoryBoard.storyboard in Resources */,
 				099AD5322C8751F700E2191D /* MeScreen.storyboard in Resources */,
+				F482E6D62C89E154007AA066 /* CartTableViewCell.xib in Resources */,
 				099AD52E2C8751F700E2191D /* CategoryScreen.storyboard in Resources */,
 				099AD52D2C8751F700E2191D /* CartScreen.storyboard in Resources */,
 				090E79B62C878DA800F0BECD /* Currency-API-Keys.plist in Resources */,
@@ -535,6 +538,7 @@
 			files = (
 				099AD5422C87520200E2191D /* DraftOrder.swift in Sources */,
 				099AD4EA2C87518F00E2191D /* LoginViewController.swift in Sources */,
+				F482E6D72C89E154007AA066 /* CartTableViewCell.swift in Sources */,
 				099AD51B2C8751EB00E2191D /* APIKeys.swift in Sources */,
 				099AD4E62C87518F00E2191D /* AppDelegate.swift in Sources */,
 				099AD53F2C87520200E2191D /* Addresses.swift in Sources */,
