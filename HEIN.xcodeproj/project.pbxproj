@@ -205,10 +205,7 @@
 		099AD51F2C8751F700E2191D /* CartScreen */ = {
 			isa = PBXGroup;
 			children = (
-				099AD51E2C8751F700E2191D /* CartScreen.storyboard */,
-				090E79AE2C877C2700F0BECD /* CartViewController.swift */,
-				F4850A422C88E27F008D7B76 /* CartTableViewCell.swift */,
-				F4850A432C88E27F008D7B76 /* CartTableViewCell.xib */,
+				F42FAA5E2C8993BC00D67E4F /* View */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -294,6 +291,17 @@
 				099AD53D2C87520200E2191D /* Shop.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F42FAA5E2C8993BC00D67E4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				099AD51E2C8751F700E2191D /* CartScreen.storyboard */,
+				090E79AE2C877C2700F0BECD /* CartViewController.swift */,
+				F4850A422C88E27F008D7B76 /* CartTableViewCell.swift */,
+				F4850A432C88E27F008D7B76 /* CartTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
