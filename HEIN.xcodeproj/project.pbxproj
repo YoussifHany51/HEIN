@@ -10,7 +10,6 @@
 		090E79AF2C877C2700F0BECD /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E79AE2C877C2700F0BECD /* CartViewController.swift */; };
 		090E79B12C877DCB00F0BECD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E79B02C877DCB00F0BECD /* CategoryViewController.swift */; };
 		090E79B32C877E6800F0BECD /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E79B22C877E6800F0BECD /* MeViewController.swift */; };
-		090E79B62C878DA800F0BECD /* Currency-API-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090E79B42C878DA800F0BECD /* Currency-API-Keys.plist */; };
 		090E79B72C878DA800F0BECD /* API-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090E79B52C878DA800F0BECD /* API-Keys.plist */; };
 		098D9EC22C87583E00EC6053 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 098D9EC12C87583E00EC6053 /* Alamofire */; };
 		098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D9EC32C875E3D00EC6053 /* HomeScreenViewController.swift */; };
@@ -45,6 +44,8 @@
 		099AD5462C87520200E2191D /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099AD53B2C87520200E2191D /* Products.swift */; };
 		099AD5472C87520200E2191D /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099AD53C2C87520200E2191D /* Reviews.swift */; };
 		099AD5482C87520200E2191D /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099AD53D2C87520200E2191D /* Shop.swift */; };
+		F4850A442C88E27F008D7B76 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4850A422C88E27F008D7B76 /* CartTableViewCell.swift */; };
+		F4850A452C88E27F008D7B76 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4850A432C88E27F008D7B76 /* CartTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +69,6 @@
 		090E79AE2C877C2700F0BECD /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		090E79B02C877DCB00F0BECD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		090E79B22C877E6800F0BECD /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
-		090E79B42C878DA800F0BECD /* Currency-API-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Currency-API-Keys.plist"; sourceTree = "<group>"; };
 		090E79B52C878DA800F0BECD /* API-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API-Keys.plist"; sourceTree = "<group>"; };
 		098D9EC32C875E3D00EC6053 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		098D9EC72C87680F00EC6053 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -106,6 +106,8 @@
 		099AD53B2C87520200E2191D /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		099AD53C2C87520200E2191D /* Reviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		099AD53D2C87520200E2191D /* Shop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		F4850A422C88E27F008D7B76 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		F4850A432C88E27F008D7B76 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +170,6 @@
 				099AD4F02C87519100E2191D /* LaunchScreen.storyboard */,
 				099AD4F32C87519100E2191D /* Info.plist */,
 				090E79B52C878DA800F0BECD /* API-Keys.plist */,
-				090E79B42C878DA800F0BECD /* Currency-API-Keys.plist */,
 			);
 			path = HEIN;
 			sourceTree = "<group>";
@@ -206,6 +207,8 @@
 			children = (
 				099AD51E2C8751F700E2191D /* CartScreen.storyboard */,
 				090E79AE2C877C2700F0BECD /* CartViewController.swift */,
+				F4850A422C88E27F008D7B76 /* CartTableViewCell.swift */,
+				F4850A432C88E27F008D7B76 /* CartTableViewCell.xib */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -412,7 +415,7 @@
 				099AD5322C8751F700E2191D /* MeScreen.storyboard in Resources */,
 				099AD52E2C8751F700E2191D /* CategoryScreen.storyboard in Resources */,
 				099AD52D2C8751F700E2191D /* CartScreen.storyboard in Resources */,
-				090E79B62C878DA800F0BECD /* Currency-API-Keys.plist in Resources */,
+				F4850A452C88E27F008D7B76 /* CartTableViewCell.xib in Resources */,
 				099AD4ED2C87518F00E2191D /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +450,7 @@
 				099AD51D2C8751EB00E2191D /* NetworkManager.swift in Sources */,
 				099AD5432C87520200E2191D /* ExchangeRates.swift in Sources */,
 				098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */,
+				F4850A442C88E27F008D7B76 /* CartTableViewCell.swift in Sources */,
 				099AD5302C8751F700E2191D /* FavoriteVC.swift in Sources */,
 				090E79B32C877E6800F0BECD /* MeViewController.swift in Sources */,
 				099AD5442C87520200E2191D /* Orders.swift in Sources */,
@@ -655,6 +659,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.youssif.HEIN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -687,6 +692,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.youssif.HEIN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
