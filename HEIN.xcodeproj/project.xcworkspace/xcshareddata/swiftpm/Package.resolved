@@ -1,4 +1,7 @@
 {
+
+  "originHash" : "11b78eba97192d19796cff581fdf69b3e65b441188b1448a1b67e5d7b825a354",
+
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +11,7 @@
         "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
         "version" : "5.9.1"
       }
+
     },
     {
       "identity" : "kingfisher",
@@ -26,6 +30,7 @@
         "branch" : "master",
         "revision" : "7cbd73f46a7dfaeca079e18df7324c6de6d1834a"
       }
+
     }
   ],
   "version" : 2
