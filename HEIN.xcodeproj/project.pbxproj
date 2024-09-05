@@ -53,8 +53,8 @@
 		1EB071F12C8913E900AEFD0F /* BrandsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EB071F02C8913E900AEFD0F /* BrandsCVC.xib */; };
 		1EB072082C8A06B900AEFD0F /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EB072042C8A06B800AEFD0F /* CartTableViewCell.xib */; };
 		1EB072092C8A06B900AEFD0F /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */; };
-		1EB0720A2C8A06B900AEFD0F /* CartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB072062C8A06B800AEFD0F /* CartScreen.storyboard */; };
-		1EB0720B2C8A06B900AEFD0F /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB072072C8A06B800AEFD0F /* CartViewController.swift */; };
+		1EB0720D2C8A3B3600AEFD0F /* CartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */; };
+		1EB0720F2C8A3BE400AEFD0F /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,8 +122,8 @@
 		1EB071F02C8913E900AEFD0F /* BrandsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandsCVC.xib; sourceTree = "<group>"; };
 		1EB072042C8A06B800AEFD0F /* CartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 		1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
-		1EB072062C8A06B800AEFD0F /* CartScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CartScreen.storyboard; path = "../../../../../../../Downloads/HEIN/HEIN/Modules/ MasterScene/CartScreen/CartScreen.storyboard"; sourceTree = "<group>"; };
-		1EB072072C8A06B800AEFD0F /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartViewController.swift; path = "../../../../../../../Downloads/HEIN/HEIN/Modules/ MasterScene/CartScreen/CartViewController.swift"; sourceTree = "<group>"; };
+		1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CartScreen.storyboard; sourceTree = "<group>"; };
+		1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,10 +256,10 @@
 		099AD51F2C8751F700E2191D /* CartScreen */ = {
 			isa = PBXGroup;
 			children = (
-				1EB072062C8A06B800AEFD0F /* CartScreen.storyboard */,
 				1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */,
 				1EB072042C8A06B800AEFD0F /* CartTableViewCell.xib */,
-				1EB072072C8A06B800AEFD0F /* CartViewController.swift */,
+				1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */,
+				1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -505,7 +505,7 @@
 				099AD52F2C8751F700E2191D /* FavoriteScreen.storyboard in Resources */,
 				1EB071F12C8913E900AEFD0F /* BrandsCVC.xib in Resources */,
 				099AD5312C8751F700E2191D /* HomeScreen.storyboard in Resources */,
-				1EB0720A2C8A06B900AEFD0F /* CartScreen.storyboard in Resources */,
+				1EB0720D2C8A3B3600AEFD0F /* CartScreen.storyboard in Resources */,
 				099AD5332C8751F700E2191D /* MasterStoryBoard.storyboard in Resources */,
 				099AD5322C8751F700E2191D /* MeScreen.storyboard in Resources */,
 				1EB072082C8A06B900AEFD0F /* CartTableViewCell.xib in Resources */,
@@ -557,7 +557,7 @@
 				1EB071E92C88E97D00AEFD0F /* ReachabilityManger.swift in Sources */,
 				099AD51C2C8751EB00E2191D /* Methods.swift in Sources */,
 				1E22502A2C88BF02007E39DA /* BrandsCVC.swift in Sources */,
-				1EB0720B2C8A06B900AEFD0F /* CartViewController.swift in Sources */,
+				1EB0720F2C8A3BE400AEFD0F /* CartViewController.swift in Sources */,
 				0929263E2C88E123000E5488 /* SignUpViewController.swift in Sources */,
 				099AD5462C87520200E2191D /* Products.swift in Sources */,
 				1E2250272C88BE52007E39DA /* HomeViewModel.swift in Sources */,
