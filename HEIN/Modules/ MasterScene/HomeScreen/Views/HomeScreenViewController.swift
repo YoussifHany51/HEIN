@@ -33,7 +33,7 @@ class HomeScreenViewController: UIViewController {
         adsCollection.dataSource = self
         brandsCollection.delegate = self
         brandsCollection.dataSource = self
-        
+        self.tabBarController?.navigationItem.hidesBackButton = true
        viewModel?.checkNetworkReachability{ isReachable in
             print(isReachable)
             if isReachable {

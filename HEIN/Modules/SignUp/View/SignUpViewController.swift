@@ -20,4 +20,7 @@ class SignUpViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
+    @IBAction func signUpButton(_ sender: Any) {
+        print("Sign Up Button Tapped")
+    }
 }
