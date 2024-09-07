@@ -358,6 +358,7 @@
 			children = (
 				F47BD42D2C8BE22C00A8A8AD /* View */,
 				F47BD42E2C8BE23C00A8A8AD /* viewModel */,
+				F47BD4312C8BE28E00A8A8AD /* subModules */,
 			);
 			path = MeScreen;
 			sourceTree = "<group>";
@@ -379,7 +380,6 @@
 				099AD5242C8751F700E2191D /* FavoriteScreen */,
 				099AD5262C8751F700E2191D /* HomeScreen */,
 				099AD5282C8751F700E2191D /* MeScreen */,
-				F47BD4312C8BE28E00A8A8AD /* subModules */,
 				099AD52A2C8751F700E2191D /* StoryBords */,
 			);
 			path = " MasterScene";
