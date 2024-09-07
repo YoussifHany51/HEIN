@@ -96,6 +96,6 @@ class APIHandler{
     }
     
     class func currenciesUrl(_ endpoint: EndPoints) -> String {
-        return "\(Completions.ssl.rawValue)\(currencyApiURL)/\(endpoint.order)"
+        return "\(Completions.ssl.rawValue)\(currencyApiURL)/\(endpoint.order)?apikey=\(currencyApiKey)"
     }
 }

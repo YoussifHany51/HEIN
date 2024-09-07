@@ -65,6 +65,18 @@
 		1EB072092C8A06B900AEFD0F /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */; };
 		1EB0720D2C8A3B3600AEFD0F /* CartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */; };
 		1EB0720F2C8A3BE400AEFD0F /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */; };
+		F47BD4302C8BE25D00A8A8AD /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */; };
+		F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */; };
+		F47BD4382C8BE33200A8A8AD /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */; };
+		F47BD43A2C8BE35E00A8A8AD /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4392C8BE35E00A8A8AD /* OrdersViewModel.swift */; };
+		F47BD43F2C8BE3D200A8A8AD /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD43E2C8BE3D200A8A8AD /* AddressesViewController.swift */; };
+		F47BD4412C8BE40A00A8A8AD /* AddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4402C8BE40A00A8A8AD /* AddressesTableViewCell.swift */; };
+		F47BD4462C8BE49E00A8A8AD /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4452C8BE49E00A8A8AD /* AddAddressViewController.swift */; };
+		F47BD4492C8BE4D600A8A8AD /* TextFieldViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47BD4482C8BE4D600A8A8AD /* TextFieldViewCell.xib */; };
+		F47BD44A2C8BE4D600A8A8AD /* TextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4472C8BE4D600A8A8AD /* TextFieldViewCell.swift */; };
+		F47BD44F2C8BE55300A8A8AD /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */; };
+		F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */; };
+		F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +148,18 @@
 		1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CartScreen.storyboard; sourceTree = "<group>"; };
 		1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
+		F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
+		F47BD4392C8BE35E00A8A8AD /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
+		F47BD43E2C8BE3D200A8A8AD /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
+		F47BD4402C8BE40A00A8A8AD /* AddressesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewCell.swift; sourceTree = "<group>"; };
+		F47BD4452C8BE49E00A8A8AD /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
+		F47BD4472C8BE4D600A8A8AD /* TextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewCell.swift; sourceTree = "<group>"; };
+		F47BD4482C8BE4D600A8A8AD /* TextFieldViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldViewCell.xib; sourceTree = "<group>"; };
+		F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,8 +356,8 @@
 		099AD5282C8751F700E2191D /* MeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				099AD5272C8751F700E2191D /* MeScreen.storyboard */,
-				090E79B22C877E6800F0BECD /* MeViewController.swift */,
+				F47BD42D2C8BE22C00A8A8AD /* View */,
+				F47BD42E2C8BE23C00A8A8AD /* viewModel */,
 			);
 			path = MeScreen;
 			sourceTree = "<group>";
@@ -355,6 +379,7 @@
 				099AD5242C8751F700E2191D /* FavoriteScreen */,
 				099AD5262C8751F700E2191D /* HomeScreen */,
 				099AD5282C8751F700E2191D /* MeScreen */,
+				F47BD4312C8BE28E00A8A8AD /* subModules */,
 				099AD52A2C8751F700E2191D /* StoryBords */,
 			);
 			path = " MasterScene";
@@ -421,6 +446,137 @@
 				1EB071E82C88E97D00AEFD0F /* ReachabilityManger.swift */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		F47BD42D2C8BE22C00A8A8AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				099AD5272C8751F700E2191D /* MeScreen.storyboard */,
+				090E79B22C877E6800F0BECD /* MeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F47BD42E2C8BE23C00A8A8AD /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F47BD4312C8BE28E00A8A8AD /* subModules */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD44B2C8BE52500A8A8AD /* Currency */,
+				F47BD4422C8BE46700A8A8AD /* NewAddress */,
+				F47BD4322C8BE2A900A8A8AD /* Orders */,
+				F47BD43B2C8BE39100A8A8AD /* Addresses */,
+			);
+			path = subModules;
+			sourceTree = "<group>";
+		};
+		F47BD4322C8BE2A900A8A8AD /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD4342C8BE2C200A8A8AD /* viewModel */,
+				F47BD4332C8BE2B700A8A8AD /* view */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		F47BD4332C8BE2B700A8A8AD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */,
+				F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F47BD4342C8BE2C200A8A8AD /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD4392C8BE35E00A8A8AD /* OrdersViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F47BD43B2C8BE39100A8A8AD /* Addresses */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD43D2C8BE3AF00A8A8AD /* view */,
+				F47BD43C2C8BE3A400A8A8AD /* viewModel */,
+			);
+			path = Addresses;
+			sourceTree = "<group>";
+		};
+		F47BD43C2C8BE3A400A8A8AD /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F47BD43D2C8BE3AF00A8A8AD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD43E2C8BE3D200A8A8AD /* AddressesViewController.swift */,
+				F47BD4402C8BE40A00A8A8AD /* AddressesTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F47BD4422C8BE46700A8A8AD /* NewAddress */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD4442C8BE47D00A8A8AD /* viewModel */,
+				F47BD4432C8BE47600A8A8AD /* view */,
+			);
+			path = NewAddress;
+			sourceTree = "<group>";
+		};
+		F47BD4432C8BE47600A8A8AD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD4452C8BE49E00A8A8AD /* AddAddressViewController.swift */,
+				F47BD4472C8BE4D600A8A8AD /* TextFieldViewCell.swift */,
+				F47BD4482C8BE4D600A8A8AD /* TextFieldViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F47BD4442C8BE47D00A8A8AD /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F47BD44B2C8BE52500A8A8AD /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD44D2C8BE53A00A8A8AD /* viewModel */,
+				F47BD44C2C8BE53000A8A8AD /* view */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
+		F47BD44C2C8BE53000A8A8AD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */,
+				F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F47BD44D2C8BE53A00A8A8AD /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,6 +707,7 @@
 				090E79B72C878DA800F0BECD /* API-Keys.plist in Resources */,
 				099AD4F22C87519100E2191D /* Base in Resources */,
 				099AD52F2C8751F700E2191D /* FavoriteScreen.storyboard in Resources */,
+				F47BD4492C8BE4D600A8A8AD /* TextFieldViewCell.xib in Resources */,
 				1EB071F12C8913E900AEFD0F /* BrandsCVC.xib in Resources */,
 				099AD5312C8751F700E2191D /* HomeScreen.storyboard in Resources */,
 				1EB0720D2C8A3B3600AEFD0F /* CartScreen.storyboard in Resources */,
@@ -586,24 +743,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				099AD5422C87520200E2191D /* DraftOrder.swift in Sources */,
+				F47BD43A2C8BE35E00A8A8AD /* OrdersViewModel.swift in Sources */,
 				099AD4EA2C87518F00E2191D /* LoginViewController.swift in Sources */,
 				1EB072092C8A06B900AEFD0F /* CartTableViewCell.swift in Sources */,
+				F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */,
 				099AD51B2C8751EB00E2191D /* APIKeys.swift in Sources */,
 				099AD4E62C87518F00E2191D /* AppDelegate.swift in Sources */,
 				099AD53F2C87520200E2191D /* Addresses.swift in Sources */,
+				F47BD4462C8BE49E00A8A8AD /* AddAddressViewController.swift in Sources */,
+				F47BD4382C8BE33200A8A8AD /* OrdersTableViewCell.swift in Sources */,
+				F47BD44F2C8BE55300A8A8AD /* CurrencyViewController.swift in Sources */,
 				1EB071EC2C88FD5300AEFD0F /* AdsCVC.swift in Sources */,
 				099AD5452C87520200E2191D /* PriceRules.swift in Sources */,
+				F47BD4302C8BE25D00A8A8AD /* MeViewModel.swift in Sources */,
+				F47BD4412C8BE40A00A8A8AD /* AddressesTableViewCell.swift in Sources */,
 				090035752C8A817F0075B42D /* LoginViewModel.swift in Sources */,
 				099AD51D2C8751EB00E2191D /* NetworkManager.swift in Sources */,
+				F47BD44A2C8BE4D600A8A8AD /* TextFieldViewCell.swift in Sources */,
 				099AD5432C87520200E2191D /* ExchangeRates.swift in Sources */,
+				F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */,
 				098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */,
 				099AD5302C8751F700E2191D /* FavoriteVC.swift in Sources */,
+				F47BD43F2C8BE3D200A8A8AD /* AddressesViewController.swift in Sources */,
 				090E79B32C877E6800F0BECD /* MeViewController.swift in Sources */,
 				099AD5442C87520200E2191D /* Orders.swift in Sources */,
 				099AD4E82C87518F00E2191D /* SceneDelegate.swift in Sources */,
 				099AD5472C87520200E2191D /* Reviews.swift in Sources */,
 				098D9EC82C87680F00EC6053 /* TabBarController.swift in Sources */,
 				099AD5412C87520200E2191D /* Customer.swift in Sources */,
+				F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */,
 				1EB071E92C88E97D00AEFD0F /* ReachabilityManger.swift in Sources */,
 				099AD51C2C8751EB00E2191D /* Methods.swift in Sources */,
 				1E22502A2C88BF02007E39DA /* BrandsCVC.swift in Sources */,
