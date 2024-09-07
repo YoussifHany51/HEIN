@@ -21,7 +21,7 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = HomeViewModel()
-        self.navigationItem.hidesBackButton = true
+       // self.navigationItem.hidesBackButton = true
         setIndicator()
         
     }
@@ -126,6 +126,19 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
             cell.imgBrands.kf.setImage(with:url ,placeholder: UIImage(named: "placeHolder"))
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == brandsCollection{
+            let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsViewController")as! BrandsViewController
+            brandsVC.vendor = viewModel.brands?[indexPath.row].title
+            brandsVC.brandImage = viewModel.brands?[indexPath.row].image.src
+            navigationController?.pushViewController(brandsVC, animated: true)
+        }else{
+            
+           
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

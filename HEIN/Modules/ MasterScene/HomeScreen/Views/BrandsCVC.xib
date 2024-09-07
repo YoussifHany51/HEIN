@@ -33,6 +33,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="cAS-NB-EQT" secondAttribute="bottom" id="0D5-zt-gsa"/>
                     <constraint firstItem="cAS-NB-EQT" firstAttribute="leading" secondItem="4Bg-my-HBs" secondAttribute="leading" id="3Iq-I6-G9r"/>
