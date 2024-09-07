@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="119" id="tFk-X8-tSH" customClass="TextFieldViewCell" customModule="HEIN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="529" height="119"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tFk-X8-tSH" id="aqN-Jo-s7z">
+                <rect key="frame" x="0.0" y="0.0" width="529" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZU-hh-4vQ" customClass="CustomView" customModule="HEIN" customModuleProvider="target">
+                        <rect key="frame" x="20" y="20" width="489" height="79"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-tf-ASu">
+                                <rect key="frame" x="15" y="15" width="94.333333333333329" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="|" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9s-up-0cs">
+                                <rect key="frame" x="15" y="40" width="459" height="23.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="C9s-up-0cs" firstAttribute="top" secondItem="Sae-tf-ASu" secondAttribute="bottom" constant="8" symbolic="YES" id="LH5-CO-nHi"/>
+                            <constraint firstItem="Sae-tf-ASu" firstAttribute="top" secondItem="NZU-hh-4vQ" secondAttribute="top" constant="15" id="eDW-ih-NmE"/>
+                            <constraint firstAttribute="trailing" secondItem="C9s-up-0cs" secondAttribute="trailing" constant="15" id="eIJ-z3-aTN"/>
+                            <constraint firstItem="Sae-tf-ASu" firstAttribute="leading" secondItem="NZU-hh-4vQ" secondAttribute="leading" constant="15" id="gwm-zF-Usv"/>
+                            <constraint firstItem="C9s-up-0cs" firstAttribute="leading" secondItem="NZU-hh-4vQ" secondAttribute="leading" constant="15" id="uIJ-LH-f36"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="Shadowed" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NZU-hh-4vQ" firstAttribute="leading" secondItem="aqN-Jo-s7z" secondAttribute="leading" constant="20" id="FnZ-el-sp4"/>
+                    <constraint firstAttribute="bottom" secondItem="NZU-hh-4vQ" secondAttribute="bottom" constant="20" id="dym-yO-fFl"/>
+                    <constraint firstAttribute="trailing" secondItem="NZU-hh-4vQ" secondAttribute="trailing" constant="20" id="fHS-vb-ljA"/>
+                    <constraint firstItem="NZU-hh-4vQ" firstAttribute="top" secondItem="aqN-Jo-s7z" secondAttribute="top" constant="20" id="wS4-CJ-SUJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="qGw-wT-3fb"/>
+            <connections>
+                <outlet property="labelName" destination="Sae-tf-ASu" id="gtU-nq-YAN"/>
+                <outlet property="textField" destination="C9s-up-0cs" id="ipy-SP-2FK"/>
+            </connections>
+            <point key="canvasLocation" x="237.40458015267174" y="68.661971830985919"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
