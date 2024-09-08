@@ -28,7 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               } else {
                   // No user is signed in, show Login Screen
                   let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-                  window?.rootViewController = loginViewController
+                  let navigationController = UINavigationController(rootViewController: loginViewController)
+                  window?.rootViewController = navigationController
               }
               
               window?.makeKeyAndVisible()

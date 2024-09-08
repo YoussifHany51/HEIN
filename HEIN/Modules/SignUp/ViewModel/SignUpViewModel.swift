@@ -1,13 +1,13 @@
 //
-//  LoginViewModel.swift
+//  SignUpViewModel.swift
 //  HEIN
 //
-//  Created by Youssif Hany on 06/09/2024.
+//  Created by Youssif Hany on 08/09/2024.
 //
 
 import Foundation
-class LoginViewModel{
-    
+
+class SignUpViewModel{
     func isValidEmail(email: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
