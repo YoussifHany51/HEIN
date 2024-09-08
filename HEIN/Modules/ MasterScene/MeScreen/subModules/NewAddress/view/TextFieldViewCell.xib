@@ -31,10 +31,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARB-8L-swb">
+                                <rect key="frame" x="414.66666666666669" y="15" width="59.333333333333314" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ARB-8L-swb" firstAttribute="centerY" secondItem="Sae-tf-ASu" secondAttribute="centerY" id="Bkb-w8-Hp3"/>
                             <constraint firstItem="C9s-up-0cs" firstAttribute="top" secondItem="Sae-tf-ASu" secondAttribute="bottom" constant="8" symbolic="YES" id="LH5-CO-nHi"/>
+                            <constraint firstAttribute="trailing" secondItem="ARB-8L-swb" secondAttribute="trailing" constant="15" id="Pff-mm-G3d"/>
                             <constraint firstItem="Sae-tf-ASu" firstAttribute="top" secondItem="NZU-hh-4vQ" secondAttribute="top" constant="15" id="eDW-ih-NmE"/>
                             <constraint firstAttribute="trailing" secondItem="C9s-up-0cs" secondAttribute="trailing" constant="15" id="eIJ-z3-aTN"/>
                             <constraint firstItem="Sae-tf-ASu" firstAttribute="leading" secondItem="NZU-hh-4vQ" secondAttribute="leading" constant="15" id="gwm-zF-Usv"/>
@@ -55,6 +63,7 @@
             <viewLayoutGuide key="safeArea" id="qGw-wT-3fb"/>
             <connections>
                 <outlet property="labelName" destination="Sae-tf-ASu" id="gtU-nq-YAN"/>
+                <outlet property="requiredLabel" destination="ARB-8L-swb" id="wBY-Oh-tSq"/>
                 <outlet property="textField" destination="C9s-up-0cs" id="ipy-SP-2FK"/>
             </connections>
             <point key="canvasLocation" x="237.40458015267174" y="68.661971830985919"/>
