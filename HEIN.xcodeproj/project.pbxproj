@@ -66,6 +66,11 @@
 		1EB072092C8A06B900AEFD0F /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */; };
 		1EB0720D2C8A3B3600AEFD0F /* CartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */; };
 		1EB0720F2C8A3BE400AEFD0F /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */; };
+		1EF0ADEA2C8DFD2200975E4D /* BrandProductsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EF0ADE72C8DFD2100975E4D /* BrandProductsCVC.xib */; };
+		1EF0ADEB2C8DFD2200975E4D /* BrandProductsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADE82C8DFD2200975E4D /* BrandProductsCVC.swift */; };
+		1EF0ADEC2C8DFD2200975E4D /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADE92C8DFD2200975E4D /* BrandsViewController.swift */; };
+		1EF0ADEE2C8DFD2D00975E4D /* BrandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADED2C8DFD2D00975E4D /* BrandsViewModel.swift */; };
+		1EF0ADF12C8DFE2300975E4D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */; };
 		F47BD4302C8BE25D00A8A8AD /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */; };
 		F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */; };
 		F47BD4382C8BE33200A8A8AD /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */; };
@@ -150,6 +155,11 @@
 		1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CartScreen.storyboard; sourceTree = "<group>"; };
 		1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		1EF0ADE72C8DFD2100975E4D /* BrandProductsCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandProductsCVC.xib; sourceTree = "<group>"; };
+		1EF0ADE82C8DFD2200975E4D /* BrandProductsCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandProductsCVC.swift; sourceTree = "<group>"; };
+		1EF0ADE92C8DFD2200975E4D /* BrandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
+		1EF0ADED2C8DFD2D00975E4D /* BrandsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsViewModel.swift; sourceTree = "<group>"; };
+		1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +291,7 @@
 		099AD4E42C87518F00E2191D /* HEIN */ = {
 			isa = PBXGroup;
 			children = (
+				1EF0ADEF2C8DFE1100975E4D /* Extensions */,
 				1EB071E72C88E92A00AEFD0F /* Utilities */,
 				099AD53E2C87520200E2191D /* Models */,
 				099AD52C2C8751F700E2191D /* Modules */,
@@ -386,6 +397,7 @@
 		099AD52B2C8751F700E2191D /*  MasterScene */ = {
 			isa = PBXGroup;
 			children = (
+				1EF0ADE42C8DFCD200975E4D /* BrandsScreen */,
 				099AD51F2C8751F700E2191D /* CartScreen */,
 				099AD5212C8751F700E2191D /* CategoryScreen */,
 				099AD5242C8751F700E2191D /* FavoriteScreen */,
@@ -457,6 +469,41 @@
 				1EB071E82C88E97D00AEFD0F /* ReachabilityManger.swift */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		1EF0ADE42C8DFCD200975E4D /* BrandsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1EF0ADE62C8DFCED00975E4D /* viewModel */,
+				1EF0ADE52C8DFCE300975E4D /* Views */,
+			);
+			path = BrandsScreen;
+			sourceTree = "<group>";
+		};
+		1EF0ADE52C8DFCE300975E4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EF0ADE82C8DFD2200975E4D /* BrandProductsCVC.swift */,
+				1EF0ADE72C8DFD2100975E4D /* BrandProductsCVC.xib */,
+				1EF0ADE92C8DFD2200975E4D /* BrandsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1EF0ADE62C8DFCED00975E4D /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1EF0ADED2C8DFD2D00975E4D /* BrandsViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		1EF0ADEF2C8DFE1100975E4D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F47BD42D2C8BE22C00A8A8AD /* View */ = {
@@ -726,6 +773,7 @@
 				099AD5332C8751F700E2191D /* MasterStoryBoard.storyboard in Resources */,
 				099AD5322C8751F700E2191D /* MeScreen.storyboard in Resources */,
 				1EB072082C8A06B900AEFD0F /* CartTableViewCell.xib in Resources */,
+				1EF0ADEA2C8DFD2200975E4D /* BrandProductsCVC.xib in Resources */,
 				099AD52E2C8751F700E2191D /* CategoryScreen.storyboard in Resources */,
 				090E79B62C878DA800F0BECD /* Currency-API-Keys.plist in Resources */,
 				099AD4ED2C87518F00E2191D /* Base in Resources */,
@@ -755,6 +803,7 @@
 			files = (
 				099AD5422C87520200E2191D /* DraftOrder.swift in Sources */,
 				F47BD43A2C8BE35E00A8A8AD /* OrdersViewModel.swift in Sources */,
+				1EF0ADEC2C8DFD2200975E4D /* BrandsViewController.swift in Sources */,
 				099AD4EA2C87518F00E2191D /* LoginViewController.swift in Sources */,
 				1EB072092C8A06B900AEFD0F /* CartTableViewCell.swift in Sources */,
 				F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */,
@@ -778,9 +827,12 @@
 				F47BD43F2C8BE3D200A8A8AD /* AddressesViewController.swift in Sources */,
 				090E79B32C877E6800F0BECD /* MeViewController.swift in Sources */,
 				099AD5442C87520200E2191D /* Orders.swift in Sources */,
+				1EF0ADF12C8DFE2300975E4D /* ViewControllerExtension.swift in Sources */,
 				099AD4E82C87518F00E2191D /* SceneDelegate.swift in Sources */,
 				099AD5472C87520200E2191D /* Reviews.swift in Sources */,
+				1EF0ADEB2C8DFD2200975E4D /* BrandProductsCVC.swift in Sources */,
 				098D9EC82C87680F00EC6053 /* TabBarController.swift in Sources */,
+				1EF0ADEE2C8DFD2D00975E4D /* BrandsViewModel.swift in Sources */,
 				099AD5412C87520200E2191D /* Customer.swift in Sources */,
 				F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */,
 				1EB071E92C88E97D00AEFD0F /* ReachabilityManger.swift in Sources */,
@@ -976,7 +1028,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QWLH47G69C;
+				DEVELOPMENT_TEAM = A83FN5933K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HEIN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -990,7 +1042,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.youssif.HEIN;
+				PRODUCT_BUNDLE_IDENTIFIER = youssif.HEIN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1009,7 +1061,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QWLH47G69C;
+				DEVELOPMENT_TEAM = A83FN5933K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HEIN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1023,7 +1075,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.youssif.HEIN;
+				PRODUCT_BUNDLE_IDENTIFIER = youssif.HEIN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

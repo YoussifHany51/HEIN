@@ -128,6 +128,19 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == brandsCollection{
+            let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsViewController")as! BrandsViewController
+            brandsVC.vendor = viewModel.brands?[indexPath.row].title
+            brandsVC.brandImage = viewModel.brands?[indexPath.row].image.src
+            navigationController?.pushViewController(brandsVC, animated: true)
+        }else{
+            
+           
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 if collectionView == adsCollection{
                     return CGSize(width: (UIScreen.main.bounds.width) - 50, height: (adsCollection.frame.height) - 50)
