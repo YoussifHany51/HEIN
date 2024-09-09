@@ -64,7 +64,7 @@ class SignUpViewController: UIViewController {
     // To retrive Username 
     /*
      let defaults = UserDefaults.standard
-     if let savedString = defaults.string(forKey: "Auth.auth().currentUser!.uid") {
+     if let savedString = defaults.string(forKey: Auth.auth().currentUser!.uid) {
          print("Saved String: \(savedString)")
      } else {
          print("No string found for the key.")
