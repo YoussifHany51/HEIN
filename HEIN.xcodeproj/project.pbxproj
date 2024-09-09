@@ -86,6 +86,8 @@
 		F47BD44F2C8BE55300A8A8AD /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */; };
 		F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */; };
 		F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */; };
+		F4D7D9842C8CEB7E00EA36AB /* AddressesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D9832C8CEB7E00EA36AB /* AddressesViewModel.swift */; };
+		F4D7D9862C8D080600EA36AB /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D9852C8D080600EA36AB /* AddAddressViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +180,8 @@
 		F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		F4D7D9832C8CEB7E00EA36AB /* AddressesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewModel.swift; sourceTree = "<group>"; };
+		F4D7D9852C8D080600EA36AB /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -605,6 +609,7 @@
 		F47BD43C2C8BE3A400A8A8AD /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F4D7D9832C8CEB7E00EA36AB /* AddressesViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 		F47BD4442C8BE47D00A8A8AD /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F4D7D9852C8D080600EA36AB /* AddAddressViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -855,7 +861,11 @@
 				099AD51D2C8751EB00E2191D /* NetworkManager.swift in Sources */,
 				F47BD44A2C8BE4D600A8A8AD /* TextFieldViewCell.swift in Sources */,
 				099AD5432C87520200E2191D /* ExchangeRates.swift in Sources */,
+
 				091E6E522C8E0AC80002C5D9 /* SearchButtonViewModel.swift in Sources */,
+
+				F4D7D9842C8CEB7E00EA36AB /* AddressesViewModel.swift in Sources */,
+
 				F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */,
 				098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */,
 				099AD5302C8751F700E2191D /* FavoriteVC.swift in Sources */,
@@ -878,6 +888,7 @@
 				091E6E4C2C8D0EEB0002C5D9 /* SignUpViewModel.swift in Sources */,
 				0929263E2C88E123000E5488 /* SignUpViewController.swift in Sources */,
 				099AD5462C87520200E2191D /* Products.swift in Sources */,
+				F4D7D9862C8D080600EA36AB /* AddAddressViewModel.swift in Sources */,
 				1E2250272C88BE52007E39DA /* HomeViewModel.swift in Sources */,
 				099AD5482C87520200E2191D /* Shop.swift in Sources */,
 				099AD51A2C8751EB00E2191D /* APIHandler.swift in Sources */,

@@ -14,8 +14,14 @@ class MeViewModel {
     
     var customerId : Int
     
-    var orders : [Order]?{
-        didSet{
+    var orders : [Order]? {
+        didSet {
+            bindResultToViewController()
+        }
+    }
+    
+    var addresses : [Address]? {
+        didSet {
             bindResultToViewController()
         }
     }
@@ -29,7 +35,6 @@ class MeViewModel {
         nwService.fetch(url: APIHandler.urlForGetting(.orders), type: Orders.self) { responce in
             
             guard let responce = responce else {
-                self.bindResultToViewController()
                 return
             }
 
@@ -38,5 +43,17 @@ class MeViewModel {
             })
         }
     }
+    
+    func getAddresses() {
+        nwService.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: "\(customerId)")), type: Addresses.self) { response in
+            
+            guard let response = response else {
+                return
+            }
+
+            self.addresses = response.addresses
+        }
+    }
+    
 }
 
