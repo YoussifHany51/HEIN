@@ -74,6 +74,7 @@
 		1EF0ADEC2C8DFD2200975E4D /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADE92C8DFD2200975E4D /* BrandsViewController.swift */; };
 		1EF0ADEE2C8DFD2D00975E4D /* BrandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADED2C8DFD2D00975E4D /* BrandsViewModel.swift */; };
 		1EF0ADF12C8DFE2300975E4D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */; };
+		F4404C072C8F6E9B00569AA2 /* CartScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */; };
 		F47BD4302C8BE25D00A8A8AD /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */; };
 		F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */; };
 		F47BD4382C8BE33200A8A8AD /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */; };
@@ -168,6 +169,7 @@
 		1EF0ADE92C8DFD2200975E4D /* BrandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		1EF0ADED2C8DFD2D00975E4D /* BrandsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsViewModel.swift; sourceTree = "<group>"; };
 		1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenViewModel.swift; sourceTree = "<group>"; };
 		F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 		099AD51F2C8751F700E2191D /* CartScreen */ = {
 			isa = PBXGroup;
 			children = (
+				F4404C052C8F6E6900569AA2 /* viewModel */,
 				1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */,
 				1EB072042C8A06B800AEFD0F /* CartTableViewCell.xib */,
 				1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */,
@@ -541,6 +544,14 @@
 				1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4404C052C8F6E6900569AA2 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 		F47BD42D2C8BE22C00A8A8AD /* View */ = {
@@ -892,6 +903,7 @@
 				1E2250272C88BE52007E39DA /* HomeViewModel.swift in Sources */,
 				099AD5482C87520200E2191D /* Shop.swift in Sources */,
 				099AD51A2C8751EB00E2191D /* APIHandler.swift in Sources */,
+				F4404C072C8F6E9B00569AA2 /* CartScreenViewModel.swift in Sources */,
 				090E79B12C877DCB00F0BECD /* CategoryViewController.swift in Sources */,
 				099AD5402C87520200E2191D /* Collections.swift in Sources */,
 			);
@@ -1075,7 +1087,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A83FN5933K;
+				DEVELOPMENT_TEAM = QHWQF7TL3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HEIN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1108,7 +1120,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A83FN5933K;
+				DEVELOPMENT_TEAM = QHWQF7TL3L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HEIN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
