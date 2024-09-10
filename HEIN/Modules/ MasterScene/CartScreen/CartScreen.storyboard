@@ -66,10 +66,28 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EU0-LV-Zpk">
                                 <rect key="frame" x="0.0" y="121.00000000000003" width="393" height="436.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="suo-vf-Iy3">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="316"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="6ui-t3-CLk">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="322"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="pZg-9Z-o6b">
+                                            <rect key="frame" x="186.66666666666666" y="151" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No cart items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmo-yz-bLa">
+                                            <rect key="frame" x="128" y="179" width="137" height="27"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="xmo-yz-bLa" firstAttribute="centerX" secondItem="pZg-9Z-o6b" secondAttribute="centerX" id="XxV-5U-M2Y"/>
+                                        <constraint firstItem="xmo-yz-bLa" firstAttribute="top" secondItem="pZg-9Z-o6b" secondAttribute="bottom" constant="8" symbolic="YES" id="cNj-fe-dd6"/>
+                                        <constraint firstItem="pZg-9Z-o6b" firstAttribute="centerX" secondItem="6ui-t3-CLk" secondAttribute="centerX" id="eB9-zo-qCm"/>
+                                        <constraint firstItem="pZg-9Z-o6b" firstAttribute="centerY" secondItem="6ui-t3-CLk" secondAttribute="centerY" id="k1K-Q2-5Sy"/>
+                                    </constraints>
+                                </view>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Cart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXf-XA-UKT">
                                 <rect key="frame" x="15" y="84" width="86.666666666666671" height="29"/>
@@ -120,9 +138,10 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cartTable" destination="EU0-LV-Zpk" id="rOT-hA-AAF"/>
-                        <outlet property="cartTableIndicator" destination="suo-vf-Iy3" id="f4i-Kk-STr"/>
+                        <outlet property="cartTableIndicator" destination="pZg-9Z-o6b" id="3n9-r4-Da2"/>
                         <outlet property="checkOutButton" destination="PYL-7g-Xc6" id="F76-gi-SZN"/>
                         <outlet property="currency" destination="5eg-H4-KlW" id="Ile-PA-JvN"/>
+                        <outlet property="emptyCartLabel" destination="xmo-yz-bLa" id="bn1-Ro-Pmh"/>
                         <outlet property="promoCodeButton" destination="s8z-26-8sA" id="h3B-8s-ovi"/>
                         <outlet property="promoCodeField" destination="aC6-dS-db7" id="mDR-cI-6aH"/>
                         <outlet property="totalAmount" destination="KVW-uJ-2bc" id="LMy-GT-V4M"/>
