@@ -39,6 +39,9 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
             self.cartTable.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         viewModel?.getDraftOrder()
     }
     
