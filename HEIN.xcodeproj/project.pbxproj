@@ -378,11 +378,8 @@
 		099AD51F2C8751F700E2191D /* CartScreen */ = {
 			isa = PBXGroup;
 			children = (
+				F4404C082C903AE800569AA2 /* view */,
 				F4404C052C8F6E6900569AA2 /* viewModel */,
-				1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */,
-				1EB072042C8A06B800AEFD0F /* CartTableViewCell.xib */,
-				1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */,
-				1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -552,6 +549,17 @@
 				F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */,
 			);
 			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F4404C082C903AE800569AA2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1EB072052C8A06B800AEFD0F /* CartTableViewCell.swift */,
+				1EB072042C8A06B800AEFD0F /* CartTableViewCell.xib */,
+				1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */,
+				1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		F47BD42D2C8BE22C00A8A8AD /* View */ = {
@@ -872,11 +880,8 @@
 				099AD51D2C8751EB00E2191D /* NetworkManager.swift in Sources */,
 				F47BD44A2C8BE4D600A8A8AD /* TextFieldViewCell.swift in Sources */,
 				099AD5432C87520200E2191D /* ExchangeRates.swift in Sources */,
-
 				091E6E522C8E0AC80002C5D9 /* SearchButtonViewModel.swift in Sources */,
-
 				F4D7D9842C8CEB7E00EA36AB /* AddressesViewModel.swift in Sources */,
-
 				F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */,
 				098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */,
 				099AD5302C8751F700E2191D /* FavoriteVC.swift in Sources */,
