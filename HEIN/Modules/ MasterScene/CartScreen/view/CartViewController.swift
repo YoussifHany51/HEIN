@@ -11,6 +11,7 @@ import Kingfisher
 class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
    
+    @IBOutlet weak var emptyCartLabel: UILabel!
     @IBOutlet weak var cartTableIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cartTable: UITableView!
     @IBOutlet weak var promoCodeButton: UIButton!
@@ -33,6 +34,9 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         viewModel = CartScreenViewModel()
         viewModel?.bindResultToViewController = {
             self.cartTableIndicator.stopAnimating()
+            if self.viewModel?.draftOrder?.lineItems.count == 0 {
+                self.emptyCartLabel.isHidden = false
+            }
             self.cartTable.reloadData()
         }
         viewModel?.getDraftOrder()
@@ -66,8 +70,10 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             case 0:
                 if self.viewModel?.draftOrder?.lineItems[indexPath.row].quantity == 1{
                     let alert = UIAlertController(title: "Remove item..!", message: "Item will be removed from cart", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "sign out", style: .destructive, handler: { action in
-                            return
+                    alert.addAction(UIAlertAction(title: "remove", style: .destructive, handler: { action in
+                        self.viewModel?.draftOrder?.lineItems.remove(at: indexPath.row)
+                        self.viewModel?.updateDraftOrder(lineItems: (self.viewModel?.draftOrder!.lineItems)!)
+                        self.cartTable.reloadData()
                     }))
                     alert.addAction(UIAlertAction(title: "cancel", style: .default, handler: { action in
                         return
@@ -81,6 +87,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             default:
                 return
             }
+            self.viewModel?.updateDraftOrder(lineItems: (self.viewModel?.draftOrder!.lineItems)!)
             self.cartTable.reloadData()
         }
         

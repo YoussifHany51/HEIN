@@ -117,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="quaternaryLabelColor"/>
+                        <color key="backgroundColor" systemColor="systemFillColor"/>
                         <constraints>
                             <constraint firstItem="242-Vt-oEU" firstAttribute="leading" secondItem="I15-RR-5VW" secondAttribute="trailing" constant="8" symbolic="YES" id="7vK-kf-npg"/>
                             <constraint firstItem="T6G-7Z-tXj" firstAttribute="centerY" secondItem="qVY-MU-Mb9" secondAttribute="centerY" id="8pl-Om-Giu"/>
@@ -168,7 +168,7 @@
                 <outlet property="productOption1" destination="I15-RR-5VW" id="yUh-Rx-rG8"/>
                 <outlet property="productOption1_Value" destination="242-Vt-oEU" id="a7L-j9-2ci"/>
                 <outlet property="productOption2" destination="ZT3-Ga-LJh" id="kyA-Cj-O7E"/>
-                <outlet property="productOption2_Value" destination="ZT3-Ga-LJh" id="AMH-1U-7hS"/>
+                <outlet property="productOption2_Value" destination="WOq-Hq-Qyn" id="hPc-9k-WQe"/>
                 <outlet property="productQuantity" destination="T6G-7Z-tXj" id="tYc-8M-9S5"/>
                 <outlet property="productTotalAmount" destination="dDd-uX-und" id="e5f-VQ-ihy"/>
             </connections>
@@ -193,8 +193,8 @@
         <systemColor name="placeholderTextColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="quaternaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.1764705882" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
