@@ -16,8 +16,16 @@ class CartScreenViewModel {
     
     var draftOrder : DraftOrder? {
         didSet {
-            let filteredDraft = filterLineItems(lineItems: draftOrder!.lineItems)
-            draftOrder?.lineItems = filteredDraft
+            let filteredLineItems = filterLineItems(lineItems: draftOrder!.lineItems)
+            self.lineItems = filteredLineItems
+            self.getProductVariants(lineItems: filteredLineItems)
+        }
+    }
+    
+    var lineItems: [LineItem]?
+    
+    var variantsStock : [(id: Int, stock: Int)] = [] {
+        didSet {
             bindResultToViewController()
         }
     }
@@ -43,7 +51,10 @@ class CartScreenViewModel {
     }
     
     func updateDraftOrder(lineItems: [LineItem]) {
-        nwService.putInApi(url: APIHandler.urlForGetting(.draftOrder(id: "\(draftOrderId)")), parameters: ["draft_order":["line_items": lineItems.count != 0 ? extractLineItemsPutData(lineItems: lineItems) : [dummyLineItem] ]])
+        nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: "\(draftOrderId)")), type: DraftOrderContainer.self, parameters: ["draft_order":["line_items": lineItems.count != 0 ? extractLineItemsPutData(lineItems: lineItems) : [dummyLineItem] ]]) { draftOrderContainer in
+            
+            self.draftOrder = draftOrderContainer?.draftOrder
+        }
     }
     
     func extractLineItemsPutData(lineItems: [LineItem]) -> [[String: Any]]{
@@ -67,5 +78,29 @@ class CartScreenViewModel {
             }
         }
         return filteredItems
+    }
+    
+    func getProductVariants(lineItems: [LineItem]) {
+        var producIDs : String = ""
+        for item in lineItems {
+            producIDs.append(",\(item.productID ?? 0)")
+        }
+        nwService.fetch(url: "\(APIHandler.urlForGetting(.products))?ids=\(producIDs)", type: Products.self) { products in
+            self.getVariantsStock(products: products?.products ?? [])
+        }
+    }
+    
+    func getVariantsStock(products: [Product]){
+        let variants = products.map { product in
+                return product.variants
+            }
+        
+        for i in 0..<(lineItems?.count ?? 0) {
+            for variant in variants[i] {
+                if self.lineItems?[i].variantID == variant.id {
+                    self.variantsStock.append((id: variant.id, stock: variant.inventoryQuantity))
+                }
+            }
+        }
     }
 }

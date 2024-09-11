@@ -21,6 +21,12 @@ class AddAddressViewModel {
         }
     }
     
+    var updatedAddress : Address? {
+        didSet {
+            bindResultToViewController(.update)
+        }
+    }
+    
     enum addressOperation {
         case delete
         case addNew
@@ -45,8 +51,8 @@ class AddAddressViewModel {
     }
     
     func UpdateAddress(addressID: Int, street: String, city: String, country: String, phone: String, name: String) {
-        nwService.putInApi(url: APIHandler.urlForGetting(.address(customer_id: "\(customerId)", address_id: "\(addressID)")), parameters: ["address":["address1":"\(street)","city":"\(city)","phone":"\(phone)","name":"\(name)","country": "\(country)"]])
-        
-        bindResultToViewController(.update)
+        nwService.putWithResponse(url: APIHandler.urlForGetting(.address(customer_id: "\(customerId)", address_id: "\(addressID)")), type: CustomerAddressResponse.self, parameters: ["address":["address1":"\(street)","city":"\(city)","phone":"\(phone)","name":"\(name)","country": "\(country)"]]) { response in
+            self.updatedAddress = response?.customerAddress
+        }
     }
 }

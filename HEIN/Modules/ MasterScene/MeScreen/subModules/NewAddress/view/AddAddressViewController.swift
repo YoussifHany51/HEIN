@@ -22,7 +22,7 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var ref : AddressesProtocol?
     
-    var address: Address?
+    var editingAddress: Address?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,12 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         fieldsTable.delegate = self
         fieldsTable.dataSource = self
         
-        if address != nil {
+        if editingAddress != nil {
             deleteAddressButton.isHidden = false
-            deleteAddressButton.isEnabled = address!.addressDefault ? false : true
+            deleteAddressButton.isEnabled = editingAddress!.addressDefault ? false : true
         }
         
-        viewTitleLabel.text = address != nil ? "Edit Shipping Address" : "Add Shipping Address"
+        viewTitleLabel.text = editingAddress != nil ? "Edit Shipping Address" : "Add Shipping Address"
         
         let textFeildCellNib = UINib(nibName: "TextFieldViewCell", bundle: nil)
         fieldsTable.register(textFeildCellNib, forCellReuseIdentifier: "textFieldCell")
@@ -53,22 +53,33 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
                 guard let newAddress = self.viewModel?.newAddress else {
                     self.saveAddressButton.isEnabled = true
                     self.loadingView.isHidden = true
-                    let alert = UIAlertController(title: "Address not saved ‼️", message: "Something went wrong please try again", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    self.showAlert()
                     return
                 }
                 self.ref?.addAddress(address: newAddress)
                 self.navigationController?.popViewController(animated: true)
+                
             case .delete:
-                self.ref?.deleteAddress(address: self.address!)
+                self.ref?.deleteAddress(address: self.editingAddress!)
                 self.navigationController?.popViewController(animated: true)
+                
             case .update:
-                let updatedAddress = Address(id: self.address!.id, customerID: self.customerId!, address1: self.getCellAtRow(1).textField.text!, city: self.getCellAtRow(2).textField.text!, phone: self.getCellAtRow(4).textField.text!, name: self.getCellAtRow(0).textField.text!, country: self.getCellAtRow(3).textField.text!, addressDefault: self.address!.addressDefault)
+                guard let updatedAddress = self.viewModel?.updatedAddress else {
+                    self.saveAddressButton.isEnabled = true
+                    self.loadingView.isHidden = true
+                    self.showAlert()
+                    return
+                }
                 self.ref?.updateAddress(address: updatedAddress)
                 self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Address not saved ‼️", message: "Something went wrong please try again", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     @IBAction func saveAddreess(_ sender: Any) {
@@ -86,10 +97,19 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
             self.saveAddressButton.isEnabled = false
             self.loadingView.isHidden = false
             
-            if address == nil {
-                viewModel?.addNewAddress(street: getCellAtRow(1).textField.text!, city: getCellAtRow(2).textField.text!, country: getCellAtRow(3).textField.text!, phone: getCellAtRow(4).textField.text!, name: getCellAtRow(0).textField.text!)
+            if editingAddress == nil {
+                viewModel?.addNewAddress(street: getCellAtRow(1).textField.text!, 
+                                         city: getCellAtRow(2).textField.text!,
+                                         country: getCellAtRow(3).textField.text!,
+                                         phone: getCellAtRow(4).textField.text!,
+                                         name: getCellAtRow(0).textField.text!)
             } else {
-                viewModel?.UpdateAddress(addressID: address!.id, street: getCellAtRow(1).textField.text!, city: getCellAtRow(2).textField.text!, country: getCellAtRow(3).textField.text!, phone: getCellAtRow(4).textField.text!, name: getCellAtRow(0).textField.text!)
+                viewModel?.UpdateAddress(addressID: editingAddress!.id, 
+                                         street: getCellAtRow(1).textField.text!,
+                                         city: getCellAtRow(2).textField.text!,
+                                         country: getCellAtRow(3).textField.text!,
+                                         phone: getCellAtRow(4).textField.text!,
+                                         name: getCellAtRow(0).textField.text!)
             }
         }
     }
@@ -99,7 +119,7 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         alert.addAction(UIAlertAction(title: "delete", style: .destructive, handler: { action in
             self.saveAddressButton.isEnabled = false
             self.loadingView.isHidden = false
-            self.viewModel?.deleteAddress(addressID: (self.address?.id)!)
+            self.viewModel?.deleteAddress(addressID: (self.editingAddress?.id)!)
         }))
         alert.addAction(UIAlertAction(title: "cancel", style: .default, handler: nil))
         self.present(alert, animated: true)
@@ -115,13 +135,13 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         switch indexPath.row{
         case 0:
             cell.labelName.text = "Address Name"
-            cell.textField.text = address?.name ?? ""
+            cell.textField.text = editingAddress?.name ?? ""
         case 1:
             cell.labelName.text = "Street"
-            cell.textField.text = address?.address1 ?? ""
+            cell.textField.text = editingAddress?.address1 ?? ""
         case 2:
             cell.labelName.text = "City"
-            cell.textField.text = address?.city ?? ""
+            cell.textField.text = editingAddress?.city ?? ""
         case 3:
             cell.labelName.text = "Country"
             cell.textField.text = "Egypt"
@@ -129,7 +149,7 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.textField.isEnabled = false
         case 4:
             cell.labelName.text = "Phone"
-            cell.textField.text = address?.phone ?? ""
+            cell.textField.text = editingAddress?.phone ?? ""
         default:
             cell.labelName.text = .none
         }
