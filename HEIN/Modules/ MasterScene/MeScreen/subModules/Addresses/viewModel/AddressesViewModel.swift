@@ -10,7 +10,7 @@ import Foundation
 class AddressesViewModel {
     let nwService : NetworkManager
     
-    var bindResultToViewController: ((_ defaultAddress: Address) -> Void) = {address in }
+    var bindDefaultAddressToViewController: ((_ defaultAddress: Address) -> Void) = {address in }
     
     var customerId : Int
     
@@ -22,6 +22,6 @@ class AddressesViewModel {
     func SetDefaultAddress(address: Address) {
         nwService.putInApi(url: APIHandler.urlForGetting(.makeDefaultAddress(customer_id: "\(customerId)", address_id: "\(address.id)")))
         
-        bindResultToViewController(address)
+        bindDefaultAddressToViewController(address)
     }
 }

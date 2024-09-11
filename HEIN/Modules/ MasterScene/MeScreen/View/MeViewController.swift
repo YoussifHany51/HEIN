@@ -6,34 +6,17 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-protocol AddressesProtocol {
-    var addresses : [Address]? { get set }
-    func addAddress(address: Address)
-    func deleteAddress(address: Address)
-    func updateAddress(address: Address)
-}
-
-class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddressesProtocol {
+class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var meTable: UITableView!
     
     // MARK: - change to be dynamic
     var customerId : Int? = 8369844912424
     
     var viewModel : MeViewModel?
-    
-    var orders : [Order]? {
-        didSet{
-           meTable.reloadData()
-        }
-    }
-    
-    var addresses : [Address]? {
-        didSet{
-            meTable.reloadData()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +25,16 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         meTable.delegate = self
         meTable.dataSource = self
         
+        if let user = Auth.auth().currentUser {
+            userNameLabel.text = UserDefaults.standard.string(forKey: user.uid)
+        } else {
+            userNameLabel.text = .none
+        }
+        
         setMeViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getOrdersAndAddresses()
     }
     
@@ -54,33 +46,8 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func setMeViewModel() {
         viewModel = MeViewModel(customerId: customerId ?? 0)
         viewModel? .bindResultToViewController = {
-            if self.viewModel?.orders?.count == 0 || self.viewModel?.orders == nil {
-                self.orders = []
-            } else {
-                self.orders = self.viewModel?.orders
-            }
-            
-            if self.viewModel?.addresses?.count == 0 || self.viewModel?.addresses == nil {
-                self.addresses = []
-            } else {
-                self.addresses = self.viewModel?.addresses
-            }
+            self.meTable.reloadData()
         }
-    }
-    
-    func addAddress(address: Address) {
-        addresses?.append(address)
-        meTable.reloadData()
-    }
-    
-    func deleteAddress(address: Address) {
-        addresses?.removeAll(where: { $0.id == address.id })
-        meTable.reloadData()
-    }
-    
-    func updateAddress(address: Address) {
-        addresses![(addresses?.firstIndex(where: {$0.id == address.id}))!] = address
-        meTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,10 +60,10 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         switch indexPath.row{
         case 0:
             cell.textLabel?.text = "My Orders"
-            cell.detailTextLabel?.text = "\(orders?.count.description ?? "●") orders"
+            cell.detailTextLabel?.text = "\(viewModel?.orders?.count.description ?? "●") orders"
         case 1:
             cell.textLabel?.text = "Shipping Addresses"
-            cell.detailTextLabel?.text = "\(addresses?.count.description ?? "●") addresses"
+            cell.detailTextLabel?.text = "\(viewModel?.addresses?.count.description ?? "●") addresses"
         case 2:
             cell.textLabel?.text = "Currency"
             cell.detailTextLabel?.text = "EGP"
@@ -120,12 +87,11 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         switch indexPath.row{
         case 0:
             let ordersVC = storyboard?.instantiateViewController(identifier: "orders") as! OrdersViewController
-            ordersVC.orders = self.orders
+            ordersVC.orders = self.viewModel?.orders
             navigationController?.pushViewController(ordersVC, animated: true)
         case 1:
             let addressesVC = storyboard?.instantiateViewController(identifier: "addresses") as! AddressesViewController
-            addressesVC.addresses = self.addresses
-            addressesVC.ref = self
+            addressesVC.addresses = self.viewModel?.addresses
             navigationController?.pushViewController(addressesVC, animated: true)
         case 2:
             let currencyVC = storyboard?.instantiateViewController(identifier: "currencies") as! CurrencyViewController
