@@ -24,8 +24,8 @@ class ProductsInfoViewController: UIViewController {
     @IBOutlet weak var productType: UILabel!
     
     @IBOutlet weak var productPrice: UILabel!
-    
-    @IBOutlet weak var productDescription: UILabel!
+   
+    @IBOutlet weak var productDescription: UITextView!
     
     @IBOutlet weak var currentCurrency: UILabel!
     
@@ -119,6 +119,8 @@ class ProductsInfoViewController: UIViewController {
         productDescription.text = self.product.bodyHTML
         productDescription.sizeToFit()
         addToCartRef.tintColor = .red
+        productDescription.isScrollEnabled = true
+        productDescription.contentInsetAdjustmentBehavior = .never
     }
     
     @objc func scrollingProductImagessetup(){

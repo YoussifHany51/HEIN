@@ -77,59 +77,41 @@ class SignUpViewController: UIViewController {
                 
                 // First attempt to sign in to check if the email already exists
                 Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                    if let error = error as NSError? {
-                        let authError = AuthErrorCode(rawValue: error.code)
-                        switch authError {
-                        case .userNotFound:
-                            // If the user is not found, proceed with creating a new user
-                            self?.createNewUser(email: email, password: password)
-                            let defaults = UserDefaults.standard
-                            defaults.set(self?.nameTextField.text!, forKey: Auth.auth().currentUser!.uid)
-                        case .wrongPassword:
-                            // If the email exists but the password is wrong, notify the user
-                            self?.showAlert(message: "This email is already registered. Please log in.")
-                            print("Email already in use.")
-                        default:
-                            // Handle other errors, if any
-                            self?.showAlert(message: "Error: \(error.localizedDescription)")
-                            print("Error: \(error.localizedDescription)")
-                        }
-                    } else {
-                        // User exists and successfully logged in (though unlikely in this context)
-                        self?.showAlert(message: "This email is already registered. Please log in.")
-                        print("User already exists and is logged in.")
-                    }
+                    self?.createNewUser(email: email, password: password)
                 }
             } else {
-                self.showAlert(message: "Please fill in all fields correctly.")
+                self.showAlert(title: "Error ⚠️", message: "Please fill in all fields correctly.")
             }
             print("Sign Up Button Tapped")
+        
     }
-    func showAlert(message:String){
-        let alert = UIAlertController(title: "Error ⚠️", message: message, preferredStyle: .alert)
+    func showAlert(title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okayButton = UIAlertAction(title: "Okay", style: .default)
         alert.addAction(okayButton)
         self.present(alert, animated: true)
     }
     // Function to create a new user
-    func createNewUser(email: String, password: String) {
+    private func createNewUser(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error as NSError? {
-                let authError = AuthErrorCode(rawValue: error.code)
-                switch authError {
-                case .emailAlreadyInUse:
-                    self?.showAlert(message: "This email is already in use. Please try logging in.")
-                    print("Email already in use.")
-                default:
-                    self?.showAlert(message: "Error: \(error.localizedDescription)")
-                    print("Error: \(error.localizedDescription)")
-                }
+            if let error = error {
+                // Handle any errors that occur during user creation
+                self?.showAlert(title: "Error ⚠️", message: "Error: \(error.localizedDescription)")
+                print("Error: \(error.localizedDescription)")
             } else {
-                // Successfully created a new user, navigate to the master view controller
-                let master = self?.storyboard?.instantiateViewController(withIdentifier: "master")
-                self?.navigationController?.pushViewController(master!, animated: true)
-                print("User successfully created and logged in.")
+                // Successfully created a new user
+                self?.storeUserNameInUserDefaults()
+                self?.showAlert(title: "Done 🥳💃", message: "User created successfully!")
+                print("User created successfully!")
+                // Navigate to the next screen or update the UI as needed
+                self?.navigationController?.popViewController(animated: true)
             }
+        }
+    }
+    private func storeUserNameInUserDefaults() {
+        if let uid = Auth.auth().currentUser?.uid {
+            let defaults = UserDefaults.standard
+            defaults.set(nameTextField.text!, forKey: uid)
         }
     }
 }
