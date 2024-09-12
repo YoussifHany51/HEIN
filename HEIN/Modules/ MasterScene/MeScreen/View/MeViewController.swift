@@ -100,6 +100,14 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let alert = UIAlertController(title: "Sign Out..!", message: "You wont be able to make purchases from our poroduct catalog", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "sign out", style: .destructive, handler: { action in
                     // sign out action
+                do{
+                    try Auth.auth().signOut()
+                    
+                    let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+                    self.navigationController?.pushViewController(loginViewController, animated: true)
+                }catch let error{
+                    print(error.localizedDescription)
+                }
             }))
             alert.addAction(UIAlertAction(title: "cancel", style: .default, handler: nil))
             self.present(alert, animated: true)

@@ -9,12 +9,14 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
+import FirebaseCore
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButtonOutlet: UIButton!
     var viewModel = LoginViewModel()
+    var networkHandler:NetworkManager? = NetworkManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -38,7 +40,7 @@ class LoginViewController: UIViewController {
                     case .wrongPassword:
                         self?.showAlert(message: "Wrong Email or Password❗️")
                         break
-                    case .invalidUserToken: #warning("Check User NOT found")
+                    case .userNotFound: #warning("Check User NOT found")
                         self?.showAlert(message: "Please Sign Up First")
                         break
                     case .networkError:
@@ -52,6 +54,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 // Successful sign-in, navigate to the master view controller
+                
                 let master = self?.storyboard?.instantiateViewController(withIdentifier: "master")
                 self?.navigationController?.pushViewController(master!, animated: true)
                 print("Logged in Successfully")
