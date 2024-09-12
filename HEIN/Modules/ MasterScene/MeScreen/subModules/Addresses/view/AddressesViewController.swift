@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol AddressesProtocol {
+    func addAddress(address: Address)
+    func deleteAddress(address: Address)
+    func updateAddress(address: Address)
+}
+
 class AddressesViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, AddressesProtocol{
 
+    @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var addressesTableIndicator: UIActivityIndicatorView!
     @IBOutlet weak var emptyAddressesLabel: UILabel!
     @IBOutlet weak var addressesTable: UITableView!
@@ -17,8 +24,6 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
     var customerId : Int? = 8369844912424
     
     var viewModel : AddressesViewModel?
-    
-    var ref: AddressesProtocol?
     
     var addresses : [Address]?{
         didSet {
@@ -29,7 +34,6 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
         addressesTable.delegate = self
@@ -47,34 +51,30 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
     
     func setAddressesViewModel() {
         viewModel = AddressesViewModel(customerId: customerId ?? 0)
-        viewModel?.bindResultToViewController = { [self] address in
+        viewModel?.bindDefaultAddressToViewController = { [self] address in
             if let defaultIndex = defaultAddressIndex {
                 if (addresses?[defaultIndex]) != nil {
                     self.addresses?[defaultIndex].addressDefault  = false
                 }
             }
-            let index = self.addresses!.firstIndex(where: {$0.id == address.id})!
-            self.addresses?[index].addressDefault = true
-            ref?.addresses = self.addresses
+            let indexOfNewDefault = self.addresses!.firstIndex(where: {$0.id == address.id})!
+            self.addresses?[indexOfNewDefault].addressDefault = true
             self.addressesTable.reloadData()
         }
     }
     
     func addAddress(address: Address) {
         addresses?.append(address)
-        ref?.addAddress(address: address)
         addressesTable.reloadData()
     }
     
     func deleteAddress(address: Address) {
         addresses?.removeAll(where: { $0.id == address.id })
-        ref?.deleteAddress(address: address)
         addressesTable.reloadData()
     }
     
     func updateAddress(address: Address) {
         addresses![(addresses?.firstIndex(where: {$0.id == address.id}))!] = address
-        ref?.updateAddress(address: address)
         addressesTable.reloadData()
     }
     
@@ -99,7 +99,7 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
         cell.editAddress = {
             let addAddressVC = self.storyboard?.instantiateViewController(withIdentifier: "addAddress") as! AddAddressViewController
             
-            addAddressVC.address = self.addresses?[indexPath.row]
+            addAddressVC.editingAddress = self.addresses?[indexPath.row]
             addAddressVC.ref = self
             
             self.navigationController?.pushViewController(addAddressVC, animated: true)

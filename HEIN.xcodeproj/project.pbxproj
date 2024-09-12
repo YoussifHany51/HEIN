@@ -90,6 +90,9 @@
 		F47BD44F2C8BE55300A8A8AD /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */; };
 		F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */; };
 		F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */; };
+		F4D7922E2C91F1A90014557D /* CouponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7922D2C91F1A90014557D /* CouponsViewController.swift */; };
+		F4D792302C91F3280014557D /* CouponsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7922F2C91F3280014557D /* CouponsTableViewCell.swift */; };
+		F4D792362C924EF40014557D /* CouponsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D792352C924EF40014557D /* CouponsViewModel.swift */; };
 		F4D7D9842C8CEB7E00EA36AB /* AddressesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D9832C8CEB7E00EA36AB /* AddressesViewModel.swift */; };
 		F4D7D9862C8D080600EA36AB /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D9852C8D080600EA36AB /* AddAddressViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -188,6 +191,9 @@
 		F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		F4D7922D2C91F1A90014557D /* CouponsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsViewController.swift; sourceTree = "<group>"; };
+		F4D7922F2C91F3280014557D /* CouponsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsTableViewCell.swift; sourceTree = "<group>"; };
+		F4D792352C924EF40014557D /* CouponsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsViewModel.swift; sourceTree = "<group>"; };
 		F4D7D9832C8CEB7E00EA36AB /* AddressesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewModel.swift; sourceTree = "<group>"; };
 		F4D7D9852C8D080600EA36AB /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -384,6 +390,7 @@
 		099AD51F2C8751F700E2191D /* CartScreen */ = {
 			isa = PBXGroup;
 			children = (
+				F4D792312C9243FE0014557D /* subModules */,
 				F4404C082C903AE800569AA2 /* view */,
 				F4404C052C8F6E6900569AA2 /* viewModel */,
 			);
@@ -728,6 +735,40 @@
 			path = viewModel;
 			sourceTree = "<group>";
 		};
+		F4D792312C9243FE0014557D /* subModules */ = {
+			isa = PBXGroup;
+			children = (
+				F4D792342C9244270014557D /* coupons */,
+			);
+			path = subModules;
+			sourceTree = "<group>";
+		};
+		F4D792322C9244150014557D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F4D7922F2C91F3280014557D /* CouponsTableViewCell.swift */,
+				F4D7922D2C91F1A90014557D /* CouponsViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F4D792332C92441D0014557D /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4D792352C924EF40014557D /* CouponsViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F4D792342C9244270014557D /* coupons */ = {
+			isa = PBXGroup;
+			children = (
+				F4D792322C9244150014557D /* view */,
+				F4D792332C92441D0014557D /* viewModel */,
+			);
+			path = coupons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -916,6 +957,7 @@
 				099AD5432C87520200E2191D /* ExchangeRates.swift in Sources */,
 				091E6E522C8E0AC80002C5D9 /* SearchButtonViewModel.swift in Sources */,
 				F4D7D9842C8CEB7E00EA36AB /* AddressesViewModel.swift in Sources */,
+				F4D792302C91F3280014557D /* CouponsTableViewCell.swift in Sources */,
 				F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */,
 				098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */,
 				099AD5302C8751F700E2191D /* FavoriteVC.swift in Sources */,
@@ -926,7 +968,11 @@
 				099AD4E82C87518F00E2191D /* SceneDelegate.swift in Sources */,
 				099AD5472C87520200E2191D /* Reviews.swift in Sources */,
 				1EF0ADEB2C8DFD2200975E4D /* BrandProductsCVC.swift in Sources */,
+
 				09B0600B2C90AA8100A13B61 /* ProductsInfoViewController.swift in Sources */,
+
+				F4D7922E2C91F1A90014557D /* CouponsViewController.swift in Sources */,
+
 				098D9EC82C87680F00EC6053 /* TabBarController.swift in Sources */,
 				1EF0ADEE2C8DFD2D00975E4D /* BrandsViewModel.swift in Sources */,
 				091E6E4F2C8E0AAE0002C5D9 /* SearchButtonViewController.swift in Sources */,
@@ -937,6 +983,7 @@
 				099AD51C2C8751EB00E2191D /* Methods.swift in Sources */,
 				1E22502A2C88BF02007E39DA /* BrandsCVC.swift in Sources */,
 				1EB0720F2C8A3BE400AEFD0F /* CartViewController.swift in Sources */,
+				F4D792362C924EF40014557D /* CouponsViewModel.swift in Sources */,
 				091E6E4C2C8D0EEB0002C5D9 /* SignUpViewModel.swift in Sources */,
 				0929263E2C88E123000E5488 /* SignUpViewController.swift in Sources */,
 				099AD5462C87520200E2191D /* Products.swift in Sources */,
