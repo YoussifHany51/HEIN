@@ -32,13 +32,13 @@ class MeViewModel {
     }
     
     func getOrders() {
-        nwService.fetch(url: APIHandler.urlForGetting(.orders), type: Orders.self) { responce in
+        nwService.fetch(url: APIHandler.urlForGetting(.orders), type: Orders.self) { response in
             
-            guard let responce = responce else {
+            guard let response = response else {
                 return
             }
 
-            self.orders = responce.orders.filter({ order in
+            self.orders = response.orders.filter({ order in
                 order.customer.id == self.customerId
             })
         }
