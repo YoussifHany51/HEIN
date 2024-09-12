@@ -1,9 +1,7 @@
-//
+
 //  HomeScreenViewController.swift
 //  HEIN
-//
 //  Created by Youssif Hany on 03/09/2024.
-//
 
 import UIKit
 import Kingfisher
@@ -16,24 +14,27 @@ class HomeScreenViewController: UIViewController {
     var indicator : UIActivityIndicatorView?
     var viewModel:HomeProtocol!
     var photoarr = [UIImage(named: "sale1"),UIImage(named: "sale2"),UIImage(named: "sale3"),UIImage(named: "sale4"),UIImage(named: "sale5"),UIImage(named: "sale6")]
-    
+    var search:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = HomeViewModel()
         self.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.hidesBackButton = true
         setIndicator()
-        
+       
+//search = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(productSearch))
+        //self.tabBarController?.navigationItem.leftBarButtonItem = search
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.setupCollectionView()
+        
         self.registerCells()
         adsCollection.delegate = self
         adsCollection.dataSource = self
         brandsCollection.delegate = self
         brandsCollection.dataSource = self
-        self.tabBarController?.navigationItem.hidesBackButton = true
        viewModel?.checkNetworkReachability{ isReachable in
             print(isReachable)
             if isReachable {
@@ -67,6 +68,9 @@ class HomeScreenViewController: UIViewController {
                  self?.adsCollection.reloadData()
              }}}
      
+    @objc func productSearch(){
+        
+    }
 }
 
 
