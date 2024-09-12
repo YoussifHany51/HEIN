@@ -498,14 +498,14 @@
                                 <rect key="frame" x="0.0" y="133" width="393" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0iR-UW-JRa">
-                                    <rect key="frame" x="0.0" y="321" width="393" height="101"/>
+                                    <rect key="frame" x="0.0" y="321" width="393" height="123"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="72z-sA-fyS">
-                                            <rect key="frame" x="186.66666666666666" y="61" width="20" height="20"/>
+                                            <rect key="frame" x="186.66666666666666" y="83" width="20" height="20"/>
                                         </activityIndicatorView>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No addresses were added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xu-gU-AFz">
-                                            <rect key="frame" x="89" y="39.666666666666664" width="215" height="22"/>
+                                            <rect key="frame" x="89" y="50.666666666666664" width="215" height="21.999999999999993"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -531,13 +531,13 @@
                                                     <rect key="frame" x="25" y="19" width="343" height="205"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQ5-Yr-O71">
-                                                            <rect key="frame" x="15" y="20" width="65.333333333333329" height="21"/>
+                                                            <rect key="frame" x="15" y="20" width="257.33333333333331" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88 my street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9X5-VA-6Wl">
-                                                            <rect key="frame" x="15" y="56" width="93" height="20"/>
+                                                            <rect key="frame" x="15" y="56" width="313" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -579,13 +579,13 @@
                                                             </connections>
                                                         </switch>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.55000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use as the shipping address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRv-pE-JHA">
-                                                            <rect key="frame" x="79" y="164.66666666666666" width="205" height="20"/>
+                                                            <rect key="frame" x="79" y="164.66666666666666" width="249" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20 123456789012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02b-gK-Qc4">
-                                                            <rect key="frame" x="64" y="122.66666666666666" width="144" height="20"/>
+                                                            <rect key="frame" x="64" y="122.66666666666666" width="257.33333333333331" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -598,8 +598,10 @@
                                                         <constraint firstItem="WQ5-Yr-O71" firstAttribute="top" secondItem="ai3-pU-k6l" secondAttribute="top" constant="20" id="Au2-xe-n0P"/>
                                                         <constraint firstItem="dRv-pE-JHA" firstAttribute="leading" secondItem="Wcd-Pp-DKx" secondAttribute="trailing" constant="15" id="BzF-zV-TbU"/>
                                                         <constraint firstItem="WQ5-Yr-O71" firstAttribute="leading" secondItem="ai3-pU-k6l" secondAttribute="leading" constant="15" id="EgR-lj-i2P"/>
+                                                        <constraint firstItem="WQ5-Yr-O71" firstAttribute="width" secondItem="ai3-pU-k6l" secondAttribute="width" multiplier="0.75" id="Ggq-B0-XDc"/>
                                                         <constraint firstItem="02b-gK-Qc4" firstAttribute="leading" secondItem="RG1-fk-8m2" secondAttribute="trailing" constant="8" symbolic="YES" id="JnD-gO-SsI"/>
                                                         <constraint firstItem="RG1-fk-8m2" firstAttribute="top" secondItem="h5a-Ue-ciW" secondAttribute="bottom" constant="20" id="Jwr-Bt-sor"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9X5-VA-6Wl" secondAttribute="trailing" constant="15" id="KU5-dU-KLv"/>
                                                         <constraint firstItem="9X5-VA-6Wl" firstAttribute="top" secondItem="WQ5-Yr-O71" secondAttribute="bottom" constant="15" id="MBB-RI-PI9"/>
                                                         <constraint firstItem="nuq-wt-80y" firstAttribute="leading" secondItem="h5a-Ue-ciW" secondAttribute="trailing" constant="8" symbolic="YES" id="OQi-Aj-h3t"/>
                                                         <constraint firstItem="02b-gK-Qc4" firstAttribute="centerY" secondItem="RG1-fk-8m2" secondAttribute="centerY" id="UKp-E4-xvM"/>
@@ -611,6 +613,8 @@
                                                         <constraint firstItem="dRv-pE-JHA" firstAttribute="centerY" secondItem="Wcd-Pp-DKx" secondAttribute="centerY" id="key-q3-s3d"/>
                                                         <constraint firstAttribute="bottom" secondItem="Wcd-Pp-DKx" secondAttribute="bottom" constant="15" id="mlA-YI-jGj"/>
                                                         <constraint firstItem="RG1-fk-8m2" firstAttribute="leading" secondItem="h5a-Ue-ciW" secondAttribute="leading" id="vSA-2d-Ouy"/>
+                                                        <constraint firstItem="02b-gK-Qc4" firstAttribute="width" secondItem="ai3-pU-k6l" secondAttribute="width" multiplier="0.75" id="vY2-xg-oeY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="dRv-pE-JHA" secondAttribute="trailing" constant="15" id="zxX-tn-fOm"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="Rounded" value="YES"/>
@@ -671,7 +675,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JEj-yc-Okz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392" y="-15"/>
+            <point key="canvasLocation" x="1391.6030534351144" y="-15.492957746478874"/>
         </scene>
         <!--Me-->
         <scene sceneID="DI7-EI-att">

@@ -47,6 +47,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 self.totalAmount.text = "0"
                 self.checkOutButton.isEnabled = false
                 self.promoCodeButton.isEnabled = false
+                self.checkOutButton.isEnabled = false
                 if self.viewModel?.lineItems == nil {
                     self.showAlert()
                 }
@@ -114,6 +115,14 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             self.loadingView.isHidden = false
             viewModel?.removeDraftOrderAppliedDiscount()
         }
+    }
+    
+    @IBAction func checkout(_ sender: Any) {
+        let checkoutVC = storyboard?.instantiateViewController(withIdentifier: "checkout") as! CheckoutViewController
+        
+        checkoutVC.draftOrder = viewModel?.draftOrder
+        
+        navigationController?.pushViewController(checkoutVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
