@@ -22,7 +22,7 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     var flag = false
     var searchWord = ""
     var searching = false
-    
+    var selectedProduct:Product!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +156,20 @@ extension BrandsViewController{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
     }
-        
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if flag == false {
+            selectedProduct = brandsViewModel.brandProducts![indexPath.row]
+        }else{
+            selectedProduct = brandsViewModel.sortedProducts![indexPath.row]
+        }
+        let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as? ProductsInfoViewController {
+            vc.product = selectedProduct
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 }
 
 
