@@ -28,14 +28,16 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         imgNoData.isHidden = true
+        brandsViewModel = BrandsViewMode()
+        setIndicator()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         BrandProductsCollection.delegate = self
         BrandProductsCollection.dataSource = self
-        brandsViewModel = BrandsViewMode()
         setupCollectionView()
-        setIndicator()
         searchBar.delegate = self
         registerCell()
-        //self.navigationItem.hidesBackButton = true
         self.navigationItem.title = "HEIN"
         brandsViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {

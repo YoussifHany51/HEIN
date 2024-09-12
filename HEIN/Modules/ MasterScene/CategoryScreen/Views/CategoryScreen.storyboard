@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Category-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="CategoryViewController" customModule="HEIN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UZz-zF-x4I">
+                                <rect key="frame" x="0.0" y="189" width="393" height="575"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fy3-Ct-SNm">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ckS-33-wIn">
+                                <rect key="frame" x="0.0" y="119" width="393" height="32"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Women"/>
+                                    <segment title="Men"/>
+                                    <segment title="Kids"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7jP-eh-QTD">
+                                <rect key="frame" x="0.0" y="158" width="393" height="32"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="T-Shirts"/>
+                                    <segment title="Shoes"/>
+                                    <segment title="Accessories"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRe-cu-6gN">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                    <color key="textColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="HEIN" id="PPA-n8-rG7">
+                                        <barButtonItem key="leftBarButtonItem" image="magnifyingglass" catalog="system" id="zcC-Zs-8q1">
+                                            <color key="tintColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="searchBar:" destination="Y6W-OH-hqX" id="CI2-yF-ftg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7jP-eh-QTD" firstAttribute="top" secondItem="ckS-33-wIn" secondAttribute="bottom" constant="8" symbolic="YES" id="JP6-O9-57i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UZz-zF-x4I" secondAttribute="bottom" constant="5" id="KH9-Dy-Epq"/>
+                            <constraint firstItem="ckS-33-wIn" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="L7x-9o-aPd"/>
+                            <constraint firstItem="ckS-33-wIn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="LoA-Ro-UN7"/>
+                            <constraint firstItem="ckS-33-wIn" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.036385" id="Md2-N4-GjC"/>
+                            <constraint firstItem="7jP-eh-QTD" firstAttribute="height" secondItem="ckS-33-wIn" secondAttribute="height" id="Mw6-xj-nlp"/>
+                            <constraint firstItem="7jP-eh-QTD" firstAttribute="width" secondItem="ckS-33-wIn" secondAttribute="width" id="NM8-DW-ZpP"/>
+                            <constraint firstItem="UZz-zF-x4I" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RPH-fU-U69"/>
+                            <constraint firstItem="ckS-33-wIn" firstAttribute="top" secondItem="tRe-cu-6gN" secondAttribute="bottom" constant="16" id="RVD-Lg-5NQ"/>
+                            <constraint firstItem="tRe-cu-6gN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Zit-7K-asa"/>
+                            <constraint firstItem="tRe-cu-6gN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="a1R-is-8bt"/>
+                            <constraint firstItem="UZz-zF-x4I" firstAttribute="top" secondItem="7jP-eh-QTD" secondAttribute="bottom" id="eX3-8Q-6oj"/>
+                            <constraint firstItem="7jP-eh-QTD" firstAttribute="leading" secondItem="ckS-33-wIn" secondAttribute="leading" id="fY7-dA-Eyc"/>
+                            <constraint firstItem="UZz-zF-x4I" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="mY7-5i-O3v"/>
+                            <constraint firstItem="tRe-cu-6gN" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="xP4-fJ-5py"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Category" image="square.grid.3x3.fill" catalog="system" id="GXj-6L-XGO">
+                        <color key="badgeColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="categoryCollection" destination="UZz-zF-x4I" id="a4V-8g-hCb"/>
+                        <outlet property="categorySeg" destination="7jP-eh-QTD" id="39L-lW-QHc"/>
+                        <outlet property="genderSeg" destination="ckS-33-wIn" id="GL0-ct-xms"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135.1145038167939" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="square.grid.3x3.fill" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

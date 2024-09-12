@@ -43,6 +43,7 @@ class HomeViewModel:HomeProtocol{
         let apiUrl = APIHandler.urlForGetting(.SmartCollections)
         networkHandler?.fetch(url: apiUrl, type: Collections.self, complitionHandler: { data in
             self._brands = data?.smartCollections
+            print(SmartCollection.self)
             self.bindBrandsToViewController()
         })
     }
