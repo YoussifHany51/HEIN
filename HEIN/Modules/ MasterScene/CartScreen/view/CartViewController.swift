@@ -8,9 +8,13 @@
 import UIKit
 import Kingfisher
 
-class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+protocol CartProtocol {
+    func updateCartTable(draftOrder: DraftOrder?)
+}
+
+class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CartProtocol {
     
-   
+    
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var discountAmount: UILabel!
     @IBOutlet weak var emptyCartLabel: UILabel!
@@ -53,18 +57,26 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.loadingView.isHidden = false
         viewModel?.getDraftOrder()
     }
     
+    func updateCartTable(draftOrder: DraftOrder?) {
+        viewModel?.draftOrder = draftOrder
+        cartTable.reloadData()
+    }
+    
     @IBAction func promoCodeAction(_ sender: Any) {
-        guard let couponVc = self.storyboard?.instantiateViewController(withIdentifier: "coupons") else {return}
+        let couponVc = self.storyboard?.instantiateViewController(withIdentifier: "coupons") as! CouponsViewController
+        
+        couponVc.draftOrder = self.viewModel?.draftOrder
+        couponVc.ref = self
         
         if let presentationController = couponVc.presentationController as? UISheetPresentationController {
                   presentationController.detents = [.medium()]
               }
         
         self.present(couponVc, animated: true)
-        //navigationController?.present(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,7 +101,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         cell.productOption2.text = viewModel?.lineItems?[indexPath.row].properties[2].name
         cell.productOption2_Value.text = viewModel?.lineItems?[indexPath.row].properties[2].value
-        
+
         cell.addOneProductButton.isEnabled = viewModel?.lineItems?[indexPath.row].quantity ?? 0 < viewModel?.variantsStock[indexPath.row].stock ?? 0
         
         cell.changeProductQuantity = { tag in
