@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L6L-07-jEb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jns-ee-ZGL">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Me-->
+        <!--Me View Controller-->
         <scene sceneID="nG6-gA-cnH">
             <objects>
                 <viewController storyboardIdentifier="Me" id="L6L-07-jEb" customClass="MeViewController" customModule="HEIN" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="U96-Oi-p1I">
-                                <rect key="frame" x="0.0" y="133" width="393" height="616"/>
+                                <rect key="frame" x="0.0" y="152" width="393" height="597"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="meCell" textLabel="xM7-SQ-1k4" detailTextLabel="PXd-en-AkM" rowHeight="73" style="IBUITableViewCellStyleSubtitle" id="MVe-tI-0Ob">
@@ -47,13 +47,13 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-Qb-Vlr">
-                                <rect key="frame" x="15" y="84" width="104" height="28.666666666666671"/>
+                                <rect key="frame" x="15" y="103" width="104" height="28.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3v-x1-DRm">
-                                <rect key="frame" x="127" y="84" width="88" height="29"/>
+                                <rect key="frame" x="127" y="103" width="88" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,13 +66,12 @@
                             <constraint firstItem="U96-Oi-p1I" firstAttribute="leading" secondItem="sv6-vs-Wg0" secondAttribute="leading" id="Hfv-aG-Eo5"/>
                             <constraint firstItem="N3v-x1-DRm" firstAttribute="leading" secondItem="uiO-Qb-Vlr" secondAttribute="trailing" constant="8" symbolic="YES" id="K3W-uC-ANR"/>
                             <constraint firstItem="U96-Oi-p1I" firstAttribute="trailing" secondItem="sv6-vs-Wg0" secondAttribute="trailing" id="cgd-om-2LD"/>
-                            <constraint firstItem="uiO-Qb-Vlr" firstAttribute="top" secondItem="sv6-vs-Wg0" secondAttribute="top" constant="25" id="hra-ba-hP7"/>
+                            <constraint firstItem="uiO-Qb-Vlr" firstAttribute="top" secondItem="sv6-vs-Wg0" secondAttribute="top" id="hra-ba-hP7"/>
                             <constraint firstItem="uiO-Qb-Vlr" firstAttribute="leading" secondItem="sv6-vs-Wg0" secondAttribute="leading" constant="15" id="oF7-6x-O8m"/>
                             <constraint firstItem="N3v-x1-DRm" firstAttribute="centerY" secondItem="uiO-Qb-Vlr" secondAttribute="centerY" id="pyb-zU-igq"/>
                             <constraint firstItem="U96-Oi-p1I" firstAttribute="top" secondItem="N3v-x1-DRm" secondAttribute="bottom" constant="20" id="ytx-k0-zUJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="person.crop.circle.fill" catalog="system" id="Z9f-Ol-TxM"/>
                     <navigationItem key="navigationItem" id="Y45-5N-mVb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -674,19 +673,38 @@
             </objects>
             <point key="canvasLocation" x="1392" y="-15"/>
         </scene>
+        <!--Me-->
+        <scene sceneID="DI7-EI-att">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jns-ee-ZGL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" image="person.crop.circle.fill" catalog="system" id="Z9f-Ol-TxM"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D0E-Xj-sIb">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L6L-07-jEb" kind="relationship" relationship="rootViewController" id="KAf-FA-V5I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jmu-uk-wl4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="592" y="-696"/>
+        </scene>
     </scenes>
     <resources>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="quaternarySystemFillColor">
-            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
