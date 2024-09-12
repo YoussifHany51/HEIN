@@ -92,6 +92,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         case 1:
             let addressesVC = storyboard?.instantiateViewController(identifier: "addresses") as! AddressesViewController
             addressesVC.addresses = self.viewModel?.addresses
+            print("\(navigationController != nil)")
             navigationController?.pushViewController(addressesVC, animated: true)
         case 2:
             let currencyVC = storyboard?.instantiateViewController(identifier: "currencies") as! CurrencyViewController

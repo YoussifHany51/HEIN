@@ -10,6 +10,9 @@ import UIKit
 class CouponsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
 
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var emptyCouponsTableLabel: UILabel!
+    @IBOutlet weak var couponsTableIndicator: UIActivityIndicatorView!
     @IBOutlet weak var couponsTable: UITableView!
     
     var draftOrder: DraftOrder?
@@ -29,7 +32,9 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         viewModel?.bindResultToViewController = { binding in
             switch binding {
             case .priceRulesReady:
-                print("ready")
+                self.loadingView.isHidden = true
+                self.couponsTableIndicator.stopAnimating()
+                self.emptyCouponsTableLabel.isHidden = self.viewModel?.priceRules?.count ?? 0 > 0
             case .appliedDiscount:
                 self.ref?.updateCartTable(draftOrder: self.viewModel?.draftOrder)
                 self.dismiss(animated: true, completion: nil)
@@ -47,7 +52,10 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = couponsTable.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath) as! CouponsTableViewCell
         
         cell.discountTitle.text = viewModel?.priceRules?[indexPath.row].title
+        cell.discountRemaningDays.text =  "\((viewModel?.priceRules?[indexPath.row].endsAt)!.prefix(10))"
         cell.applyDiscount = {
+            self.loadingView.isHidden = false
+            self.couponsTableIndicator.startAnimating()
             self.viewModel?.updateDraftOrder(priceRule: (self.viewModel?.priceRules?[indexPath.row])!)
         }
         

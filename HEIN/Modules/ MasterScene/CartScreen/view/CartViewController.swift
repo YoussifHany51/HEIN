@@ -14,11 +14,10 @@ protocol CartProtocol {
 
 class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CartProtocol {
     
-    
+    @IBOutlet weak var promoCodeTextLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var discountAmount: UILabel!
     @IBOutlet weak var emptyCartLabel: UILabel!
-    @IBOutlet weak var cartTableIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cartTable: UITableView!
     @IBOutlet weak var promoCodeButton: UIButton!
     @IBOutlet weak var promoCodeField: UITextField!
@@ -37,46 +36,84 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cartCellNib = UINib(nibName: "CartTableViewCell", bundle: nil)
         cartTable.register(cartCellNib, forCellReuseIdentifier: "cartCell")
         
+        self.loadingView.isHidden = false
+        
         viewModel = CartScreenViewModel()
         viewModel?.bindResultToViewController = {
-            self.cartTableIndicator.stopAnimating()
             self.loadingView.isHidden = true
             
-            if self.viewModel?.lineItems?.count == 0 {
+            if self.viewModel?.lineItems?.count == 0 || self.viewModel?.lineItems == nil {
                 self.emptyCartLabel.isHidden = false
                 self.totalAmount.text = "0"
+                self.checkOutButton.isEnabled = false
+                self.promoCodeButton.isEnabled = false
+                if self.viewModel?.lineItems == nil {
+                    self.showAlert()
+                }
             } else {
                 self.totalAmount.text = self.viewModel?.draftOrder?.subtotalPrice
-                if let discount = self.viewModel?.draftOrder?.appliedDiscount {
-                    self.discountAmount.text = "\(discount.value) \(discount.valueType == "fixed_amount" ? "EGP" : "%")"
-                    self.discountAmount.isHidden = false
-                }
+                self.setDiscountUI()
             }
             self.cartTable.reloadData()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.loadingView.isHidden = false
+        //self.loadingView.isHidden = false
         viewModel?.getDraftOrder()
     }
     
     func updateCartTable(draftOrder: DraftOrder?) {
         viewModel?.draftOrder = draftOrder
+        
+        if draftOrder?.appliedDiscount != nil {
+            promoCodeTextLabel.text = "Coupon Applied"
+            promoCodeTextLabel.textColor = UIColor.systemGreen
+        } else {
+            promoCodeTextLabel.text = "Invalid Coupon"
+            promoCodeTextLabel.textColor = UIColor.systemRed
+        }
+        promoCodeTextLabel.isHidden = false
+        
         cartTable.reloadData()
     }
     
+    func setDiscountUI() {
+        if let discount = self.viewModel?.draftOrder?.appliedDiscount {
+            promoCodeButton.imageView?.image = UIImage(systemName: "xmark")
+            
+            self.discountAmount.text = "\(discount.value) \(discount.valueType == "fixed_amount" ? "EGP" : "%")"
+            self.discountAmount.isHidden = false
+            
+            self.promoCodeTextLabel.text = "Coupon Applied"
+            self.promoCodeTextLabel.textColor = UIColor.systemGreen
+            self.promoCodeTextLabel.isHidden = false
+        } else {
+            self.discountAmount.isHidden = true
+            self.promoCodeTextLabel.isHidden = true
+        }
+        
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Error", message: "Something went wrong please try again", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     @IBAction func promoCodeAction(_ sender: Any) {
-        let couponVc = self.storyboard?.instantiateViewController(withIdentifier: "coupons") as! CouponsViewController
-        
-        couponVc.draftOrder = self.viewModel?.draftOrder
-        couponVc.ref = self
-        
-        if let presentationController = couponVc.presentationController as? UISheetPresentationController {
-                  presentationController.detents = [.medium()]
-              }
-        
-        self.present(couponVc, animated: true)
+        if viewModel?.draftOrder?.appliedDiscount == nil {
+            let couponVc = self.storyboard?.instantiateViewController(withIdentifier: "coupons") as! CouponsViewController
+            couponVc.draftOrder = self.viewModel?.draftOrder
+            couponVc.ref = self
+            if let presentationController = couponVc.presentationController as? UISheetPresentationController {
+                presentationController.detents = [.medium()]
+            }
+            self.present(couponVc, animated: true)
+        } else {
+            self.loadingView.isHidden = false
+            viewModel?.removeDraftOrderAppliedDiscount()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,7 +150,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     let alert = UIAlertController(title: "Remove item..!", message: "Item will be removed from cart", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "remove", style: .destructive, handler: { action in
                         self.viewModel?.lineItems?.remove(at: indexPath.row)
-                        self.viewModel?.updateDraftOrder(lineItems: (self.viewModel?.lineItems)!)
+                        self.viewModel?.updateDraftOrderLineItems(lineItems: (self.viewModel?.lineItems)!)
                         self.cartTable.reloadData()
                     }))
                     alert.addAction(UIAlertAction(title: "cancel", style: .default, handler: { action in
@@ -133,7 +170,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             default:
                 return
             }
-            self.viewModel?.updateDraftOrder(lineItems: (self.viewModel?.lineItems)!)
+            self.viewModel?.updateDraftOrderLineItems(lineItems: (self.viewModel?.lineItems)!)
             //self.cartTable.reloadData()
         }
         
