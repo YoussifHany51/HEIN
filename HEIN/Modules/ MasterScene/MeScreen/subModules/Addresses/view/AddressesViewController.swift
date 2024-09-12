@@ -15,7 +15,6 @@ protocol AddressesProtocol {
 
 class AddressesViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, AddressesProtocol{
 
-    @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var addressesTableIndicator: UIActivityIndicatorView!
     @IBOutlet weak var emptyAddressesLabel: UILabel!
     @IBOutlet weak var addressesTable: UITableView!
@@ -41,22 +40,35 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
         
         setAddressesViewModel()
         
-        if addresses?.count == 0 {
-            emptyAddressesLabel.isHidden = false
-        } else if addresses == nil {
-            emptyAddressesLabel.text = "Couldn't find any addresses"
+        if addresses == nil {
+            addressesTableIndicator.startAnimating()
+            viewModel?.getAddresses()
+        } else if addresses?.count == 0 {
             emptyAddressesLabel.isHidden = false
         }
     }
     
     func setAddressesViewModel() {
         viewModel = AddressesViewModel(customerId: customerId ?? 0)
+        
+        viewModel?.bindAddressesToViewController = {
+            if let addresses = self.viewModel?.addresses {
+                self.addresses = addresses
+            } else {
+                self.emptyAddressesLabel.text = "Couldn't find any addresses"
+                self.emptyAddressesLabel.isHidden = false
+            }
+            self.addressesTableIndicator.stopAnimating()
+            self.addressesTable.reloadData()
+        }
+        
         viewModel?.bindDefaultAddressToViewController = { [self] address in
             if let defaultIndex = defaultAddressIndex {
                 if (addresses?[defaultIndex]) != nil {
                     self.addresses?[defaultIndex].addressDefault  = false
-                }
             }
+        }
+            
             let indexOfNewDefault = self.addresses!.firstIndex(where: {$0.id == address.id})!
             self.addresses?[indexOfNewDefault].addressDefault = true
             self.addressesTable.reloadData()
