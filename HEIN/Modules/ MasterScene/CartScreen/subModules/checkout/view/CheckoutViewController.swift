@@ -9,12 +9,13 @@ import UIKit
 
 class CheckoutViewController: UIViewController {
 
+    @IBOutlet weak var processingOrderView: UIView!
+    
     @IBOutlet weak var addressPhone: UILabel!
     @IBOutlet weak var addressCountry: UILabel!
     @IBOutlet weak var addressCity: UILabel!
     @IBOutlet weak var addressStreet: UILabel!
     @IBOutlet weak var addressTitle: UILabel!
-    
     
     @IBOutlet weak var grandTotalAmount: UILabel!
     @IBOutlet weak var taxFeeAmount: UILabel!
@@ -22,9 +23,7 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var discountAmount: UILabel!
     @IBOutlet weak var subtotalAmount: UILabel!
     
-    
     @IBOutlet weak var paymentButton: CustomButton!
-    
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var addAddressButton: UIButton!
@@ -53,7 +52,7 @@ class CheckoutViewController: UIViewController {
     }
     
     func setCheckoutViewModel() {
-        viewModel = CheckoutViewModel()
+        viewModel = CheckoutViewModel(draftOrder: draftOrder)
         viewModel?.bindResultToViewController = { [self] in
             if let defaultAddress = viewModel?.defaultAddress {
                 addressTitle.text = defaultAddress.name
@@ -68,11 +67,29 @@ class CheckoutViewController: UIViewController {
                 addAddressButton.isHidden = false
                 paymentButton.isEnabled = false
             }
+            if processingOrderView.isHidden == false {
+                processingOrderView.isHidden = true
+                let paymentVC = storyboard?.instantiateViewController(withIdentifier: "payment")
+                guard let paymentVC = paymentVC else {return}
+                navigationController?.pushViewController(paymentVC, animated: true)
+            }
         }
+        
+        viewModel?.bindProcessingErrorToViewController = { [self] in
+            showAlert()
+            processingOrderView.isHidden = true
+        }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Error...‼️", message: "Something went wrong please try again", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
 
     @IBAction func goToPayment(_ sender: Any) {
-        // Add selected address to the draft order
+        processingOrderView.isHidden = false
+        viewModel?.updateDraftOrderAddress()
     }
     
     @IBAction func addNewAddress(_ sender: Any) {
