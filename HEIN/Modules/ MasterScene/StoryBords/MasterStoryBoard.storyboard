@@ -10,7 +10,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="BLf-do-Ofr">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="uq8-Xa-Z7c" customClass="TabBarController" customModule="HEIN" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" modalPresentationStyle="fullScreen" id="uq8-Xa-Z7c" customClass="TabBarController" customModule="HEIN" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="MNU-zB-502"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M7e-hP-skJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>

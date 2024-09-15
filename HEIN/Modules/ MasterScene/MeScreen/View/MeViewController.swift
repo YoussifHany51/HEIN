@@ -108,8 +108,10 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     defaults.set(nil, forKey: "DraftOrder_Id")
                     defaults.set(nil, forKey: "User_id")
                     defaults.set(nil, forKey: "User_name")
-                    let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-                    self.navigationController?.pushViewController(loginViewController, animated: true)
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let master = storyBoard.instantiateViewController(identifier: "LoginViewController")
+                    self.present(master, animated: true)
+
                 }catch let error{
                     print(error.localizedDescription)
                 }
