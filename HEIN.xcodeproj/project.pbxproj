@@ -98,6 +98,8 @@
 		F47BD44F2C8BE55300A8A8AD /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */; };
 		F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */; };
 		F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */; };
+		F4B1B6092C96FA3D0090606E /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1B6082C96FA3D0090606E /* Currencies.swift */; };
+		F4B1B60B2C9730CB0090606E /* ExchangeCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1B60A2C9730CB0090606E /* ExchangeCurrency.swift */; };
 		F4D7922E2C91F1A90014557D /* CouponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7922D2C91F1A90014557D /* CouponsViewController.swift */; };
 		F4D792302C91F3280014557D /* CouponsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7922F2C91F3280014557D /* CouponsTableViewCell.swift */; };
 		F4D792362C924EF40014557D /* CouponsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D792352C924EF40014557D /* CouponsViewModel.swift */; };
@@ -207,6 +209,8 @@
 		F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		F4B1B6082C96FA3D0090606E /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		F4B1B60A2C9730CB0090606E /* ExchangeCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCurrency.swift; sourceTree = "<group>"; };
 		F4D7922D2C91F1A90014557D /* CouponsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsViewController.swift; sourceTree = "<group>"; };
 		F4D7922F2C91F3280014557D /* CouponsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsTableViewCell.swift; sourceTree = "<group>"; };
 		F4D792352C924EF40014557D /* CouponsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsViewModel.swift; sourceTree = "<group>"; };
@@ -568,6 +572,7 @@
 		1EB071E72C88E92A00AEFD0F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F4B1B6072C96FA1E0090606E /* Currencies */,
 				1EB071EA2C88E9BF00AEFD0F /* Reachability */,
 			);
 			path = Utilities;
@@ -844,6 +849,15 @@
 			path = viewModel;
 			sourceTree = "<group>";
 		};
+		F4B1B6072C96FA1E0090606E /* Currencies */ = {
+			isa = PBXGroup;
+			children = (
+				F4B1B6082C96FA3D0090606E /* Currencies.swift */,
+				F4B1B60A2C9730CB0090606E /* ExchangeCurrency.swift */,
+			);
+			path = Currencies;
+			sourceTree = "<group>";
+		};
 		F4D792312C9243FE0014557D /* subModules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,6 +1095,7 @@
 				1EF0ADF12C8DFE2300975E4D /* ViewControllerExtension.swift in Sources */,
 				099AD4E82C87518F00E2191D /* SceneDelegate.swift in Sources */,
 				099AD5472C87520200E2191D /* Reviews.swift in Sources */,
+				F4B1B6092C96FA3D0090606E /* Currencies.swift in Sources */,
 				1EF0ADEB2C8DFD2200975E4D /* BrandProductsCVC.swift in Sources */,
 				09B0600B2C90AA8100A13B61 /* ProductsInfoViewController.swift in Sources */,
 				F4D7922E2C91F1A90014557D /* CouponsViewController.swift in Sources */,
@@ -1099,6 +1114,7 @@
 				1EF8C6222C933C7E00592FD5 /* UIAlertExtension.swift in Sources */,
 				1EB0720F2C8A3BE400AEFD0F /* CartViewController.swift in Sources */,
 				F4D792362C924EF40014557D /* CouponsViewModel.swift in Sources */,
+				F4B1B60B2C9730CB0090606E /* ExchangeCurrency.swift in Sources */,
 				091E6E4C2C8D0EEB0002C5D9 /* SignUpViewModel.swift in Sources */,
 				0929263E2C88E123000E5488 /* SignUpViewController.swift in Sources */,
 				1E8F6AD22C906E44003E819C /* CategoryViewModel.swift in Sources */,

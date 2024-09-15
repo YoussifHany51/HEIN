@@ -9,6 +9,7 @@ import UIKit
 
 class CartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var currencyTitle: UILabel!
     @IBOutlet weak var addOneProductButton: CustomButton!
     @IBOutlet weak var removeOneProductButton: CustomButton!
     @IBOutlet weak var productOption2_Value: UILabel!

@@ -52,7 +52,8 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 }
                 self.setDiscountUI()
             } else {
-                self.totalAmount.text = self.viewModel?.draftOrder?.subtotalPrice
+                self.totalAmount.text = ExchangeCurrency.exchangeCurrency(amount: self.viewModel?.draftOrder?.subtotalPrice)
+                self.emptyCartLabel.isHidden = true
                 self.checkOutButton.isEnabled = true
                 self.promoCodeButton.isEnabled = true
                 self.setDiscountUI()
@@ -64,6 +65,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         //self.loadingView.isHidden = false
         viewModel?.getDraftOrder()
+        currency.text = ExchangeCurrency.getCurrency()
     }
     
     func updateCartTable(draftOrder: DraftOrder?) {
@@ -85,7 +87,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if let discount = self.viewModel?.draftOrder?.appliedDiscount {
             promoCodeButton.imageView?.image = UIImage(systemName: "xmark")
             
-            self.discountAmount.text = "\(discount.value) \(discount.valueType == "fixed_amount" ? "EGP" : "%")"
+            self.discountAmount.text = "\(ExchangeCurrency.exchangeCurrency(amount: discount.value)) \(discount.valueType == "fixed_amount" ? "\(ExchangeCurrency.getCurrency())" : "%")"
             self.discountAmount.isHidden = false
             
             self.promoCodeTextLabel.text = "Coupon Applied"
@@ -137,10 +139,11 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.productName.text = viewModel?.lineItems?[indexPath.row].name
         cell.productQuantity.text = viewModel?.lineItems?[indexPath.row].quantity.description
         
-        let itemPrice = Float((viewModel?.lineItems?[indexPath.row].price)!)
+        let itemPrice = Float(viewModel?.lineItems?[indexPath.row].price ?? "0")! * Float(UserDefaults.standard.string(forKey: "factor") ?? "1")!
         let itemQuantity = Float((viewModel?.lineItems?[indexPath.row].quantity)!)
         
-        cell.productTotalAmount.text = (itemQuantity * itemPrice!).description
+        cell.productTotalAmount.text = String(format:"%.2f",itemQuantity * itemPrice)
+        cell.currencyTitle.text = UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD"
         
         cell.productImage.kf.setImage(with: URL(string: (viewModel?.lineItems?[indexPath.row].properties[0].value)!), placeholder: UIImage(systemName: "clear") )
         
