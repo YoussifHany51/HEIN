@@ -15,9 +15,6 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var fieldsTable: UITableView!
     
-    // MARK: - change to be dynamic
-    var customerId : Int? = 8369844912424
-    
     var viewModel : AddAddressViewModel?
     
     var ref : AddressesProtocol?
@@ -46,7 +43,7 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func setAddAddressViewModel() {
-        viewModel = AddAddressViewModel(customerId: customerId ?? 0)
+        viewModel = AddAddressViewModel()
         viewModel?.bindResultToViewController = { operation in
             switch operation {
             case .addNew:

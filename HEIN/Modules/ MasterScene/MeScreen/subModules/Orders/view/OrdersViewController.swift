@@ -13,9 +13,6 @@ class OrdersViewController: UIViewController,UITableViewDelegate, UITableViewDat
     @IBOutlet weak var emptyOrdersLable: UILabel!
     @IBOutlet weak var ordersTable: UITableView!
     
-    // MARK: - change to be dynamic
-    var customerId : Int? = 8369844912424
-    
     var viewModel : OrdersViewModel?
     
     var orders : [Order]?
@@ -47,7 +44,8 @@ class OrdersViewController: UIViewController,UITableViewDelegate, UITableViewDat
         cell.orderNumberLabel.text = orders?[indexPath.row].id.description
         cell.orderDateLabel.text = String((orders?[indexPath.row].createdAt ?? "").prefix(10))
         cell.orderQuantityLabel.text = orders?[indexPath.row].lineItems.count.description
-        cell.totalAmountLabel.text = orders?[indexPath.row].subtotalPrice
+        cell.totalAmountLabel.text = ExchangeCurrency.exchangeCurrency(amount: orders?[indexPath.row].subtotalPrice)
+        cell.currencyLabel.text = ExchangeCurrency.getCurrency()
         
         return cell
     }

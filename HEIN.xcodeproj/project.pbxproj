@@ -11,7 +11,6 @@
 		090761032C956BE1001BA001 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090761022C956BE1001BA001 /* FavoriteTableViewCell.xib */; };
 		090761042C956BE1001BA001 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090761012C956BE1001BA001 /* FavoriteTableViewCell.swift */; };
 		0907610D2C958FAF001BA001 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090761082C958F2D001BA001 /* CoreData.framework */; };
-		090761122C958FEA001BA001 /* FavoriteProduct.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 090761102C958FE9001BA001 /* FavoriteProduct.xcdatamodeld */; };
 		090761142C95906E001BA001 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090761132C95906E001BA001 /* CoreDataManager.swift */; };
 		090761162C9590C3001BA001 /* FavoriteProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090761152C9590C3001BA001 /* FavoriteProductManager.swift */; };
 		090E79B12C877DCB00F0BECD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E79B02C877DCB00F0BECD /* CategoryViewController.swift */; };
@@ -87,6 +86,8 @@
 		1EF0ADF12C8DFE2300975E4D /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */; };
 		1EF8C6222C933C7E00592FD5 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF8C6212C933C7E00592FD5 /* UIAlertExtension.swift */; };
 		F4404C072C8F6E9B00569AA2 /* CartScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */; };
+		F4563B142C977F9E00452F62 /* FavoriteProduct.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4563B122C977F9E00452F62 /* FavoriteProduct.xcdatamodeld */; };
+		F4563B182C97890200452F62 /* GuestCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4563B172C97890200452F62 /* GuestCartViewController.swift */; };
 		F4691DE62C93848800852226 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DE52C93848800852226 /* CheckoutViewController.swift */; };
 		F4691DE82C939A6100852226 /* checkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DE72C939A6100852226 /* checkoutViewModel.swift */; };
 		F4691DED2C94EC1400852226 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DEC2C94EC1400852226 /* PaymentViewController.swift */; };
@@ -112,6 +113,7 @@
 		F4D792362C924EF40014557D /* CouponsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D792352C924EF40014557D /* CouponsViewModel.swift */; };
 		F4D7D9842C8CEB7E00EA36AB /* AddressesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D9832C8CEB7E00EA36AB /* AddressesViewModel.swift */; };
 		F4D7D9862C8D080600EA36AB /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7D9852C8D080600EA36AB /* AddAddressViewModel.swift */; };
+		F4EAEADB2C97968B00ADA7BA /* GuestMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAEADA2C97968B00ADA7BA /* GuestMeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +138,6 @@
 		090761012C956BE1001BA001 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		090761022C956BE1001BA001 /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		090761082C958F2D001BA001 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		090761112C958FEA001BA001 /* FavoriteProduct.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteProduct.xcdatamodel; sourceTree = "<group>"; };
 		090761132C95906E001BA001 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		090761152C9590C3001BA001 /* FavoriteProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductManager.swift; sourceTree = "<group>"; };
 		090E79B02C877DCB00F0BECD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +205,8 @@
 		1EF0ADF02C8DFE2300975E4D /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		1EF8C6212C933C7E00592FD5 /* UIAlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
 		F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenViewModel.swift; sourceTree = "<group>"; };
+		F4563B132C977F9E00452F62 /* FavoriteProduct.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteProduct.xcdatamodel; sourceTree = "<group>"; };
+		F4563B172C97890200452F62 /* GuestCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCartViewController.swift; sourceTree = "<group>"; };
 		F4691DE52C93848800852226 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		F4691DE72C939A6100852226 /* checkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkoutViewModel.swift; sourceTree = "<group>"; };
 		F4691DEC2C94EC1400852226 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 		F4D792352C924EF40014557D /* CouponsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsViewModel.swift; sourceTree = "<group>"; };
 		F4D7D9832C8CEB7E00EA36AB /* AddressesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewModel.swift; sourceTree = "<group>"; };
 		F4D7D9852C8D080600EA36AB /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
+		F4EAEADA2C97968B00ADA7BA /* GuestMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,7 +310,7 @@
 		090761072C958A2A001BA001 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				090761102C958FE9001BA001 /* FavoriteProduct.xcdatamodeld */,
+				F4563B122C977F9E00452F62 /* FavoriteProduct.xcdatamodeld */,
 				090761132C95906E001BA001 /* CoreDataManager.swift */,
 				090761152C9590C3001BA001 /* FavoriteProductManager.swift */,
 			);
@@ -616,11 +620,8 @@
 		1EB071E72C88E92A00AEFD0F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-
 				090761072C958A2A001BA001 /* CoreData */,
-
 				F4B1B6072C96FA1E0090606E /* Currencies */,
-
 				1EB071EA2C88E9BF00AEFD0F /* Reachability */,
 			);
 			path = Utilities;
@@ -685,6 +686,22 @@
 				1EB072042C8A06B800AEFD0F /* CartTableViewCell.xib */,
 				1EB0720C2C8A3B3600AEFD0F /* CartScreen.storyboard */,
 				1EB0720E2C8A3BE400AEFD0F /* CartViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F4563B152C9788C900452F62 /* guestCart */ = {
+			isa = PBXGroup;
+			children = (
+				F4563B162C9788DE00452F62 /* view */,
+			);
+			path = guestCart;
+			sourceTree = "<group>";
+		};
+		F4563B162C9788DE00452F62 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F4563B172C97890200452F62 /* GuestCartViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -784,6 +801,7 @@
 		F47BD4312C8BE28E00A8A8AD /* subModules */ = {
 			isa = PBXGroup;
 			children = (
+				F4EAEAD82C97966A00ADA7BA /* guestME */,
 				F47BD44B2C8BE52500A8A8AD /* Currency */,
 				F47BD4422C8BE46700A8A8AD /* NewAddress */,
 				F47BD4322C8BE2A900A8A8AD /* Orders */,
@@ -909,6 +927,7 @@
 		F4D792312C9243FE0014557D /* subModules */ = {
 			isa = PBXGroup;
 			children = (
+				F4563B152C9788C900452F62 /* guestCart */,
 				F4691DF22C95F25600852226 /* orderConfirmed */,
 				F4691DE92C94EBDC00852226 /* payment */,
 				F4691DE22C937A5200852226 /* checkout */,
@@ -941,6 +960,22 @@
 				F4D792332C92441D0014557D /* viewModel */,
 			);
 			path = coupons;
+			sourceTree = "<group>";
+		};
+		F4EAEAD82C97966A00ADA7BA /* guestME */ = {
+			isa = PBXGroup;
+			children = (
+				F4EAEAD92C97967500ADA7BA /* view */,
+			);
+			path = guestME;
+			sourceTree = "<group>";
+		};
+		F4EAEAD92C97967500ADA7BA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F4EAEADA2C97968B00ADA7BA /* GuestMeViewController.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1115,6 +1150,7 @@
 				1EF0ADEC2C8DFD2200975E4D /* BrandsViewController.swift in Sources */,
 				099AD4EA2C87518F00E2191D /* LoginViewController.swift in Sources */,
 				1EB072092C8A06B900AEFD0F /* CartTableViewCell.swift in Sources */,
+				F4563B142C977F9E00452F62 /* FavoriteProduct.xcdatamodeld in Sources */,
 				F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */,
 				099AD51B2C8751EB00E2191D /* APIKeys.swift in Sources */,
 				099AD4E62C87518F00E2191D /* AppDelegate.swift in Sources */,
@@ -1140,11 +1176,13 @@
 				098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */,
 				099AD5302C8751F700E2191D /* FavoriteViewController.swift in Sources */,
 				F47BD43F2C8BE3D200A8A8AD /* AddressesViewController.swift in Sources */,
+				F4EAEADB2C97968B00ADA7BA /* GuestMeViewController.swift in Sources */,
 				090E79B32C877E6800F0BECD /* MeViewController.swift in Sources */,
 				099AD5442C87520200E2191D /* Orders.swift in Sources */,
 				1EF0ADF12C8DFE2300975E4D /* ViewControllerExtension.swift in Sources */,
 				099AD4E82C87518F00E2191D /* SceneDelegate.swift in Sources */,
 				099AD5472C87520200E2191D /* Reviews.swift in Sources */,
+				F4563B182C97890200452F62 /* GuestCartViewController.swift in Sources */,
 				F4B1B6092C96FA3D0090606E /* Currencies.swift in Sources */,
 				1EF0ADEB2C8DFD2200975E4D /* BrandProductsCVC.swift in Sources */,
 				090761142C95906E001BA001 /* CoreDataManager.swift in Sources */,
@@ -1175,7 +1213,6 @@
 				099AD5482C87520200E2191D /* Shop.swift in Sources */,
 				F4691DE62C93848800852226 /* CheckoutViewController.swift in Sources */,
 				090761042C956BE1001BA001 /* FavoriteTableViewCell.swift in Sources */,
-				090761122C958FEA001BA001 /* FavoriteProduct.xcdatamodeld in Sources */,
 				099AD51A2C8751EB00E2191D /* APIHandler.swift in Sources */,
 				F4404C072C8F6E9B00569AA2 /* CartScreenViewModel.swift in Sources */,
 				090E79B12C877DCB00F0BECD /* CategoryViewController.swift in Sources */,
@@ -1639,14 +1676,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		090761102C958FE9001BA001 /* FavoriteProduct.xcdatamodeld */ = {
+		F4563B122C977F9E00452F62 /* FavoriteProduct.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				090761112C958FEA001BA001 /* FavoriteProduct.xcdatamodel */,
+				F4563B132C977F9E00452F62 /* FavoriteProduct.xcdatamodel */,
 			);
-			currentVersion = 090761112C958FEA001BA001 /* FavoriteProduct.xcdatamodel */;
+			currentVersion = F4563B132C977F9E00452F62 /* FavoriteProduct.xcdatamodel */;
 			name = FavoriteProduct.xcdatamodeld;
-			path = /Applications/Main/Projects/Swift_projects/HEIN/HEIN/Utilities/CoreData/FavoriteProduct.xcdatamodeld;
+			path = /Users/home/Desktop/test/HEIN/HEIN/Utilities/CoreData/FavoriteProduct.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -30,6 +30,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        guard (UserDefaults.standard.string(forKey: "DraftOrder_Id") != nil) else {
+            let guestCartVC = storyboard?.instantiateViewController(withIdentifier: "guestCart") as! GuestCartViewController
+            navigationController?.pushViewController(guestCartVC, animated: true)
+            return
+        }
+        
         cartTable.delegate = self
         cartTable.dataSource = self
         

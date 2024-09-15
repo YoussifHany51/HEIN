@@ -19,9 +19,6 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
     @IBOutlet weak var emptyAddressesLabel: UILabel!
     @IBOutlet weak var addressesTable: UITableView!
     
-    // MARK: - change to be dynamic
-    var customerId : Int? = 8369844912424
-    
     var viewModel : AddressesViewModel?
     
     var addresses : [Address]?{
@@ -49,7 +46,7 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func setAddressesViewModel() {
-        viewModel = AddressesViewModel(customerId: customerId ?? 0)
+        viewModel = AddressesViewModel()
         
         viewModel?.bindAddressesToViewController = {
             if let addresses = self.viewModel?.addresses {
