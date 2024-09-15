@@ -25,6 +25,11 @@ class LoginViewController: UIViewController {
         passwordTextField.textContentType = .password
         emailTextField.textContentType = .emailAddress
     }
+    @IBAction func skipButton(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+        let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+        self.present(master, animated: true)
+    }
     
     @IBAction func DoNotHaveAccountButton(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController")
@@ -87,6 +92,7 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(with: credential) { result, error in
 
               // At this point, our user is signed in
+                self.getCustomers()
             }
         }
     }
@@ -125,8 +131,9 @@ class LoginViewController: UIViewController {
             defaults.set(draftOrder.id, forKey: "DraftOrder_Id")
             print(draftOrder.id)
             print("Logged in Successfully")
-            let master = self.storyboard?.instantiateViewController(withIdentifier: "master")
-            self.navigationController?.pushViewController(master!, animated: true)
+            let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+            let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+            self.present(master, animated: true)
             print(defaults.string(forKey: "DraftOrder_Id")!)
             print(defaults.string(forKey: "User_name")!)
             print(defaults.string(forKey: "User_id")!)
@@ -171,8 +178,9 @@ class LoginViewController: UIViewController {
             let defaults = UserDefaults.standard
             defaults.set(draftOrderContainer.draftOrder.id, forKey: "DraftOrder_Id")
             print(draftOrderContainer.draftOrder.id)
-            let master = self.storyboard?.instantiateViewController(withIdentifier: "master")
-            self.navigationController?.pushViewController(master!, animated: true)
+            let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+            let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+            self.present(master, animated: true)
             print(defaults.string(forKey: "DraftOrder_Id")!)
             print(defaults.string(forKey: "User_name")!)
             print(defaults.string(forKey: "User_id")!)

@@ -49,7 +49,8 @@ class CartScreenViewModel {
     init() {
         nwService = NetworkManager()
         // MARK: - Change to get from userDefaults
-        self.draftOrderId =  1186489467176
+//        self.draftOrderId =  1186489467176
+        self.draftOrderId = Int((UserDefaults().string(forKey: "DraftOrder_Id"))!)!
     }
     
     func getDraftOrder() {
