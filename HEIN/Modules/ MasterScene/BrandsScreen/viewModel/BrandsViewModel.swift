@@ -15,17 +15,17 @@ protocol BrandsProtocol {
     func searchSorted(text:String)
     func searchBrands(text:String)
     var bindBrandsToViewController : (()->()){get set}
-    var brandProducts :[Product]?{get}
-    var sortedProducts : [Product]?{get}
+    var brandProducts :[Product]?{get set}
+    var sortedProducts : [Product]?{get set}
 }
 
 
 class BrandsViewMode:BrandsProtocol{
     var networkHandler:NetworkManager?
     var bindBrandsToViewController : (()->()) = {}
-    var _brandProducts :[Product]?
+    var brandProducts :[Product]?
     let model = ReachabilityManager()
-    var _sortedProducts : [Product]?
+    var sortedProducts : [Product]?
     var result : Products?{
          didSet{
              bindBrandsToViewController ()
@@ -36,9 +36,7 @@ class BrandsViewMode:BrandsProtocol{
          self.networkHandler = NetworkManager()
      }
     
-      var brandProducts :[Product]?{return _brandProducts}
-      var sortedProducts : [Product]?{return _sortedProducts}
-    
+
      func loadData(){
          let apiUrl = APIHandler.urlForGetting(.products)
          networkHandler?.fetch(url: apiUrl, type: Products.self, complitionHandler: { data in
@@ -49,19 +47,19 @@ class BrandsViewMode:BrandsProtocol{
     
     func getBrands(vendor : String){
        
-         self._brandProducts = self.result?.products.filter{
+         self.brandProducts = self.result?.products.filter{
              $0.vendor == vendor
          } ?? []
      }
     
     func sortByPrice() {
-        _sortedProducts = _brandProducts?.sorted {Double($0.variants.first?.price ?? "0.0") ?? 0.0  < Double($1.variants.first?.price ?? "0.0")  ?? 0.0 }
+        sortedProducts = brandProducts?.sorted {Double($0.variants.first?.price ?? "0.0") ?? 0.0  < Double($1.variants.first?.price ?? "0.0")  ?? 0.0 }
         }
     func searchSorted(text:String){
-        _sortedProducts = _sortedProducts?.filter{$0.title.lowercased().contains(text.lowercased())}
+        sortedProducts = sortedProducts?.filter{$0.title.lowercased().contains(text.lowercased())}
     }
     func searchBrands(text:String){
-     _brandProducts = _brandProducts?.filter{$0.title.lowercased().contains(text.lowercased())}
+     brandProducts = brandProducts?.filter{$0.title.lowercased().contains(text.lowercased())}
         
     }
     
