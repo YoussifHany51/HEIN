@@ -990,11 +990,8 @@
 				099AD4E82C87518F00E2191D /* SceneDelegate.swift in Sources */,
 				099AD5472C87520200E2191D /* Reviews.swift in Sources */,
 				1EF0ADEB2C8DFD2200975E4D /* BrandProductsCVC.swift in Sources */,
-
 				09B0600B2C90AA8100A13B61 /* ProductsInfoViewController.swift in Sources */,
-
 				F4D7922E2C91F1A90014557D /* CouponsViewController.swift in Sources */,
-
 				098D9EC82C87680F00EC6053 /* TabBarController.swift in Sources */,
 				1EF0ADEE2C8DFD2D00975E4D /* BrandsViewModel.swift in Sources */,
 				091E6E4F2C8E0AAE0002C5D9 /* SearchButtonViewController.swift in Sources */,
@@ -1199,7 +1196,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QHWQF7TL3L;
+				DEVELOPMENT_TEAM = A83FN5933K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HEIN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1232,7 +1229,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QHWQF7TL3L;
+				DEVELOPMENT_TEAM = A83FN5933K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HEIN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

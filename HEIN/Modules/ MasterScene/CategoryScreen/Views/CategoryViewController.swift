@@ -18,10 +18,13 @@ class CategoryViewController: UIViewController {
     var indicator : UIActivityIndicatorView?
     var categoriesViewModel : CategoryProtocol!
     var alert:UIAlertController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndicator()
        // self.tabBarController?.navigationItem.title = "HEIN"
+        self.tabBarController?.navigationItem.backButtonTitle = "Category"
+        self.tabBarController?.navigationController?.navigationBar.tintColor = UIColor.red
         categoriesViewModel = CategoriesViewModel()
         
     }
@@ -50,6 +53,11 @@ class CategoryViewController: UIViewController {
     }
     
     @IBAction func searchBar(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SearchButtonSB", bundle: nil)
+        let seearcchVC = storyboard.instantiateViewController(withIdentifier: "SearchButtonViewController") as! SearchButtonViewController //{
+       
+        self.present(seearcchVC, animated: true)
+        
     }
     
     
@@ -106,6 +114,12 @@ extension CategoryViewController: UICollectionViewDelegate,UICollectionViewDataS
         let cell = categoryCollection.dequeueReusableCell(withReuseIdentifier: "BrandProductsCVC", for: indexPath) as! BrandProductsCVC
         cell.configureCell(product: categoriesViewModel.filteredResultArr?[indexPath.row])
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
+        let productInfovc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController //{
+        productInfovc.product = categoriesViewModel.filteredResultArr?[indexPath.row]
+        self.present(productInfovc, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthPerItem = categoryCollection.frame.width / 2 - 10
