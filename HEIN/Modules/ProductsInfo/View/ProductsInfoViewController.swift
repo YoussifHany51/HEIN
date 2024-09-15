@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProductsInfoViewController: UIViewController {
     
@@ -35,6 +36,8 @@ class ProductsInfoViewController: UIViewController {
     
     @IBOutlet weak var colorButtonOutlet: UIButton!
     
+    @IBOutlet weak var addToFavRef: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,8 +49,15 @@ class ProductsInfoViewController: UIViewController {
 
         setUpData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        updateFavoriteButton(for: product)
+    }
     @IBAction func addToFavoriteButton(_ sender: Any) {
-        print("Add to Favorite")
+        if Auth.auth().currentUser != nil{
+            toggleFavorite(product: product)
+        }else{
+            // ShowAlert
+        }
     }
     
     @IBAction func addToCartButton(_ sender: Any) {
@@ -121,6 +131,8 @@ class ProductsInfoViewController: UIViewController {
         addToCartRef.tintColor = .red
         productDescription.isScrollEnabled = true
         productDescription.contentInsetAdjustmentBehavior = .never
+        addToFavRef.tintColor = .red
+        updateFavoriteButton(for: product)
     }
     
     @objc func scrollingProductImagessetup(){
@@ -133,6 +145,29 @@ class ProductsInfoViewController: UIViewController {
         pageControl.numberOfPages = productsImageArray.count
         pageControl.currentPage = index
         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .right, animated:true)
+    }
+    
+    func toggleFavorite(product: Product) {
+        let favorites = FavoriteProductManager.shared.fetchFavorites()
+        
+        if favorites.contains(where: { $0.id == Int64(product.id) }) {
+            FavoriteProductManager.shared.removeProductFromFavorites(productID: product.id)
+            updateFavoriteButton(for: product)
+            print("Product removed from favorites")
+        } else {
+            FavoriteProductManager.shared.addProductToFavorites(product: product)
+            updateFavoriteButton(for: product)
+            print("Product added to favorites")
+        }
+    }
+    func updateFavoriteButton(for product: Product) {
+        let favorites = FavoriteProductManager.shared.fetchFavorites()
+        
+        if favorites.contains(where: { $0.id == Int64(product.id) }) {
+            addToFavRef.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            addToFavRef.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
 }
 
