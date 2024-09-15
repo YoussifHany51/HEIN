@@ -20,6 +20,6 @@ struct CustomerModel: Codable {
     let id: Int?
     let verified_email: Bool?
     //let addresses: [Address]?
-    let note: String?
+    var note: String?
 
 }

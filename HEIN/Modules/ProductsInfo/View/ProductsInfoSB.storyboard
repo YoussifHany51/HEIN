@@ -171,7 +171,7 @@
                                     <constraint firstAttribute="height" constant="139" id="TwC-pl-bXr"/>
                                     <constraint firstAttribute="width" constant="361" id="kPU-NM-hNc"/>
                                 </constraints>
-                                <mutableString key="text">Introducing the Converse Chuck Taylor All Star II Hi sneaker. Retaining the revolutionary silhouette we all rely on, but now made ever better. New features include Lunarlon sockliner adds cushioning and arch support. Micro-suede lining, premium textured shield canvas construction and a padded, non-slip tongue deliver superior comfort and durability. Moulded eyelets add a premium touch. The embossed, screen-printed license plate and embroidered, star-centered ankle patch add striking depth and dimension to recognizable, classic details.</mutableString>
+                                <string key="text">Introducing the Converse Chuck Taylor All Star II Hi sneaker. Retaining the revolutionary silhouette we all rely on, but now made ever better. New features include Lunarlon sockliner adds cushioning and arch support. Micro-suede lining, premium textured shield canvas construction and a padded, non-slip tongue deliver superior comfort and durability. Moulded eyelets add a premium touch. The embossed, screen-printed license plate and embroidered, star-centered ankle patch add striking depth and dimension to recognizable, classic details.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -238,6 +238,7 @@
                     <navigationItem key="navigationItem" id="XtQ-Km-r1u"/>
                     <connections>
                         <outlet property="addToCartRef" destination="yls-Mf-dPZ" id="H8v-Za-mUd"/>
+                        <outlet property="addToFavRef" destination="h8r-vP-Jz6" id="HCR-41-cAE"/>
                         <outlet property="collectionView" destination="pKC-dA-crl" id="19H-dj-6NZ"/>
                         <outlet property="colorButtonOutlet" destination="MeQ-c6-C9Q" id="Cud-g3-P8o"/>
                         <outlet property="currentCurrency" destination="Aqb-gw-sYh" id="ykg-a9-Wit"/>

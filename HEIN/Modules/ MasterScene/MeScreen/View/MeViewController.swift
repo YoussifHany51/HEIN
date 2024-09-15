@@ -103,7 +103,11 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     // sign out action
                 do{
                     try Auth.auth().signOut()
-                    
+                    let defaults = UserDefaults.standard
+                    defaults.set(nil, forKey: "DraftOrder_Id")
+                    defaults.set(nil, forKey: "DraftOrder_Id")
+                    defaults.set(nil, forKey: "User_id")
+                    defaults.set(nil, forKey: "User_name")
                     let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
                     self.navigationController?.pushViewController(loginViewController, animated: true)
                 }catch let error{

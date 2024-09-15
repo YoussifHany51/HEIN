@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="155" id="O8t-7Q-ace" userLabel="Cart Table View Cell2" customClass="FavoriteTableViewCell" customModule="HEIN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="155"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O8t-7Q-ace" id="M92-Mq-v2h">
+                <rect key="frame" x="0.0" y="0.0" width="401" height="155"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAX-99-nLt">
+                        <rect key="frame" x="10" y="10" width="381" height="135"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-ct-I0h" customClass="CustomView" customModule="HEIN" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="95.333333333333329" height="115"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nike-shoe" translatesAutoresizingMaskIntoConstraints="NO" id="4ft-yB-2Qv">
+                                        <rect key="frame" x="10" y="10" width="70.333333333333329" height="95"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="Rounded" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4ft-yB-2Qv" secondAttribute="trailing" constant="15" id="97g-eV-e5Y"/>
+                                    <constraint firstItem="4ft-yB-2Qv" firstAttribute="leading" secondItem="jtf-ct-I0h" secondAttribute="leading" constant="10" id="chp-yc-fKP"/>
+                                    <constraint firstItem="4ft-yB-2Qv" firstAttribute="top" secondItem="jtf-ct-I0h" secondAttribute="top" constant="10" id="gq8-Oc-Yji"/>
+                                    <constraint firstAttribute="bottom" secondItem="4ft-yB-2Qv" secondAttribute="bottom" constant="10" id="onj-Zz-eQO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="PartShadows" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="Rounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike | Shoe" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4h-59-db0">
+                                <rect key="frame" x="120.33333333333336" y="14.999999999999998" width="240.66666666666663" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ne-Lp-U63">
+                                <rect key="frame" x="120.33333333333334" y="43.333333333333336" width="35" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lia-PX-sFl">
+                                <rect key="frame" x="163.33333333333334" y="43.333333333333336" width="25.333333333333343" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBX-mg-sJP">
+                                <rect key="frame" x="208.66666666666666" y="43.333333333333336" width="28" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-Lm-uPv">
+                                <rect key="frame" x="244.66666666666666" y="43.333333333333336" width="17.333333333333343" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EGP" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3f-fs-BFD">
+                                <rect key="frame" x="329.66666666666669" y="58.000000000000007" width="31.333333333333314" height="19.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d38-hI-iJy">
+                                <rect key="frame" x="291.66666666666669" y="57.666666666666671" width="38" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemFillColor"/>
+                        <constraints>
+                            <constraint firstItem="jtf-ct-I0h" firstAttribute="leading" secondItem="DAX-99-nLt" secondAttribute="leading" constant="10" id="0S5-32-55A"/>
+                            <constraint firstItem="d38-hI-iJy" firstAttribute="centerY" secondItem="jtf-ct-I0h" secondAttribute="centerY" id="40l-sP-NbL"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4h-59-db0" secondAttribute="trailing" constant="20" symbolic="YES" id="E1q-Jy-fMA"/>
+                            <constraint firstItem="8ne-Lp-U63" firstAttribute="leading" secondItem="Y4h-59-db0" secondAttribute="leading" id="FZx-pF-YDa"/>
+                            <constraint firstItem="lia-PX-sFl" firstAttribute="centerY" secondItem="8ne-Lp-U63" secondAttribute="centerY" id="HZQ-Rm-ese"/>
+                            <constraint firstItem="Y4h-59-db0" firstAttribute="leading" secondItem="jtf-ct-I0h" secondAttribute="trailing" constant="15" id="NAj-6s-50k"/>
+                            <constraint firstItem="lia-PX-sFl" firstAttribute="leading" secondItem="8ne-Lp-U63" secondAttribute="trailing" constant="8" symbolic="YES" id="OO9-yP-cWd"/>
+                            <constraint firstItem="IBX-mg-sJP" firstAttribute="centerY" secondItem="lia-PX-sFl" secondAttribute="centerY" id="PMq-nR-VCA"/>
+                            <constraint firstItem="dMH-Lm-uPv" firstAttribute="centerY" secondItem="IBX-mg-sJP" secondAttribute="centerY" id="VtI-Rx-lfN"/>
+                            <constraint firstItem="IBX-mg-sJP" firstAttribute="leading" secondItem="lia-PX-sFl" secondAttribute="trailing" constant="20" id="Z47-dx-YwW"/>
+                            <constraint firstItem="8ne-Lp-U63" firstAttribute="top" secondItem="Y4h-59-db0" secondAttribute="bottom" constant="8" symbolic="YES" id="gTE-6b-X5x"/>
+                            <constraint firstItem="Y4h-59-db0" firstAttribute="top" secondItem="DAX-99-nLt" secondAttribute="top" constant="15" id="k98-5E-dcW"/>
+                            <constraint firstItem="dMH-Lm-uPv" firstAttribute="leading" secondItem="IBX-mg-sJP" secondAttribute="trailing" constant="8" symbolic="YES" id="kKf-Vz-nwy"/>
+                            <constraint firstItem="c3f-fs-BFD" firstAttribute="leading" secondItem="d38-hI-iJy" secondAttribute="trailing" id="kNZ-yZ-yLb"/>
+                            <constraint firstItem="jtf-ct-I0h" firstAttribute="width" secondItem="DAX-99-nLt" secondAttribute="width" multiplier="0.25" id="oEb-ra-A3l"/>
+                            <constraint firstItem="d38-hI-iJy" firstAttribute="centerY" secondItem="c3f-fs-BFD" secondAttribute="centerY" id="um1-bI-mxe"/>
+                            <constraint firstAttribute="trailing" secondItem="c3f-fs-BFD" secondAttribute="trailing" constant="20" symbolic="YES" id="x6C-Vv-ruw"/>
+                            <constraint firstItem="jtf-ct-I0h" firstAttribute="top" secondItem="DAX-99-nLt" secondAttribute="top" constant="10" id="xsx-0u-FNQ"/>
+                            <constraint firstAttribute="bottom" secondItem="jtf-ct-I0h" secondAttribute="bottom" constant="10" id="yEx-td-nLX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="Rounded" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="DAX-99-nLt" secondAttribute="trailing" constant="10" id="Hbd-XC-W8n"/>
+                    <constraint firstItem="DAX-99-nLt" firstAttribute="leading" secondItem="M92-Mq-v2h" secondAttribute="leading" constant="10" id="XI2-0O-iEe"/>
+                    <constraint firstAttribute="bottom" secondItem="DAX-99-nLt" secondAttribute="bottom" constant="10" id="clq-IZ-SzY"/>
+                    <constraint firstItem="DAX-99-nLt" firstAttribute="top" secondItem="M92-Mq-v2h" secondAttribute="top" constant="10" id="qSS-Gj-zqJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="eZw-n3-2xi"/>
+            <connections>
+                <outlet property="currCurrency" destination="c3f-fs-BFD" id="SBI-2j-u1A"/>
+                <outlet property="productColor" destination="lia-PX-sFl" id="8cB-kp-f1T"/>
+                <outlet property="productImage" destination="4ft-yB-2Qv" id="ZeR-M8-OYJ"/>
+                <outlet property="productName" destination="Y4h-59-db0" id="8hS-ee-Qjh"/>
+                <outlet property="productPrice" destination="d38-hI-iJy" id="7XL-Pc-2uD"/>
+                <outlet property="productSize" destination="dMH-Lm-uPv" id="yNx-qj-KKZ"/>
+            </connections>
+            <point key="canvasLocation" x="113.74045801526717" y="-222.18309859154931"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="nike-shoe" width="1464" height="1533"/>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
