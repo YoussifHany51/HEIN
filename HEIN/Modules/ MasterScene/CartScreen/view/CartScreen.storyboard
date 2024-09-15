@@ -644,6 +644,7 @@
                         <outlet property="addressPhone" destination="Sf0-F1-ych" id="O8o-5I-Xjk"/>
                         <outlet property="addressStreet" destination="lCT-2Z-jrE" id="n4L-Jp-UB8"/>
                         <outlet property="addressTitle" destination="ArF-4Q-72V" id="vcP-ob-f1k"/>
+                        <outlet property="currencyLable" destination="9ID-XD-dO6" id="ldg-T2-7cj"/>
                         <outlet property="discountAmount" destination="mzF-I2-qJO" id="96N-gL-E78"/>
                         <outlet property="grandTotalAmount" destination="gu1-oV-CRR" id="xzo-jO-7a1"/>
                         <outlet property="loadingView" destination="GBz-8w-ciQ" id="L30-0A-2Is"/>
@@ -874,10 +875,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
