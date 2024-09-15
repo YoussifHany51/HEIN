@@ -54,10 +54,11 @@ class ProductsInfoViewController: UIViewController {
         pageControl.numberOfPages = productsImageArray.count
 
         setUpData()
-        getDraftOrder()
-        print("UserDefault: \(UserDefaults().string(forKey: "DraftOrder_Id"))")
     }
     override func viewWillAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil{
+            getDraftOrder()
+        }
         updateFavoriteButton(for: product)
     }
     @IBAction func addToFavoriteButton(_ sender: Any) {
@@ -69,24 +70,28 @@ class ProductsInfoViewController: UIViewController {
     }
     
     @IBAction func addToCartButton(_ sender: Any) {
-        guard let variant = self.getProductVarient(product: product) else {return}
-        let selectedVariant = lineItems?.filter({ item in
-            item.variantID == variant.id
-        })
-        if selectedVariant?.first == nil {
-            let lineItem = LineItem(id: 0, variantID: variant.id, productID: product.id, price: variant.price, name: productTitle.text, title: productTitle.text, quantity: 1, properties: [NoteAttribute(name: "image", value: (productsImageArray.first?.src) ?? ""),NoteAttribute(name: "size", value: (sizeButtonOutlet.titleLabel?.text)!),NoteAttribute(name: "color", value: (colorButtonOutlet.titleLabel?.text)!)])
-            lineItems?.append(lineItem)
-            nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self,parameters: ["draft_order":["line_items":  extractLineItemsPutData(lineItems: lineItems!) ]]) { dratOrder in
-                guard let draftOrder = dratOrder else {
-                    print("Invalid Add to Cart")
-                    return
+        if Auth.auth().currentUser != nil{
+            guard let variant = self.getProductVarient(product: product) else {return}
+            let selectedVariant = lineItems?.filter({ item in
+                item.variantID == variant.id
+            })
+            if selectedVariant?.first == nil {
+                let lineItem = LineItem(id: 0, variantID: variant.id, productID: product.id, price: variant.price, name: productTitle.text, title: productTitle.text, quantity: 1, properties: [NoteAttribute(name: "image", value: (productsImageArray.first?.src) ?? ""),NoteAttribute(name: "size", value: (sizeButtonOutlet.titleLabel?.text)!),NoteAttribute(name: "color", value: (colorButtonOutlet.titleLabel?.text)!)])
+                lineItems?.append(lineItem)
+                nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self,parameters: ["draft_order":["line_items":  extractLineItemsPutData(lineItems: lineItems!) ]]) { dratOrder in
+                    guard let draftOrder = dratOrder else {
+                        print("Invalid Add to Cart")
+                        return
+                    }
+                    print("Added To Cart Successfully")
                 }
-                print("Added To Cart Successfully")
+            }else{
+                print("Alread added to cart")
             }
+            print("here")
         }else{
-            print("Alread added to cart")
+            
         }
-        print("here")
     }
     
     @IBAction func sizeButton(_ sender: Any) {
