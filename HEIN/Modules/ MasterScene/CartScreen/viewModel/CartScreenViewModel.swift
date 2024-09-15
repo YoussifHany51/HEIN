@@ -19,7 +19,12 @@ class CartScreenViewModel {
             if draftOrder != nil {
                 let filteredLineItems = filterLineItems(lineItems: draftOrder!.lineItems)
                 self.lineItems = filteredLineItems
-                self.getProductVariants(lineItems: filteredLineItems)
+                if filteredLineItems.count != 0 {
+                    self.getProductVariants(lineItems: filteredLineItems)
+                } else {
+                    bindResultToViewController()
+                }
+                
             } else {
                 bindResultToViewController()
             }
@@ -44,7 +49,7 @@ class CartScreenViewModel {
     init() {
         nwService = NetworkManager()
         // MARK: - Change to get from userDefaults
-        self.draftOrderId = 1185874280744
+        self.draftOrderId =  1186489467176
     }
     
     func getDraftOrder() {

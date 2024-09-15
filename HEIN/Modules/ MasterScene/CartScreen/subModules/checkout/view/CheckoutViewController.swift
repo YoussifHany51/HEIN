@@ -61,6 +61,7 @@ class CheckoutViewController: UIViewController {
                 addressCountry.text = defaultAddress.country
                 addressPhone.text = defaultAddress.phone
                 
+                paymentButton.isEnabled = true
                 loadingView.isHidden = true
             } else {
                 addressIndicator.stopAnimating()
@@ -69,8 +70,8 @@ class CheckoutViewController: UIViewController {
             }
             if processingOrderView.isHidden == false {
                 processingOrderView.isHidden = true
-                let paymentVC = storyboard?.instantiateViewController(withIdentifier: "payment")
-                guard let paymentVC = paymentVC else {return}
+                let paymentVC = storyboard?.instantiateViewController(withIdentifier: "payment") as! PaymentViewController
+                paymentVC.draftOrder = draftOrder
                 navigationController?.pushViewController(paymentVC, animated: true)
             }
         }
