@@ -83,17 +83,17 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func saveAddreess(_ sender: Any) {
-        var emptyFields : Int = 0
+        var emptyFields : [Int] = []
         for row in 0...4 {
             if getCellAtRow(row).textField.text == "" {
                 getCellAtRow(row).requiredLabel.isHidden = false
-                emptyFields += 1
+                emptyFields.append(row)
             } else {
                 getCellAtRow(row).requiredLabel.isHidden = true
             }
         }
         
-        if emptyFields == 0 {
+        if emptyFields.count == 0 {
             self.saveAddressButton.isEnabled = false
             self.loadingView.isHidden = false
             
@@ -111,6 +111,8 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
                                          phone: getCellAtRow(4).textField.text!,
                                          name: getCellAtRow(0).textField.text!)
             }
+        } else {
+            fieldsTable.scrollToRow(at: IndexPath(row: emptyFields.first!, section: 0), at: .top, animated: false)
         }
     }
     
@@ -162,6 +164,9 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func getCellAtRow(_ row: Int) -> TextFieldViewCell {
+        // Scroll to cell inorder to load it
+        fieldsTable.scrollToRow(at: IndexPath(row: row, section: 0), at: .top, animated: false)
+        
         return fieldsTable.cellForRow(at: IndexPath(row: row, section: 0)) as! TextFieldViewCell
     }
 

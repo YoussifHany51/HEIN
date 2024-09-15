@@ -174,3 +174,27 @@ enum Option2: String, Codable {
 enum WeightUnit: String, Codable {
     case kg = "kg"
 }
+extension Product {
+    init(favoriteProduct: FavoriteProduct) {
+        self.id = Int(favoriteProduct.id)
+        self.title = favoriteProduct.title ?? ""
+        self.bodyHTML = favoriteProduct.bodyHTML ?? ""
+        self.vendor = favoriteProduct.vendor ?? ""
+        self.productType = ProductType(rawValue: favoriteProduct.productType ?? "") ?? .accessories
+        self.createdAt = "" // Use a default or leave empty if not needed
+        self.handle = ""
+        self.updatedAt = ""
+        self.publishedAt = ""
+        self.publishedScope = .global
+        self.tags = ""
+        self.status = .active
+        self.adminGraphqlAPIID = ""
+        self.variants = [Variant(id: 0, productID: 0, title: "", price: favoriteProduct.price ?? "N/A", sku: "", position: 0, inventoryPolicy: .deny, compareAtPrice: nil, fulfillmentService: .manual, inventoryManagement: .shopify, option1: "", option2: .black, createdAt: "", updatedAt: "", taxable: false, grams: 0, weight: 0, weightUnit: .kg, inventoryItemID: 0, inventoryQuantity: 0, oldInventoryQuantity: 0, requiresShipping: false, adminGraphqlAPIID: "")]
+        self.options = [
+            Option(id: 0, productID: 0, name: .color, position: 0, values: [favoriteProduct.color ?? ""]),
+            Option(id: 1, productID: 0, name: .size, position: 1, values: [favoriteProduct.size ?? ""])
+        ]
+        self.images = [ProductImage(id: 0, position: 0, productID: 0, createdAt: "", updatedAt: "", adminGraphqlAPIID: "", width: 0, height: 0, src: favoriteProduct.imageSrc ?? "")]
+        self.image = ProductImage(id: 0, position: 0, productID: 0, createdAt: "", updatedAt: "", adminGraphqlAPIID: "", width: 0, height: 0, src: favoriteProduct.imageSrc ?? "")
+    }
+}

@@ -9,12 +9,14 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
+import FirebaseCore
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButtonOutlet: UIButton!
     var viewModel = LoginViewModel()
+    var networkHandler:NetworkManager? = NetworkManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,6 +24,11 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .password
         emailTextField.textContentType = .emailAddress
+    }
+    @IBAction func skipButton(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+        let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+        self.present(master, animated: true)
     }
     
     @IBAction func DoNotHaveAccountButton(_ sender: Any) {
@@ -38,7 +45,7 @@ class LoginViewController: UIViewController {
                     case .wrongPassword:
                         self?.showAlert(message: "Wrong Email or Password❗️")
                         break
-                    case .invalidUserToken: #warning("Check User NOT found")
+                    case .userNotFound:
                         self?.showAlert(message: "Please Sign Up First")
                         break
                     case .networkError:
@@ -52,9 +59,8 @@ class LoginViewController: UIViewController {
                     return
                 }
                 // Successful sign-in, navigate to the master view controller
-                let master = self?.storyboard?.instantiateViewController(withIdentifier: "master")
-                self?.navigationController?.pushViewController(master!, animated: true)
-                print("Logged in Successfully")
+                self?.getCustomers()
+                
             }
         } else {
             self.showAlert(message: "Please fill in all fields correctly.")
@@ -86,6 +92,7 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(with: credential) { result, error in
 
               // At this point, our user is signed in
+                self.getCustomers()
             }
         }
     }
@@ -94,6 +101,90 @@ class LoginViewController: UIViewController {
         let okayButton = UIAlertAction(title: "Okay", style: .default)
         alert.addAction(okayButton)
         self.present(alert, animated: true)
+    }
+    
+    func getCustomers(){
+        networkHandler?.fetch(url: APIHandler.urlForGetting(.customers), type: AllCustomers.self, complitionHandler: { allCustomers in
+            guard let allCustomer = allCustomers else { return }
+            if let customer = self.filterCustomer(customers: allCustomer.customers!) {
+                if customer.id != nil {
+                    let defaults = UserDefaults.standard
+                    defaults.set(customer.id, forKey: "User_id")
+                    defaults.set(customer.first_name, forKey: "User_name")
+                    self.getDraftOrders(customerId: customer.id!)
+                }
+            }else{
+                self.postCustomer()
+            }
+        })
+    }
+    
+    func getDraftOrders(customerId : Int){
+        networkHandler?.fetch(url: APIHandler.urlForGetting(.draftOrders), type: DraftOrders.self, complitionHandler: { draftOrders in
+            guard let draftOrders = draftOrders else { return }
+            var draftOrder : DraftOrder
+            let filterd = draftOrders.draftOrders.filter { draftOrder in
+                draftOrder.customer?.id == customerId
+            }
+            draftOrder = filterd.first!
+            let defaults = UserDefaults.standard
+            defaults.set(draftOrder.id, forKey: "DraftOrder_Id")
+            print(draftOrder.id)
+            print("Logged in Successfully")
+            let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+            let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+            self.present(master, animated: true)
+            print(defaults.string(forKey: "DraftOrder_Id")!)
+            print(defaults.string(forKey: "User_name")!)
+            print(defaults.string(forKey: "User_id")!)
+              
+        })
+    }
+    
+    func filterCustomer(customers:[CustomerModel]) -> CustomerModel? {
+        var customer : CustomerModel?
+        let customers = customers.filter { customerModel in
+            customerModel.note == Auth.auth().currentUser?.uid
+        }
+        customer = customers.first
+        return customer
+    }
+    func postCustomer(){
+        let defaults = UserDefaults.standard
+        guard let name = defaults.string(forKey: Auth.auth().currentUser!.uid) else { return }
+        let email = Auth.auth().currentUser?.email
+        let userID = Auth.auth().currentUser?.uid
+        networkHandler?.postWithResponse(url: APIHandler.urlForGetting(.customers), type: Customer.self, parameters: ["customer":["first_name":name,"email": email,"note": userID]], completion: { customer in
+            guard let customer = customer else {
+                print("Error Posting Customer")
+                return
+            }
+            self.postDraftOrder(id: customer.customer.id!)
+            let defaults = UserDefaults.standard
+            defaults.set(customer.customer.id, forKey: "User_id")
+            defaults.set(customer.customer.first_name, forKey: "User_name")
+            
+            print("POST Customer successfully")
+        })
+    }
+    
+    func postDraftOrder(id:Int){
+        let dummyLineItem: [String: Any] = ["title": "dummy", "quantity": 1, "price": "0.0", "properties":[]]
+        networkHandler?.postWithResponse(url: APIHandler.urlForGetting(.draftOrders), type: DraftOrderContainer.self, parameters: ["draft_order":["line_items":  [dummyLineItem], "customer":["id":id],"use_customer_default_address":true]], completion: { draftOrderContainer in
+            guard let draftOrderContainer = draftOrderContainer else {
+                print("Faild draftOrderContainer")
+                return
+            }
+            let defaults = UserDefaults.standard
+            defaults.set(draftOrderContainer.draftOrder.id, forKey: "DraftOrder_Id")
+            print(draftOrderContainer.draftOrder.id)
+            let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+            let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+            self.present(master, animated: true)
+            print(defaults.string(forKey: "DraftOrder_Id")!)
+            print(defaults.string(forKey: "User_name")!)
+            print(defaults.string(forKey: "User_id")!)
+        })
     }
 }
 

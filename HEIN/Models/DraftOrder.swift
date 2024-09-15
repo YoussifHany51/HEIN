@@ -40,6 +40,7 @@ struct DraftOrder: Codable {
     let subtotalPrice, totalPrice: String
     let updatedAt :String
     let status: String
+    let totalTax: String
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -56,6 +57,7 @@ struct DraftOrder: Codable {
         case totalPrice = "total_price"
         case status
         case updatedAt = "updated_at"
+        case totalTax = "total_tax"
     }
 }
 

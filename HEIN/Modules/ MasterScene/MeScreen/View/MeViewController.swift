@@ -66,7 +66,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.detailTextLabel?.text = "\(viewModel?.addresses?.count.description ?? "●") addresses"
         case 2:
             cell.textLabel?.text = "Currency"
-            cell.detailTextLabel?.text = "EGP"
+            cell.detailTextLabel?.text = UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD"
         case 3:
             cell.textLabel?.text = "Sign Out"
             cell.detailTextLabel?.text = .none
@@ -101,6 +101,20 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let alert = UIAlertController(title: "Sign Out..!", message: "You wont be able to make purchases from our poroduct catalog", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "sign out", style: .destructive, handler: { action in
                     // sign out action
+                do{
+                    try Auth.auth().signOut()
+                    let defaults = UserDefaults.standard
+                    defaults.set(nil, forKey: "DraftOrder_Id")
+                    defaults.set(nil, forKey: "DraftOrder_Id")
+                    defaults.set(nil, forKey: "User_id")
+                    defaults.set(nil, forKey: "User_name")
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let master = storyBoard.instantiateViewController(identifier: "LoginViewController")
+                    self.present(master, animated: true)
+
+                }catch let error{
+                    print(error.localizedDescription)
+                }
             }))
             alert.addAction(UIAlertAction(title: "cancel", style: .default, handler: nil))
             self.present(alert, animated: true)
