@@ -13,6 +13,10 @@ struct Orders: Codable {
     var orders: [Order]
 }
 
+struct OrderResponse: Codable {
+    var order: Order
+}
+
 // MARK: - Order
 struct Order: Codable {
     let id: Int

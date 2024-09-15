@@ -82,6 +82,10 @@
 		F4404C072C8F6E9B00569AA2 /* CartScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */; };
 		F4691DE62C93848800852226 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DE52C93848800852226 /* CheckoutViewController.swift */; };
 		F4691DE82C939A6100852226 /* checkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DE72C939A6100852226 /* checkoutViewModel.swift */; };
+		F4691DED2C94EC1400852226 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DEC2C94EC1400852226 /* PaymentViewController.swift */; };
+		F4691DEF2C94ECCE00852226 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DEE2C94ECCE00852226 /* PaymentTableViewCell.swift */; };
+		F4691DF12C94F0BC00852226 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DF02C94F0BC00852226 /* PaymentViewModel.swift */; };
+		F4691DF62C95F2A100852226 /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DF52C95F2A100852226 /* OrderConfirmedViewController.swift */; };
 		F47BD4302C8BE25D00A8A8AD /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */; };
 		F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */; };
 		F47BD4382C8BE33200A8A8AD /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */; };
@@ -187,6 +191,10 @@
 		F4404C062C8F6E9B00569AA2 /* CartScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenViewModel.swift; sourceTree = "<group>"; };
 		F4691DE52C93848800852226 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		F4691DE72C939A6100852226 /* checkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkoutViewModel.swift; sourceTree = "<group>"; };
+		F4691DEC2C94EC1400852226 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		F4691DEE2C94ECCE00852226 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
+		F4691DF02C94F0BC00852226 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		F4691DF52C95F2A100852226 /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
 		F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
@@ -653,6 +661,56 @@
 			path = viewModel;
 			sourceTree = "<group>";
 		};
+		F4691DE92C94EBDC00852226 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				F4691DEB2C94EBF800852226 /* view */,
+				F4691DEA2C94EBEA00852226 /* viewModel */,
+			);
+			path = payment;
+			sourceTree = "<group>";
+		};
+		F4691DEA2C94EBEA00852226 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4691DF02C94F0BC00852226 /* PaymentViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F4691DEB2C94EBF800852226 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F4691DEC2C94EC1400852226 /* PaymentViewController.swift */,
+				F4691DEE2C94ECCE00852226 /* PaymentTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F4691DF22C95F25600852226 /* orderConfirmed */ = {
+			isa = PBXGroup;
+			children = (
+				F4691DF42C95F26900852226 /* viewModel */,
+				F4691DF32C95F26200852226 /* view */,
+			);
+			path = orderConfirmed;
+			sourceTree = "<group>";
+		};
+		F4691DF32C95F26200852226 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F4691DF52C95F2A100852226 /* OrderConfirmedViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F4691DF42C95F26900852226 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
 		F47BD42D2C8BE22C00A8A8AD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +847,8 @@
 		F4D792312C9243FE0014557D /* subModules */ = {
 			isa = PBXGroup;
 			children = (
+				F4691DF22C95F25600852226 /* orderConfirmed */,
+				F4691DE92C94EBDC00852226 /* payment */,
 				F4691DE22C937A5200852226 /* checkout */,
 				F4D792342C9244270014557D /* coupons */,
 			);
@@ -995,8 +1055,10 @@
 				F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */,
 				099AD51B2C8751EB00E2191D /* APIKeys.swift in Sources */,
 				099AD4E62C87518F00E2191D /* AppDelegate.swift in Sources */,
+				F4691DEF2C94ECCE00852226 /* PaymentTableViewCell.swift in Sources */,
 				099AD53F2C87520200E2191D /* Addresses.swift in Sources */,
 				F47BD4462C8BE49E00A8A8AD /* AddAddressViewController.swift in Sources */,
+				F4691DF62C95F2A100852226 /* OrderConfirmedViewController.swift in Sources */,
 				F47BD4382C8BE33200A8A8AD /* OrdersTableViewCell.swift in Sources */,
 				F47BD44F2C8BE55300A8A8AD /* CurrencyViewController.swift in Sources */,
 				1EB071EC2C88FD5300AEFD0F /* AdsCVC.swift in Sources */,
@@ -1026,10 +1088,12 @@
 				1EF0ADEE2C8DFD2D00975E4D /* BrandsViewModel.swift in Sources */,
 				091E6E4F2C8E0AAE0002C5D9 /* SearchButtonViewController.swift in Sources */,
 				099AD5412C87520200E2191D /* Customer.swift in Sources */,
+				F4691DF12C94F0BC00852226 /* PaymentViewModel.swift in Sources */,
 				F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */,
 				F4691DE82C939A6100852226 /* checkoutViewModel.swift in Sources */,
 				09B060112C90BB1200A13B61 /* ProductImageCollectionViewCell.swift in Sources */,
 				1EB071E92C88E97D00AEFD0F /* ReachabilityManger.swift in Sources */,
+				F4691DED2C94EC1400852226 /* PaymentViewController.swift in Sources */,
 				099AD51C2C8751EB00E2191D /* Methods.swift in Sources */,
 				1E22502A2C88BF02007E39DA /* BrandsCVC.swift in Sources */,
 				1EF8C6222C933C7E00592FD5 /* UIAlertExtension.swift in Sources */,
