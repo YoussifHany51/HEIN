@@ -40,8 +40,7 @@ class CheckoutViewModel {
     
     init(draftOrder: DraftOrder?) {
         nwService = NetworkManager()
-        // MARK: - change to be dynamic
-        self.customerId = 8369844912424
+        self.customerId = Int(UserDefaults().string(forKey: "User_id") ?? "0")!
         self.draftOrder = draftOrder
     }
     

@@ -13,20 +13,22 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var meTable: UITableView!
     
-    // MARK: - change to be dynamic
-    var customerId : Int? = 8369844912424
-    
     var viewModel : MeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        guard (UserDefaults.standard.string(forKey: "User_id") != nil) else {
+            let guestMeVC = storyboard?.instantiateViewController(withIdentifier: "guestMe") as! GuestMeViewController
+            navigationController?.pushViewController(guestMeVC, animated: true)
+            return
+        }
         
         meTable.delegate = self
         meTable.dataSource = self
         
-        if let user = Auth.auth().currentUser {
-            userNameLabel.text = UserDefaults.standard.string(forKey: user.uid)
+        if Auth.auth().currentUser != nil {
+            userNameLabel.text = UserDefaults.standard.string(forKey: "User_name")
         } else {
             userNameLabel.text = .none
         }
@@ -44,7 +46,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func setMeViewModel() {
-        viewModel = MeViewModel(customerId: customerId ?? 0)
+        viewModel = MeViewModel()
         viewModel? .bindResultToViewController = {
             self.meTable.reloadData()
         }

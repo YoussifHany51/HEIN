@@ -53,7 +53,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func payWithApplePay(){
         let amount = draftOrder?.totalPrice
-            paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "Cart Order", amount: NSDecimalNumber(string: amount))]
+        paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "Cart Order", amount: NSDecimalNumber(string: ExchangeCurrency.exchangeCurrency(amount: amount) ))]
             
             let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
             if controller != nil {

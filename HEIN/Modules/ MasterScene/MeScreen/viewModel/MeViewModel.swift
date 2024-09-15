@@ -26,9 +26,9 @@ class MeViewModel {
         }
     }
     
-    init(customerId: Int) {
+    init() {
         nwService = NetworkManager()
-        self.customerId = customerId
+        self.customerId = Int(UserDefaults.standard.string(forKey: "User_id") ?? "0")!
     }
     
     func getOrders() {
