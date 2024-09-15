@@ -20,6 +20,7 @@ class NetworkManager{
                 complitionHandler(nil)
                 return  }
             print("fetching in background")
+            print("Success:\(String(data: data, encoding: .utf8) ?? "") ")
             do{
                 let result = try JSONDecoder().decode(T.self, from: data)
                 complitionHandler(result)

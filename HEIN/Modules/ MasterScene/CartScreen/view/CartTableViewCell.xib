@@ -167,6 +167,7 @@
             <viewLayoutGuide key="safeArea" id="pyg-bW-Jiw"/>
             <connections>
                 <outlet property="addOneProductButton" destination="wA4-SV-GBK" id="Jb4-vn-Yqg"/>
+                <outlet property="currencyTitle" destination="8FC-nL-oYO" id="vKe-cu-gXX"/>
                 <outlet property="productImage" destination="cg3-vJ-wCQ" id="ZF9-hR-NGN"/>
                 <outlet property="productName" destination="F2V-Xh-lGv" id="Ftb-vQ-KYg"/>
                 <outlet property="productOption1" destination="I15-RR-5VW" id="yUh-Rx-rG8"/>

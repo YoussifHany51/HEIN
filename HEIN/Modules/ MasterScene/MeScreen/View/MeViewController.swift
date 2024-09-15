@@ -66,7 +66,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.detailTextLabel?.text = "\(viewModel?.addresses?.count.description ?? "●") addresses"
         case 2:
             cell.textLabel?.text = "Currency"
-            cell.detailTextLabel?.text = "EGP"
+            cell.detailTextLabel?.text = UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD"
         case 3:
             cell.textLabel?.text = "Sign Out"
             cell.detailTextLabel?.text = .none
