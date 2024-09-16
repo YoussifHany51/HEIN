@@ -16,9 +16,12 @@ class HomeScreenViewController: UIViewController {
     var viewModel:HomeProtocol!
     var photoarr = [UIImage(named: "sale1"),UIImage(named: "sale2"),UIImage(named: "sale3"),UIImage(named: "sale4"),UIImage(named: "sale5"),UIImage(named: "sale6")]
     var search:UIBarButtonItem!
+    var timer : Timer?
+    var current = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startTimer()
         pageControl.numberOfPages = photoarr.count
         viewModel = HomeViewModel()
         setIndicator()
@@ -70,6 +73,22 @@ class HomeScreenViewController: UIViewController {
        
         self.present(seearcchVC, animated: true)
     }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNextIndex), userInfo: nil, repeats: true)
+    }
+
+    @objc func moveToNextIndex() {
+        if current < photoarr.count - 1 {
+            current += 1
+        } else {
+            current = 0
+        }
+        
+        adsCollection.scrollToItem(at: IndexPath(item: current, section: 0), at: .centeredHorizontally, animated: true)
+        pageControl.currentPage = current
+    }
+
     
 }
 
