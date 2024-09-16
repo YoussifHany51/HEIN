@@ -48,7 +48,21 @@ class ProductsInfoViewController: UIViewController {
         title = product.vendor
         
         pageControl.numberOfPages = productsImageArray.count
+        let titleLabel = UILabel()
+        titleLabel.text = product.vendor
+            titleLabel.textAlignment = .left
+            titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+            titleLabel.textColor = .red
+            self.view.addSubview(titleLabel)
 
+            // Set constraints for the title label
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16), // Align to the left with padding
+                titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10), // Position below the status bar
+                titleLabel.heightAnchor.constraint(equalToConstant: 40), // Set a fixed height
+                titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200) // Optional: Set a max width
+            ])
         setUpData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -91,13 +105,16 @@ class ProductsInfoViewController: UIViewController {
         if Auth.auth().currentUser != nil{
             toggleFavorite(product: product)
         }else{
-            // ShowAlert
+            self.showAlert(title: "Error ⚠️", message: "Please Login first")
         }
     }
     
     @IBAction func addToCartButton(_ sender: Any) {
         if Auth.auth().currentUser != nil{
-            guard let variant = self.getProductVarient(product: product) else {return}
+            guard let variant = self.getProductVarient(product: product) else {
+                self.showAlert(title: "Missing 👀", message: "Choose Color and Size")
+                return
+            }
             let selectedVariant = viewModel?.lineItems?.filter({ item in
                 item.variantID == variant.id
             })
@@ -106,17 +123,16 @@ class ProductsInfoViewController: UIViewController {
                 viewModel?.lineItems?.append(lineItem)
                 nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self,parameters: ["draft_order":["line_items":  viewModel?.extractLineItemsPutData(lineItems: (viewModel?.lineItems)!) ]]) { dratOrder in
                     guard dratOrder != nil else {
-                        print("Invalid Add to Cart")
+                        self.showAlert(title: "Error ⚠️", message: "Invalid Add to Cart")
                         return
                     }
-                    print("Added To Cart Successfully")
+                    self.showAlert(title: "Done ✅", message: "Added To Cart Successfully")
                 }
             }else{
-                print("Alread added to cart")
+                self.showAlert(title: "Hmm..? 💭", message: "Already added to cart")
             }
-            print("here")
         }else{
-            
+            self.showAlert(title: "Error ⚠️", message: "Please Login first")
         }
     }
     
@@ -177,6 +193,12 @@ class ProductsInfoViewController: UIViewController {
            present(alertController, animated: true, completion: nil)
     }
  
+    func showAlert(title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okayButton = UIAlertAction(title: "Got it 👍", style: .default)
+        alert.addAction(okayButton)
+        self.present(alert, animated: true)
+    }
     
     func toggleFavorite(product: Product) {
         let favorites = FavoriteProductManager.shared.fetchFavorites()
@@ -191,6 +213,7 @@ class ProductsInfoViewController: UIViewController {
             print("Product added to favorites")
         }
     }
+    
     func updateFavoriteButton(for product: Product) {
         let favorites = FavoriteProductManager.shared.fetchFavorites()
         
@@ -200,7 +223,6 @@ class ProductsInfoViewController: UIViewController {
             addToFavRef.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
-    
     
     func getProductVarient(product:Product)-> Variant?{
         for variant in product.variants {

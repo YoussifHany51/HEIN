@@ -89,7 +89,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCESSORIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLW-OU-ggO">
-                                <rect key="frame" x="16.000000000000007" y="405" width="100.66666666666669" height="18"/>
+                                <rect key="frame" x="16" y="405" width="140" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="rtw-JX-wVU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -218,7 +221,7 @@
                             <constraint firstItem="pKC-dA-crl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="GgR-yw-4RS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yls-Mf-dPZ" secondAttribute="trailing" constant="16" id="IrO-Cx-0fx"/>
                             <constraint firstItem="aJk-CS-EaH" firstAttribute="top" secondItem="xLW-OU-ggO" secondAttribute="bottom" constant="8" id="NeR-oP-Iuc"/>
-                            <constraint firstItem="Aqb-gw-sYh" firstAttribute="leading" secondItem="xLW-OU-ggO" secondAttribute="trailing" constant="135.33333333333331" id="S4N-1H-31h"/>
+                            <constraint firstItem="Aqb-gw-sYh" firstAttribute="leading" secondItem="xLW-OU-ggO" secondAttribute="trailing" constant="96" id="S4N-1H-31h"/>
                             <constraint firstItem="MeQ-c6-C9Q" firstAttribute="leading" secondItem="9oZ-Qx-Mem" secondAttribute="trailing" constant="-4" id="SCQ-Ql-eZg"/>
                             <constraint firstItem="vTg-Ef-dgu" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.918575" id="esF-nT-qfc"/>
                             <constraint firstItem="aJk-CS-EaH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="f7T-NE-YL2"/>
@@ -258,7 +261,7 @@
                     <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
                 </button>
             </objects>
-            <point key="canvasLocation" x="1003.8167938931298" y="4.9295774647887329"/>
+            <point key="canvasLocation" x="1002.4" y="4.0479760119940034"/>
         </scene>
     </scenes>
     <resources>
@@ -276,7 +279,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
