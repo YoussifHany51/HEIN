@@ -9,6 +9,7 @@ import UIKit
 
 class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UISearchBarDelegate,UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var noProductsImg: UIImageView!
     @IBOutlet weak var BrandProductsCollection: UICollectionView!
     @IBOutlet weak var imgBrand: UIImageView!
     @IBOutlet weak var productNumbers: UILabel!
@@ -23,7 +24,7 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "HEIN"
+        noProductsImg.isHidden = true
         self.hideKeyboardWhenTappedAround()
         brandsViewModel = BrandsViewMode()
         setIndicator()
@@ -33,10 +34,8 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         BrandProductsCollection.delegate = self
         BrandProductsCollection.dataSource = self
         setupCollectionView()
-        self.tabBarController?.tabBar.isHidden = true
         searchBar.delegate = self
         registerCell()
-        self.navigationItem.title = "HEIN"
         brandsViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 self.loadData()
@@ -73,10 +72,10 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         brandsViewModel?.getBrands(vendor: vendor ?? " ")
         if (brandsViewModel?.brandProducts?.count  == 0) {
             BrandProductsCollection.isHidden = true
-        //    imgNoData.isHidden = false
+            noProductsImg.isHidden = false
         } else {
             BrandProductsCollection.isHidden = false
-         //   imgNoData.isHidden = true
+            noProductsImg.isHidden = true
         }
         
     }

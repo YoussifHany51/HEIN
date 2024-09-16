@@ -10,6 +10,7 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var adsCollection: UICollectionView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var brandsCollection: UICollectionView!
     var indicator : UIActivityIndicatorView?
     var viewModel:HomeProtocol!
@@ -18,18 +19,13 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pageControl.numberOfPages = photoarr.count
         viewModel = HomeViewModel()
-//        self.navigationItem.hidesBackButton = true
-//        self.tabBarController?.navigationItem.hidesBackButton = true
         setIndicator()
-       
-//search = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(productSearch))
-        //self.tabBarController?.navigationItem.leftBarButtonItem = search
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.setupCollectionView()
-       // self.tabBarController?.tabBar.isHidden = false
         self.registerCells()
         adsCollection.delegate = self
         adsCollection.dataSource = self
@@ -141,7 +137,6 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
             let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsViewController")as! BrandsViewController
             brandsVC.vendor = viewModel.brands?[indexPath.row].title
             brandsVC.brandImage = viewModel.brands?[indexPath.row].image.src
-//            navigationController?.pushViewController(brandsVC, animated: true)
             self.present(brandsVC, animated: true)
         }else{
             

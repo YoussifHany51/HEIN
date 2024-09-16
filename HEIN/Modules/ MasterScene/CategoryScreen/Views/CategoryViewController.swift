@@ -13,6 +13,7 @@ class CategoryViewController: UIViewController {
     @IBOutlet weak var categorySeg: UISegmentedControl!
     @IBOutlet weak var genderSeg: UISegmentedControl!
     
+    @IBOutlet weak var noProductsImg: UIImageView!
     var category : String?
     var subCategory : String?
     var indicator : UIActivityIndicatorView?
@@ -22,9 +23,7 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndicator()
-       // self.tabBarController?.navigationItem.title = "HEIN"
-        self.tabBarController?.navigationItem.backButtonTitle = "Category"
-        self.tabBarController?.navigationController?.navigationBar.tintColor = UIColor.red
+        noProductsImg.isHidden = true
         categoriesViewModel = CategoriesViewModel()
         
     }
@@ -188,9 +187,18 @@ extension CategoryViewController{
                 $0.productType.rawValue == subCategory.uppercased()
             } ?? []
             }
+        checkIfNoProducts()
         categoryCollection.reloadData()
     }
-    
+    func checkIfNoProducts(){
+        if (categoriesViewModel.filteredResultArr?.count  == 0) {
+            categoryCollection.isHidden = true
+            noProductsImg.isHidden = false
+        } else {
+            categoryCollection.isHidden = false
+            noProductsImg.isHidden = true
+        }
+    }
 
 }
 
