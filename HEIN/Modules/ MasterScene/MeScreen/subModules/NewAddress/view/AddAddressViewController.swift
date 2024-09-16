@@ -25,6 +25,7 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = "HEIN"
         
         fieldsTable.delegate = self
         fieldsTable.dataSource = self
@@ -40,6 +41,11 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         fieldsTable.register(textFeildCellNib, forCellReuseIdentifier: "textFieldCell")
         
         setAddAddressViewModel()
+    }
+    
+    @IBAction func chooseOnMap(_ sender: Any) {
+        let mapVC = storyboard?.instantiateViewController(withIdentifier: "map") as! MapViewController
+        navigationController?.present(mapVC, animated: true)
     }
     
     func setAddAddressViewModel() {

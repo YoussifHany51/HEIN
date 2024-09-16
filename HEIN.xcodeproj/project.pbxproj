@@ -106,6 +106,7 @@
 		F47BD44F2C8BE55300A8A8AD /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */; };
 		F47BD4512C8BE57A00A8A8AD /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */; };
 		F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */; };
+		F4A82B112C98788D008FA41A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A82B102C98788D008FA41A /* MapViewController.swift */; };
 		F4B1B6092C96FA3D0090606E /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1B6082C96FA3D0090606E /* Currencies.swift */; };
 		F4B1B60B2C9730CB0090606E /* ExchangeCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1B60A2C9730CB0090606E /* ExchangeCurrency.swift */; };
 		F4D7922E2C91F1A90014557D /* CouponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D7922D2C91F1A90014557D /* CouponsViewController.swift */; };
@@ -225,6 +226,7 @@
 		F47BD44E2C8BE55300A8A8AD /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		F47BD4502C8BE57A00A8A8AD /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		F4A82B102C98788D008FA41A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F4B1B6082C96FA3D0090606E /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		F4B1B60A2C9730CB0090606E /* ExchangeCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCurrency.swift; sourceTree = "<group>"; };
 		F4D7922D2C91F1A90014557D /* CouponsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsViewController.swift; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 		F47BD4422C8BE46700A8A8AD /* NewAddress */ = {
 			isa = PBXGroup;
 			children = (
+				F4A82B0C2C987844008FA41A /* subModules */,
 				F47BD4442C8BE47D00A8A8AD /* viewModel */,
 				F47BD4432C8BE47600A8A8AD /* view */,
 			);
@@ -911,6 +914,38 @@
 			isa = PBXGroup;
 			children = (
 				F47BD4522C8BE59700A8A8AD /* CurrencyViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F4A82B0C2C987844008FA41A /* subModules */ = {
+			isa = PBXGroup;
+			children = (
+				F4A82B0D2C987852008FA41A /* map */,
+			);
+			path = subModules;
+			sourceTree = "<group>";
+		};
+		F4A82B0D2C987852008FA41A /* map */ = {
+			isa = PBXGroup;
+			children = (
+				F4A82B0F2C987867008FA41A /* viewModel */,
+				F4A82B0E2C98785C008FA41A /* view */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
+		F4A82B0E2C98785C008FA41A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F4A82B102C98788D008FA41A /* MapViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F4A82B0F2C987867008FA41A /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -1171,6 +1206,7 @@
 				099AD5432C87520200E2191D /* ExchangeRates.swift in Sources */,
 				091E6E522C8E0AC80002C5D9 /* SearchButtonViewModel.swift in Sources */,
 				F4D7D9842C8CEB7E00EA36AB /* AddressesViewModel.swift in Sources */,
+				F4A82B112C98788D008FA41A /* MapViewController.swift in Sources */,
 				F4D792302C91F3280014557D /* CouponsTableViewCell.swift in Sources */,
 				F47BD4532C8BE59700A8A8AD /* CurrencyViewModel.swift in Sources */,
 				098D9EC42C875E3D00EC6053 /* HomeScreenViewController.swift in Sources */,

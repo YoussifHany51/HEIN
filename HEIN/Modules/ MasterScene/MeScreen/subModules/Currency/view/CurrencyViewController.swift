@@ -29,6 +29,7 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = "HEIN"
         
         currenciesTable.delegate = self
         currenciesTable.dataSource = self

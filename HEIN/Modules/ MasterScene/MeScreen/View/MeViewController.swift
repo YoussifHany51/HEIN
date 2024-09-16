@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var meTable: UITableView!
     
@@ -27,8 +28,15 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         meTable.delegate = self
         meTable.dataSource = self
         
+        self.title = "HEIN"
+        self.navigationController?.navigationBar.tintColor = UIColor(.red)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")
+        
         if Auth.auth().currentUser != nil {
             userNameLabel.text = UserDefaults.standard.string(forKey: "User_name")
+            userEmailLabel.text = Auth.auth().currentUser?.email
         } else {
             userNameLabel.text = .none
         }
