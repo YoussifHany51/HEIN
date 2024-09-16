@@ -10,26 +10,25 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var adsCollection: UICollectionView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var brandsCollection: UICollectionView!
     var indicator : UIActivityIndicatorView?
     var viewModel:HomeProtocol!
     var photoarr = [UIImage(named: "sale1"),UIImage(named: "sale2"),UIImage(named: "sale3"),UIImage(named: "sale4"),UIImage(named: "sale5"),UIImage(named: "sale6")]
     var search:UIBarButtonItem!
+    var timer : Timer?
+    var current = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startTimer()
+        pageControl.numberOfPages = photoarr.count
         viewModel = HomeViewModel()
-//        self.navigationItem.hidesBackButton = true
-//        self.tabBarController?.navigationItem.hidesBackButton = true
         setIndicator()
-       
-//search = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(productSearch))
-        //self.tabBarController?.navigationItem.leftBarButtonItem = search
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.setupCollectionView()
-       // self.tabBarController?.tabBar.isHidden = false
         self.registerCells()
         adsCollection.delegate = self
         adsCollection.dataSource = self
@@ -74,6 +73,22 @@ class HomeScreenViewController: UIViewController {
        
         self.present(seearcchVC, animated: true)
     }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNextIndex), userInfo: nil, repeats: true)
+    }
+
+    @objc func moveToNextIndex() {
+        if current < photoarr.count - 1 {
+            current += 1
+        } else {
+            current = 0
+        }
+        
+        adsCollection.scrollToItem(at: IndexPath(item: current, section: 0), at: .centeredHorizontally, animated: true)
+        pageControl.currentPage = current
+    }
+
     
 }
 
@@ -141,7 +156,6 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
             let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsViewController")as! BrandsViewController
             brandsVC.vendor = viewModel.brands?[indexPath.row].title
             brandsVC.brandImage = viewModel.brands?[indexPath.row].image.src
-//            navigationController?.pushViewController(brandsVC, animated: true)
             self.present(brandsVC, animated: true)
         }else{
             
