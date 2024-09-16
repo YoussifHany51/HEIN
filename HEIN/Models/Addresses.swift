@@ -24,6 +24,7 @@ struct CustomerAddressResponse: Codable {
 struct Address: Codable {
     let id, customerID: Int
     let address1, city: String
+    let address2: String?
     let phone, name: String
     let country: String
     var addressDefault: Bool
@@ -31,7 +32,7 @@ struct Address: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case customerID = "customer_id"
-        case address1, city, phone, name
+        case address1, address2, city, phone, name
         case country
         case addressDefault = "default"
     }

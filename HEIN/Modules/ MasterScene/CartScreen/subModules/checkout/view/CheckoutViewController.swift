@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import MapKit
 
 class CheckoutViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var addressLocationView: CustomView!
+    
     @IBOutlet weak var processingOrderView: UIView!
     
     @IBOutlet weak var currencyLable: UILabel!
@@ -67,6 +71,23 @@ class CheckoutViewController: UIViewController {
                 paymentButton.isEnabled = true
                 loadingView.isHidden = true
                 addAddressButton.isHidden = true
+                
+                if let location = defaultAddress.address2 {
+                    if location.contains("-") {
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = CLLocationCoordinate2D(latitude: Double(location.components(separatedBy: "-").first!) ?? 30.033333, longitude: Double(location.components(separatedBy: "-").last!) ?? 31.233334)
+                        mapView.addAnnotation(annotation)
+                        
+                        let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+                        mapView.setRegion(region, animated: true)
+                        
+                        self.addressLocationView.isHidden = false
+                    } else {
+                        self.addressLocationView.isHidden = true
+                    }
+                } else {
+                    self.addressLocationView.isHidden = true
+                }
             } else {
                 addressIndicator.stopAnimating()
                 addAddressButton.isHidden = false

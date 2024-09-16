@@ -68,7 +68,16 @@ class CheckoutViewModel {
             return
         }
         
-        nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: "\(order.id)")), type: DraftOrderContainer.self, parameters: ["draft_order":["shipping_address": ["first_name":"\(address.name)", "last_name":"", "address1":"\(address.address1)", "city":"\(address.city)", "country":"\(address.country)", "phone":"\(address.phone)"]]]) { draftOrderContainer in
+        var coordinates: (latitude: String, longitude:String)?
+        
+        if let location = address.address2 {
+            if location.contains("-") {
+                coordinates = (latitude: "\(location.components(separatedBy: "-").first!)", longitude: "\(location.components(separatedBy: "-").last!)")
+                print(coordinates!)
+            }
+        }
+        
+        nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: "\(order.id)")), type: DraftOrderContainer.self, parameters: ["draft_order":["shipping_address": ["first_name":"\(address.name)", "last_name":"", "address1":"\(address.address1)", "address2":"\(address.address2 ?? "")", "city":"\(address.city)", "country":"\(address.country)", "phone":"\(address.phone)", "latitude": "\(coordinates?.latitude ?? "")", "longitude": "\(coordinates?.longitude ?? "")" ]]]) { draftOrderContainer in
             
             guard let draftOrderContainer = draftOrderContainer else {
                 self.bindProcessingErrorToViewController()
