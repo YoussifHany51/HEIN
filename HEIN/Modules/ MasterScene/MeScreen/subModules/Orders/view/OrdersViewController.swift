@@ -20,11 +20,13 @@ class OrdersViewController: UIViewController,UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = "HEIN"
         
         ordersTable.delegate = self
         ordersTable.dataSource = self
         
         ordersTableIndicator.isHidden = true
+        
         
         if orders?.count == 0 {
             emptyOrdersLable.isHidden = false
