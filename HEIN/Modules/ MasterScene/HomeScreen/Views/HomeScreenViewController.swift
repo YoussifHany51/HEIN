@@ -19,17 +19,11 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = HomeViewModel()
-//        self.navigationItem.hidesBackButton = true
-//        self.tabBarController?.navigationItem.hidesBackButton = true
         setIndicator()
-       
-//search = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(productSearch))
-        //self.tabBarController?.navigationItem.leftBarButtonItem = search
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.setupCollectionView()
-       // self.tabBarController?.tabBar.isHidden = false
         self.registerCells()
         adsCollection.delegate = self
         adsCollection.dataSource = self
@@ -47,19 +41,17 @@ class HomeScreenViewController: UIViewController {
                 }}}
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        brandsCollection.collectionViewLayout.invalidateLayout()
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        brandsCollection.collectionViewLayout.invalidateLayout()
+//    }
     
      func loadData(){
-        
          viewModel?.loadBrandCollectionData()
          viewModel?.bindBrandsToViewController = { [weak self] in
              DispatchQueue.main.async {
                  self?.brandsCollection.reloadData()
              }
-             
          }
          viewModel?.loadAdsCollectionData()
          viewModel?.bindAdsToViewController = { [weak self] in

@@ -8,6 +8,7 @@
 import UIKit
 
 class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UISearchBarDelegate,UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var noProductimg: UIImageView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var BrandProductsCollection: UICollectionView!
     @IBOutlet weak var imgBrand: UIImageView!
@@ -23,7 +24,8 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "HEIN"
+        noProductimg.isHidden = true
+       // self.navigationItem.title = "HEIN"
         self.hideKeyboardWhenTappedAround()
         brandsViewModel = BrandsViewMode()
         setIndicator()
@@ -33,10 +35,11 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         BrandProductsCollection.delegate = self
         BrandProductsCollection.dataSource = self
         setupCollectionView()
-        self.tabBarController?.tabBar.isHidden = true
+       // self.tabBarController?.tabBar.isHidden = true
         searchBar.delegate = self
         registerCell()
         self.navigationItem.title = "HEIN"
+        
         brandsViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 self.loadData()
@@ -73,10 +76,10 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         brandsViewModel?.getBrands(vendor: vendor ?? " ")
         if (brandsViewModel?.brandProducts?.count  == 0) {
             BrandProductsCollection.isHidden = true
-        //    imgNoData.isHidden = false
+            noProductimg.isHidden = false
         } else {
             BrandProductsCollection.isHidden = false
-         //   imgNoData.isHidden = true
+            noProductimg.isHidden = true
         }
         
     }
@@ -146,8 +149,13 @@ extension BrandsViewController{
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
-        let productInfovc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController //{
-        productInfovc.product = brandsViewModel.brandProducts?[indexPath.row]
+        let productInfovc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController
+        if flag == false{
+            productInfovc.product = brandsViewModel.brandProducts?[indexPath.row]
+        }else{
+            productInfovc.product = brandsViewModel.sortedProducts?[indexPath.row]
+        }
+        
         self.present(productInfovc, animated: true)
     }
     

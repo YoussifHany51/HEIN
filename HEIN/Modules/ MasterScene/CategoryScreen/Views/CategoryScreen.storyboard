@@ -16,8 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoProduct" translatesAutoresizingMaskIntoConstraints="NO" id="kQQ-vO-oIN">
+                                <rect key="frame" x="50" y="273" width="293" height="296"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UZz-zF-x4I">
-                                <rect key="frame" x="0.0" y="173" width="393" height="591"/>
+                                <rect key="frame" x="0.0" y="181" width="393" height="583"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fy3-Ct-SNm">
                                     <size key="itemSize" width="128" height="128"/>
@@ -28,7 +31,7 @@
                                 <cells/>
                             </collectionView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ckS-33-wIn">
-                                <rect key="frame" x="0.0" y="103" width="393" height="32"/>
+                                <rect key="frame" x="0.0" y="111" width="393" height="32"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Women"/>
@@ -38,7 +41,7 @@
                                 <color key="selectedSegmentTintColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7jP-eh-QTD">
-                                <rect key="frame" x="0.0" y="142" width="393" height="32"/>
+                                <rect key="frame" x="0.0" y="150" width="393" height="32"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="T-Shirts"/>
@@ -48,7 +51,7 @@
                                 <color key="selectedSegmentTintColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </segmentedControl>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRe-cu-6gN">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <rect key="frame" x="0.0" y="67" width="393" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
@@ -70,6 +73,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kQQ-vO-oIN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="214" id="Hch-2O-vt0"/>
                             <constraint firstItem="7jP-eh-QTD" firstAttribute="top" secondItem="ckS-33-wIn" secondAttribute="bottom" constant="8" symbolic="YES" id="JP6-O9-57i"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UZz-zF-x4I" secondAttribute="bottom" constant="5" id="KH9-Dy-Epq"/>
                             <constraint firstItem="ckS-33-wIn" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="L7x-9o-aPd"/>
@@ -79,11 +83,14 @@
                             <constraint firstItem="7jP-eh-QTD" firstAttribute="width" secondItem="ckS-33-wIn" secondAttribute="width" id="NM8-DW-ZpP"/>
                             <constraint firstItem="UZz-zF-x4I" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RPH-fU-U69"/>
                             <constraint firstItem="ckS-33-wIn" firstAttribute="top" secondItem="tRe-cu-6gN" secondAttribute="bottom" id="RVD-Lg-5NQ"/>
-                            <constraint firstItem="tRe-cu-6gN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Zit-7K-asa"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kQQ-vO-oIN" secondAttribute="bottom" constant="200" id="V5v-Un-k8L"/>
+                            <constraint firstItem="tRe-cu-6gN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="Zit-7K-asa"/>
                             <constraint firstItem="tRe-cu-6gN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="a1R-is-8bt"/>
                             <constraint firstItem="UZz-zF-x4I" firstAttribute="top" secondItem="7jP-eh-QTD" secondAttribute="bottom" id="eX3-8Q-6oj"/>
                             <constraint firstItem="7jP-eh-QTD" firstAttribute="leading" secondItem="ckS-33-wIn" secondAttribute="leading" id="fY7-dA-Eyc"/>
                             <constraint firstItem="UZz-zF-x4I" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="mY7-5i-O3v"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kQQ-vO-oIN" secondAttribute="trailing" constant="50" id="r5X-JR-ao7"/>
+                            <constraint firstItem="kQQ-vO-oIN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="sqN-Vy-cBQ"/>
                             <constraint firstItem="tRe-cu-6gN" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="xP4-fJ-5py"/>
                         </constraints>
                     </view>
@@ -95,6 +102,7 @@
                         <outlet property="categoryCollection" destination="UZz-zF-x4I" id="a4V-8g-hCb"/>
                         <outlet property="categorySeg" destination="7jP-eh-QTD" id="39L-lW-QHc"/>
                         <outlet property="genderSeg" destination="ckS-33-wIn" id="GL0-ct-xms"/>
+                        <outlet property="noProductimg" destination="kQQ-vO-oIN" id="W8r-v6-jD0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -103,6 +111,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NoProduct" width="736" height="424"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="square.grid.3x3.fill" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
