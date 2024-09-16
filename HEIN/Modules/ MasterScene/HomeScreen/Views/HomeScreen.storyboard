@@ -170,15 +170,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoProducts" translatesAutoresizingMaskIntoConstraints="NO" id="Ykd-mz-Qow">
-                                <rect key="frame" x="50" y="378.66666666666674" width="293" height="424"/>
+                                <rect key="frame" x="50" y="341.66666666666674" width="293" height="276.33333333333326"/>
                             </imageView>
                             <searchBar contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzW-iZ-zCR">
-                                <rect key="frame" x="0.0" y="117.66666666666667" width="393" height="41.333333333333329"/>
+                                <rect key="frame" x="0.0" y="108" width="393" height="34"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hpm-c7-R6N">
-                                <rect key="frame" x="0.0" y="283.66666666666674" width="393" height="748"/>
+                                <rect key="frame" x="0.0" y="246.66666666666669" width="393" height="600.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vn3-Re-JK5">
                                     <size key="itemSize" width="128" height="128"/>
@@ -189,7 +189,7 @@
                                 <cells/>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guK-HX-BUe">
-                                <rect key="frame" x="0.0" y="64" width="393" height="53.666666666666657"/>
+                                <rect key="frame" x="0.0" y="64" width="393" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -206,17 +206,17 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-ji-Z2A">
-                                <rect key="frame" x="0.0" y="181" width="93" height="20.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpB-ji-Z2A">
+                                <rect key="frame" x="0.0" y="164" width="93" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9uJ-NV-AcY">
-                                <rect key="frame" x="90.333333333333329" y="167" width="232.33333333333337" height="111.66666666666669"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uJ-NV-AcY">
+                                <rect key="frame" x="111" y="150" width="191" height="91.666666666666686"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-8U-4Mx">
-                                <rect key="frame" x="327" y="164" width="49" height="83"/>
+                                <rect key="frame" x="329" y="147" width="49" height="68.333333333333314"/>
                                 <color key="tintColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.up.arrow.down" catalog="system"/>
@@ -224,8 +224,8 @@
                                     <action selector="sortedByPrice:" destination="bqG-4B-MRS" eventType="touchUpInside" id="mCL-pe-G3r"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jo-kb-uFW">
-                                <rect key="frame" x="4" y="201.66666666666666" width="83" height="37.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Jo-kb-uFW">
+                                <rect key="frame" x="4" y="181" width="83" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -248,12 +248,12 @@
                             <constraint firstItem="guK-HX-BUe" firstAttribute="top" secondItem="M4s-MZ-JrB" secondAttribute="top" constant="5" id="V38-mc-7jQ"/>
                             <constraint firstItem="2Jo-kb-uFW" firstAttribute="height" secondItem="2vD-go-dlz" secondAttribute="height" multiplier="0.036385" id="WTd-QJ-fah"/>
                             <constraint firstItem="OzW-iZ-zCR" firstAttribute="width" secondItem="2vD-go-dlz" secondAttribute="width" id="XDg-fG-vQi"/>
-                            <constraint firstItem="M4s-MZ-JrB" firstAttribute="trailing" secondItem="ccT-8U-4Mx" secondAttribute="trailing" constant="17" id="Xsb-Bt-tXV"/>
+                            <constraint firstItem="M4s-MZ-JrB" firstAttribute="trailing" secondItem="ccT-8U-4Mx" secondAttribute="trailing" constant="15" id="Xsb-Bt-tXV"/>
                             <constraint firstItem="9uJ-NV-AcY" firstAttribute="height" secondItem="2vD-go-dlz" secondAttribute="height" multiplier="0.10759" id="Xwq-bh-tIs"/>
                             <constraint firstItem="OzW-iZ-zCR" firstAttribute="leading" secondItem="M4s-MZ-JrB" secondAttribute="leading" id="YA3-oA-vvK"/>
                             <constraint firstItem="bpB-ji-Z2A" firstAttribute="top" secondItem="OzW-iZ-zCR" secondAttribute="bottom" constant="22" id="YIN-8y-Gj3"/>
                             <constraint firstItem="bpB-ji-Z2A" firstAttribute="leading" secondItem="M4s-MZ-JrB" secondAttribute="leading" id="d2S-WB-IGp"/>
-                            <constraint firstItem="9uJ-NV-AcY" firstAttribute="width" secondItem="2vD-go-dlz" secondAttribute="width" multiplier="0.486005" id="gI1-0z-M0B"/>
+                            <constraint firstItem="9uJ-NV-AcY" firstAttribute="width" secondItem="2vD-go-dlz" secondAttribute="width" multiplier="0.3" id="gI1-0z-M0B"/>
                             <constraint firstItem="ccT-8U-4Mx" firstAttribute="height" secondItem="2vD-go-dlz" secondAttribute="height" multiplier="0.08" id="hXA-e1-mNd"/>
                             <constraint firstItem="hpm-c7-R6N" firstAttribute="top" secondItem="9uJ-NV-AcY" secondAttribute="bottom" constant="5" id="i9N-Fi-RgR"/>
                             <constraint firstItem="OzW-iZ-zCR" firstAttribute="height" secondItem="2vD-go-dlz" secondAttribute="height" multiplier="0.04" id="jLS-Er-I16"/>
@@ -289,7 +289,7 @@
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
