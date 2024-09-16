@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
               self.window = UIWindow(windowScene: windowScene)
         
-              if Auth.auth().currentUser != nil {
+              if UserDefaults.standard.string(forKey: "User_name") != nil {
                   // User is signed in, show Home Screen
                   let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "master")
                   window?.rootViewController = homeViewController
@@ -31,7 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                   let navigationController = UINavigationController(rootViewController: loginViewController)
                   window?.rootViewController = navigationController
               }
-              
+        print(UserDefaults.standard.string(forKey: "User_id"))
+        print(UserDefaults.standard.string(forKey: "User_name"))
+        print(UserDefaults.standard.string(forKey: "DraftOrder_Id"))
               window?.makeKeyAndVisible()
     }
 

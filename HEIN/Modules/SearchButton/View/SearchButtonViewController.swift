@@ -108,7 +108,14 @@ class SearchButtonViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
+        let productInfovc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController
+        if !filteredData.isEmpty{
+            productInfovc.product = filteredData[indexPath.row]
+        }else{
+            productInfovc.product = data[indexPath.row]
+        }
+        self.present(productInfovc, animated: true)
     }
 
 }
