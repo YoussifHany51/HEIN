@@ -114,6 +114,7 @@ struct PaymentSchedule: Codable {
 // MARK: Shipping and billing addresse
 struct shippingOrBillingAddress: Codable {
     let address1: String
+    let address2: String?
     let phone: String
     let city: String
     let country: String

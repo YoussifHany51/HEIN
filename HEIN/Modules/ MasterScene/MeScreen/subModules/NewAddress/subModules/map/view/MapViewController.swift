@@ -11,6 +11,9 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+    var ref: AddressLocationProtocol?
+    var editingLocation: CLLocation?
+    
     // MARK: - Properties
     var locationManager = CLLocationManager()
     var selectedCoordinates: CLLocationCoordinate2D?
@@ -39,11 +42,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             // Zoom into user's current location
-            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            let region = MKCoordinateRegion(center: self.editingLocation?.coordinate ?? location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.setRegion(region, animated: true)
             
             // Drop a pin at the user's initial location
-            dropPin(at: location.coordinate)
+            dropPin(at: self.editingLocation?.coordinate ?? location.coordinate)
             
             // Set selected location to the user's initial location
             selectedCoordinates = location.coordinate
@@ -83,8 +86,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func confirmLocation(_ sender: Any) {
-        guard let selectedCoordinates = selectedCoordinates else {return}
-        print("\(selectedCoordinates.latitude), \(selectedCoordinates.longitude)")
+        guard let selectedCoordinates = selectedCoordinates else {
+            return
+        }
+        ref?.updateAddressLocation(coordinates: "\(selectedCoordinates.latitude)-\(selectedCoordinates.longitude)")
+        self.dismiss(animated: true)
     }
 }
 

@@ -93,8 +93,18 @@ class PaymentViewModel {
     }
     
     func extractShippingAddressOrderData(address: shippingOrBillingAddress) -> [String: Any]{
+        
+        var coordinates: (latitude: String, longitude:String)?
+        if let location = address.address2 {
+            if location.contains("-") {
+                coordinates = (latitude: "\(location.components(separatedBy: "-").first!)", longitude: "\(location.components(separatedBy: "-").last!)")
+                print(coordinates!)
+            }
+        }
+        
         var result: [String: Any] = [:]
-        result = ["address1": address.address1, "city": address.city, "country": address.country, "name": address.name, "phone": address.phone]
+        result = ["address1": address.address1, "city": address.city, "country": address.country, "name": address.name, "phone": address.phone, "latitude": "\(coordinates?.latitude ?? "")", "longitude": "\(coordinates?.longitude ?? "")"]
+        
         return result
     }
     

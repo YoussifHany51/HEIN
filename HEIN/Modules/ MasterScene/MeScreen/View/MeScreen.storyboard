@@ -438,20 +438,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59L-xM-6wU">
                                 <rect key="frame" x="0.0" y="123" width="393" height="599"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choose on map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fof-fo-WtH">
-                                        <rect key="frame" x="14.999999999999993" y="0.0" width="123.33333333333331" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick from map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fof-fo-WtH">
+                                        <rect key="frame" x="15.000000000000007" y="0.0" width="115.66666666666669" height="21.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeX-Tx-DpM">
-                                        <rect key="frame" x="303.66666666666669" y="1" width="23" height="19.333333333333332"/>
+                                        <rect key="frame" x="303.66666666666669" y="1.3333333333333286" width="23" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ap-Wh-J8h">
-                                        <rect key="frame" x="326.66666666666669" y="-6.6666666666666714" width="51.333333333333314" height="34.333333333333336"/>
+                                        <rect key="frame" x="326.66666666666669" y="-6.3333333333333286" width="51.333333333333314" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="map" catalog="system" symbolScale="large"/>
@@ -462,8 +462,49 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8SM-OD-qUP">
-                                        <rect key="frame" x="0.0" y="41" width="393" height="558"/>
+                                        <rect key="frame" x="0.0" y="48" width="393" height="551"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapCell" rowHeight="123" id="kb6-IB-Z1c" customClass="MapTableViewCell" customModule="HEIN" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50" width="393" height="123"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kb6-IB-Z1c" id="qH1-Q2-ziL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="123"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iH3-Yw-wp4" customClass="CustomView" customModule="HEIN" customModuleProvider="target">
+                                                            <rect key="frame" x="25" y="0.0" width="343" height="123"/>
+                                                            <subviews>
+                                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfJ-Dr-SMR">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="123"/>
+                                                                    <standardMapConfiguration key="preferredConfiguration"/>
+                                                                </mapView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="pfJ-Dr-SMR" secondAttribute="bottom" id="5fk-1t-GnK"/>
+                                                                <constraint firstItem="pfJ-Dr-SMR" firstAttribute="leading" secondItem="iH3-Yw-wp4" secondAttribute="leading" id="IzT-zd-SbQ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pfJ-Dr-SMR" secondAttribute="trailing" id="S0j-y0-q0l"/>
+                                                                <constraint firstItem="pfJ-Dr-SMR" firstAttribute="top" secondItem="iH3-Yw-wp4" secondAttribute="top" id="q4F-6y-htx"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="Rounded" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="Shadowed" value="NO"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="iH3-Yw-wp4" firstAttribute="leading" secondItem="qH1-Q2-ziL" secondAttribute="leading" constant="25" id="1yp-BP-znR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iH3-Yw-wp4" secondAttribute="bottom" id="BSn-R9-59A"/>
+                                                        <constraint firstAttribute="trailing" secondItem="iH3-Yw-wp4" secondAttribute="trailing" constant="25" id="Zf7-6r-faN"/>
+                                                        <constraint firstItem="iH3-Yw-wp4" firstAttribute="top" secondItem="qH1-Q2-ziL" secondAttribute="top" id="aES-TS-IuA"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="mapView" destination="pfJ-Dr-SMR" id="tJk-ZY-EqM"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
                                     <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Mj-fH-cbj">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="599"/>
@@ -487,9 +528,9 @@
                                     <constraint firstAttribute="trailing" secondItem="8SM-OD-qUP" secondAttribute="trailing" id="7f4-gA-RLZ"/>
                                     <constraint firstItem="2Mj-fH-cbj" firstAttribute="top" secondItem="59L-xM-6wU" secondAttribute="top" id="D94-vl-xfh"/>
                                     <constraint firstItem="8SM-OD-qUP" firstAttribute="leading" secondItem="59L-xM-6wU" secondAttribute="leading" id="OJo-nG-y6W"/>
+                                    <constraint firstItem="8SM-OD-qUP" firstAttribute="top" secondItem="9Ap-Wh-J8h" secondAttribute="bottom" constant="20" id="PtE-ju-DxS"/>
                                     <constraint firstAttribute="trailing" secondItem="2Mj-fH-cbj" secondAttribute="trailing" id="YfD-9F-Npx"/>
                                     <constraint firstItem="9Ap-Wh-J8h" firstAttribute="leading" secondItem="FeX-Tx-DpM" secondAttribute="trailing" id="dQi-24-ZuZ"/>
-                                    <constraint firstItem="8SM-OD-qUP" firstAttribute="top" secondItem="fof-fo-WtH" secondAttribute="bottom" constant="20" id="f9e-gW-Jne"/>
                                     <constraint firstItem="2Mj-fH-cbj" firstAttribute="leading" secondItem="59L-xM-6wU" secondAttribute="leading" id="hHD-en-VhZ"/>
                                     <constraint firstItem="9Ap-Wh-J8h" firstAttribute="centerY" secondItem="fof-fo-WtH" secondAttribute="centerY" id="kQG-yL-mhh"/>
                                 </constraints>
@@ -527,6 +568,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="hjy-Oa-57D"/>
                     <connections>
+                        <outlet property="checkLocationLabel" destination="FeX-Tx-DpM" id="krY-T3-hsc"/>
+                        <outlet property="chooseOnMapLabel" destination="fof-fo-WtH" id="hSW-Yn-bFf"/>
                         <outlet property="deleteAddressButton" destination="bsc-0K-dis" id="IN4-WZ-4xx"/>
                         <outlet property="fieldsTable" destination="8SM-OD-qUP" id="yFr-PI-FqV"/>
                         <outlet property="loadingView" destination="2Mj-fH-cbj" id="48S-we-JIb"/>
