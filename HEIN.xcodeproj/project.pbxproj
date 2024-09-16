@@ -616,11 +616,8 @@
 		1EB071E72C88E92A00AEFD0F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-
 				090761072C958A2A001BA001 /* CoreData */,
-
 				F4B1B6072C96FA1E0090606E /* Currencies */,
-
 				1EB071EA2C88E9BF00AEFD0F /* Reachability */,
 			);
 			path = Utilities;
