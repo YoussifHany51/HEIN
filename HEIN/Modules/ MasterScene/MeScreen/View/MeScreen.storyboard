@@ -169,8 +169,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvN-TR-fMT">
-                                                            <rect key="frame" x="156" y="98" width="99" height="20"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvN-TR-fMT">
+                                                            <rect key="frame" x="218" y="98" width="37" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -714,6 +714,67 @@
             </objects>
             <point key="canvasLocation" x="592" y="-696"/>
         </scene>
+        <!--Guest Me View Controller-->
+        <scene sceneID="Qbn-PC-rjH">
+            <objects>
+                <viewController storyboardIdentifier="guestMe" id="Pva-w1-Jws" customClass="GuestMeViewController" customModule="HEIN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lqh-yF-FgH">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrK-Ke-xkN" customClass="CustomButton" customModule="HEIN" customModuleProvider="target">
+                                <rect key="frame" x="98.333333333333329" y="413" width="196.33333333333337" height="51"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="LOGIN">
+                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goToLogin:" destination="Pva-w1-Jws" eventType="touchUpInside" id="8ZS-IA-Y0i"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to be logged in inorder to manage your account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dK-1L-xzm">
+                                <rect key="frame" x="55" y="339.66666666666669" width="283" height="38.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XkX-2t-wkH">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="HEIN" id="1xz-Fh-em1"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="W7c-hb-Jtc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZrK-Ke-xkN" firstAttribute="centerX" secondItem="W7c-hb-Jtc" secondAttribute="centerX" id="JqH-qZ-Iu3"/>
+                            <constraint firstItem="XkX-2t-wkH" firstAttribute="leading" secondItem="W7c-hb-Jtc" secondAttribute="leading" id="MuZ-3y-PTU"/>
+                            <constraint firstItem="ZrK-Ke-xkN" firstAttribute="height" secondItem="Lqh-yF-FgH" secondAttribute="height" multiplier="0.06" id="PBc-nC-UJO"/>
+                            <constraint firstItem="ZrK-Ke-xkN" firstAttribute="width" secondItem="Lqh-yF-FgH" secondAttribute="width" multiplier="0.5" id="UHi-Ce-dTP"/>
+                            <constraint firstItem="7dK-1L-xzm" firstAttribute="width" secondItem="Lqh-yF-FgH" secondAttribute="width" multiplier="0.72" id="Uxr-zT-fmH"/>
+                            <constraint firstItem="XkX-2t-wkH" firstAttribute="top" secondItem="W7c-hb-Jtc" secondAttribute="top" id="XwH-6d-ioJ"/>
+                            <constraint firstItem="XkX-2t-wkH" firstAttribute="trailing" secondItem="W7c-hb-Jtc" secondAttribute="trailing" id="fv9-jD-gTh"/>
+                            <constraint firstItem="7dK-1L-xzm" firstAttribute="centerX" secondItem="W7c-hb-Jtc" secondAttribute="centerX" id="rOI-DA-D68"/>
+                            <constraint firstItem="ZrK-Ke-xkN" firstAttribute="top" secondItem="7dK-1L-xzm" secondAttribute="bottom" constant="35" id="smT-hB-eru"/>
+                            <constraint firstItem="ZrK-Ke-xkN" firstAttribute="centerY" secondItem="W7c-hb-Jtc" secondAttribute="centerY" id="zjg-df-GFb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="guestMeNavigationBar" destination="XkX-2t-wkH" id="eoq-2y-Ju5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1Y-7i-ae7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2207" y="-696"/>
+        </scene>
     </scenes>
     <resources>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
@@ -724,6 +785,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

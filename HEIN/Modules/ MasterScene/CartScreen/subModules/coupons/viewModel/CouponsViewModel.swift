@@ -33,8 +33,7 @@ class CouponsViewModel {
     
     init(draftOrder: DraftOrder) {
         self.nwService = NetworkManager()
-        // MARK: - Change to get from userDefaults
-        self.draftOrderId = 1186489467176
+        self.draftOrderId = Int(UserDefaults().string(forKey: "DraftOrder_Id") ?? "0")!
         self.draftOrder = draftOrder
         getPriceRules()
     }

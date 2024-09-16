@@ -66,6 +66,7 @@ class CheckoutViewController: UIViewController {
                 
                 paymentButton.isEnabled = true
                 loadingView.isHidden = true
+                addAddressButton.isHidden = true
             } else {
                 addressIndicator.stopAnimating()
                 addAddressButton.isHidden = false

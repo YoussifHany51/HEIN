@@ -360,6 +360,67 @@
             </objects>
             <point key="canvasLocation" x="1358" y="4"/>
         </scene>
+        <!--Guest Cart View Controller-->
+        <scene sceneID="PKf-3F-bs1">
+            <objects>
+                <viewController storyboardIdentifier="guestCart" id="gw5-SG-GLG" customClass="GuestCartViewController" customModule="HEIN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8f9-1Q-Zps">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0th-Bm-ESC" customClass="CustomButton" customModule="HEIN" customModuleProvider="target">
+                                <rect key="frame" x="98.333333333333329" y="413" width="196.33333333333337" height="51"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="LOGIN">
+                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goToLogin:" destination="gw5-SG-GLG" eventType="touchUpInside" id="3hU-HT-YMZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to be logged in inorder to manage your cart" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggO-fF-TPQ">
+                                <rect key="frame" x="55" y="339.66666666666669" width="283" height="38.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVa-MP-eGf">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="HEIN" id="Ws6-YP-HKZ"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="h2J-VH-qG6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ggO-fF-TPQ" firstAttribute="width" secondItem="8f9-1Q-Zps" secondAttribute="width" multiplier="0.72" id="5bH-xW-vPi"/>
+                            <constraint firstItem="oVa-MP-eGf" firstAttribute="trailing" secondItem="h2J-VH-qG6" secondAttribute="trailing" id="Aju-UR-hIJ"/>
+                            <constraint firstItem="oVa-MP-eGf" firstAttribute="leading" secondItem="h2J-VH-qG6" secondAttribute="leading" id="Jqn-Pm-zDm"/>
+                            <constraint firstItem="ggO-fF-TPQ" firstAttribute="centerX" secondItem="h2J-VH-qG6" secondAttribute="centerX" id="SHM-eG-WyA"/>
+                            <constraint firstItem="0th-Bm-ESC" firstAttribute="top" secondItem="ggO-fF-TPQ" secondAttribute="bottom" constant="35" id="UgN-Oy-Vek"/>
+                            <constraint firstItem="0th-Bm-ESC" firstAttribute="height" secondItem="8f9-1Q-Zps" secondAttribute="height" multiplier="0.06" id="VfE-49-ncW"/>
+                            <constraint firstItem="0th-Bm-ESC" firstAttribute="width" secondItem="8f9-1Q-Zps" secondAttribute="width" multiplier="0.5" id="WRJ-hH-4bC"/>
+                            <constraint firstItem="oVa-MP-eGf" firstAttribute="top" secondItem="h2J-VH-qG6" secondAttribute="top" id="f5u-Bk-Hgj"/>
+                            <constraint firstItem="0th-Bm-ESC" firstAttribute="centerX" secondItem="h2J-VH-qG6" secondAttribute="centerX" id="geP-2c-mNO"/>
+                            <constraint firstItem="0th-Bm-ESC" firstAttribute="centerY" secondItem="h2J-VH-qG6" secondAttribute="centerY" id="njI-Re-kOO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="guestCartNavigationBar" destination="oVa-MP-eGf" id="xsz-lu-ceN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EHK-15-mRz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536.64122137404581" y="-662.67605633802816"/>
+        </scene>
         <!--Checkout View Controller-->
         <scene sceneID="RPy-0d-sBU">
             <objects>
