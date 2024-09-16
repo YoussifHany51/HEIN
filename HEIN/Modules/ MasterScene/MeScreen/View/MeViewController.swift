@@ -113,11 +113,9 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     // sign out action
                 do{
                     try Auth.auth().signOut()
-                    let defaults = UserDefaults.standard
-                    defaults.set(nil, forKey: "DraftOrder_Id")
-                    defaults.set(nil, forKey: "DraftOrder_Id")
-                    defaults.set(nil, forKey: "User_id")
-                    defaults.set(nil, forKey: "User_name")
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                     let master = storyBoard.instantiateViewController(identifier: "LoginViewController")
                     self.present(master, animated: true)

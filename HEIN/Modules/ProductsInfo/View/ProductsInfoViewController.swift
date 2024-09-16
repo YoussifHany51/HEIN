@@ -17,12 +17,7 @@ class ProductsInfoViewController: UIViewController {
     
     var product : Product!
     var nwService = NetworkManager()
-    var draftOrder : DraftOrder?{
-        didSet{
-            lineItems = draftOrder?.lineItems
-        }
-    }
-    var lineItems : [LineItem]?
+    
     var productsImageArray = [ProductImage]()
     var index = 0
     
@@ -44,11 +39,12 @@ class ProductsInfoViewController: UIViewController {
     
     @IBOutlet weak var addToFavRef: UIButton!
     
+    var viewModel : ProductInfoViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(scrollingProductImagessetup), userInfo: nil,repeats:true)
-        
+        viewModel = ProductInfoViewModel()
         title = product.vendor
         
         pageControl.numberOfPages = productsImageArray.count
@@ -57,10 +53,40 @@ class ProductsInfoViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil{
-            getDraftOrder()
+            viewModel?.getDraftOrder()
         }
         updateFavoriteButton(for: product)
     }
+    
+    func setUpData(){
+        productsImageArray = self.product.images
+        productTitle.text = self.product.title
+        productTitle.sizeToFit()
+        productType.text = self.product.productType.rawValue
+        productPrice.text = ExchangeCurrency.exchangeCurrency(amount: self.product.variants.first?.price)
+        currentCurrency.text = ExchangeCurrency.getCurrency()
+        productDescription.text = self.product.bodyHTML
+        productDescription.sizeToFit()
+        addToCartRef.tintColor = .red
+        productDescription.isScrollEnabled = true
+        productDescription.contentInsetAdjustmentBehavior = .never
+        addToFavRef.tintColor = .red
+        updateFavoriteButton(for: product)
+    }
+    
+    
+    @objc func scrollingProductImagessetup(){
+        if index < productsImageArray.count - 1 {
+            index += 1
+        }
+        else {
+            index = 0
+        }
+        pageControl.numberOfPages = productsImageArray.count
+        pageControl.currentPage = index
+        collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .right, animated:true)
+    }
+    
     @IBAction func addToFavoriteButton(_ sender: Any) {
         if Auth.auth().currentUser != nil{
             toggleFavorite(product: product)
@@ -72,14 +98,14 @@ class ProductsInfoViewController: UIViewController {
     @IBAction func addToCartButton(_ sender: Any) {
         if Auth.auth().currentUser != nil{
             guard let variant = self.getProductVarient(product: product) else {return}
-            let selectedVariant = lineItems?.filter({ item in
+            let selectedVariant = viewModel?.lineItems?.filter({ item in
                 item.variantID == variant.id
             })
             if selectedVariant?.first == nil {
                 let lineItem = LineItem(id: 0, variantID: variant.id, productID: product.id, price: variant.price, name: productTitle.text, title: productTitle.text, quantity: 1, properties: [NoteAttribute(name: "image", value: (productsImageArray.first?.src) ?? ""),NoteAttribute(name: "size", value: (sizeButtonOutlet.titleLabel?.text)!),NoteAttribute(name: "color", value: (colorButtonOutlet.titleLabel?.text)!)])
-                lineItems?.append(lineItem)
-                nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self,parameters: ["draft_order":["line_items":  extractLineItemsPutData(lineItems: lineItems!) ]]) { dratOrder in
-                    guard let draftOrder = dratOrder else {
+                viewModel?.lineItems?.append(lineItem)
+                nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self,parameters: ["draft_order":["line_items":  viewModel?.extractLineItemsPutData(lineItems: (viewModel?.lineItems)!) ]]) { dratOrder in
+                    guard dratOrder != nil else {
                         print("Invalid Add to Cart")
                         return
                     }
@@ -150,33 +176,7 @@ class ProductsInfoViewController: UIViewController {
            }
            present(alertController, animated: true, completion: nil)
     }
-    func setUpData(){
-        productsImageArray = self.product.images
-        productTitle.text = self.product.title
-        productTitle.sizeToFit()
-        productType.text = self.product.productType.rawValue
-        productPrice.text = ExchangeCurrency.exchangeCurrency(amount: self.product.variants.first?.price)
-        currentCurrency.text = ExchangeCurrency.getCurrency()
-        productDescription.text = self.product.bodyHTML
-        productDescription.sizeToFit()
-        addToCartRef.tintColor = .red
-        productDescription.isScrollEnabled = true
-        productDescription.contentInsetAdjustmentBehavior = .never
-        addToFavRef.tintColor = .red
-        updateFavoriteButton(for: product)
-    }
-    
-    @objc func scrollingProductImagessetup(){
-        if index < productsImageArray.count - 1 {
-            index += 1
-        }
-        else {
-            index = 0
-        }
-        pageControl.numberOfPages = productsImageArray.count
-        pageControl.currentPage = index
-        collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .right, animated:true)
-    }
+ 
     
     func toggleFavorite(product: Product) {
         let favorites = FavoriteProductManager.shared.fetchFavorites()
@@ -200,11 +200,7 @@ class ProductsInfoViewController: UIViewController {
             addToFavRef.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
-    func getDraftOrder() {
-        nwService.fetch(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self) { draftOrderContainer in
-            self.draftOrder = draftOrderContainer?.draftOrder
-        }
-    }
+    
     
     func getProductVarient(product:Product)-> Variant?{
         for variant in product.variants {
@@ -215,29 +211,6 @@ class ProductsInfoViewController: UIViewController {
         return nil
     }
     
-    func extractLineItemsPutData(lineItems: [LineItem]) -> [[String: Any]]{
-            let filterdItems = filterLineItems(lineItems: lineItems)
-            print("LineItem\n")
-            print(lineItems)
-            var result: [[String: Any]] = []
-            for item in filterdItems{
-                var properties : [[String: String]] = []
-                for property in item.properties {
-                    properties.append(["name":property.name, "value": property.value])
-                }
-                result.append(["variant_id": item.variantID!, "quantity": item.quantity, "properties": properties])
-            }
-            return result
-        }
-    func filterLineItems(lineItems: [LineItem]) -> [LineItem] {
-            var filteredItems : [LineItem] = []
-            for item in lineItems {
-                if item.title != "dummy" {
-                    filteredItems.append(item)
-                }
-            }
-            return filteredItems
-        }
 }
 
 extension ProductsInfoViewController: UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

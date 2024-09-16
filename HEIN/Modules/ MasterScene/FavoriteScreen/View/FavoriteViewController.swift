@@ -9,8 +9,8 @@ import UIKit
 
 class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var favoriteTableView: UITableView!
-    var favoriteProducts: [FavoriteProduct] = []
     
+    var viewModel : FavoriteViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteTableView.dataSource = self
@@ -19,39 +19,38 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let favoriteCellNib = UINib(nibName: "FavoriteTableViewCell", bundle: nil)
         favoriteTableView.register(favoriteCellNib, forCellReuseIdentifier: "favoriteCell")
         navigationItem.title = "WhishList ♥️"
+        viewModel = FavoriteViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
-        loadFavorites()
-    }
-    func loadFavorites() {
-        favoriteProducts = FavoriteProductManager.shared.fetchFavorites()
+        viewModel?.loadFavorites()
         favoriteTableView.reloadData()
     }
+    
     
 }
 
 extension FavoriteViewController{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteProducts.count
+        return viewModel?.favoriteProducts.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoriteTableViewCell
-        let favoriteProduct = favoriteProducts[indexPath.row]
-        if let imageUrl = URL(string: favoriteProducts[indexPath.row].imageSrc ?? "cloud.slash") {
+        let favoriteProduct = viewModel?.favoriteProducts[indexPath.row]
+        if let imageUrl = URL(string: viewModel?.favoriteProducts[indexPath.row].imageSrc ?? "cloud.slash") {
             cell.productImage.kf.setImage(with: imageUrl)
         }
-        cell.productName.text = favoriteProduct.title
-        cell.productPrice.text = favoriteProduct.price
-        cell.productColor.text = favoriteProduct.color
-        cell.productSize.text = favoriteProduct.size
+        cell.productName.text = favoriteProduct?.title
+        cell.productPrice.text = favoriteProduct?.price
+        cell.productColor.text = favoriteProduct?.color
+        cell.productSize.text = favoriteProduct?.size
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
-        let selectedFavoriteProduct = favoriteProducts[indexPath.row]
+        let selectedFavoriteProduct = (viewModel?.favoriteProducts[indexPath.row])!
         let product = Product(favoriteProduct: selectedFavoriteProduct) // Convert FavoriteProduct to Product
 
         let vc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController
