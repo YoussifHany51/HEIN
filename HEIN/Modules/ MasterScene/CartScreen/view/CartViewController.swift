@@ -72,6 +72,10 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }
             self.cartTable.reloadData()
         }
+        
+//        for i in 0...2 {
+//            UserDefaults.standard.removeObject(forKey: "coupon\(i)")
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

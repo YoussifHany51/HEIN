@@ -14,17 +14,21 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var brandsCollection: UICollectionView!
     var indicator : UIActivityIndicatorView?
     var viewModel:HomeProtocol!
-    var photoarr = [UIImage(named: "sale1"),UIImage(named: "sale2"),UIImage(named: "sale3"),UIImage(named: "sale1"),UIImage(named: "sale5"),UIImage(named: "sale6")]
+    var photoarr = [(image: UIImage(named: "sale1"), code: "SUMMERSALE50FF"), (image: UIImage(named: "sale3"), code: "SUMMERSALE20FF"), (image: UIImage(named: "sale5"), code: "LAST10WAITING")]
     var search:UIBarButtonItem!
     var timer : Timer?
-    var current = 0
+    
+    //var current = 0
+    private var currentIndexPath: IndexPath = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startTimer()
         pageControl.numberOfPages = photoarr.count
         viewModel = HomeViewModel()
         setIndicator()
+        
+        pageControl.currentPage = currentIndexPath.item
+        startTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,27 +78,57 @@ class HomeScreenViewController: UIViewController {
         self.present(seearcchVC, animated: true)
     }
     
+//    func startTimer() {
+//        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNextIndex), userInfo: nil, repeats: true)
+//    }
+    
+    //Invokes Timer to start Automatic Animation with repeat enabled
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNextIndex), userInfo: nil, repeats: true)
+        // To Restart the timer
+        timer?.invalidate()
+        
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(scrollToNextItem), userInfo: nil, repeats: true);
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    // Scroll to Next Cell
+    @objc private func scrollToNextItem() {
+            let numberOfItems = adsCollection.numberOfItems(inSection: currentIndexPath.section)
+            if numberOfItems > 0 {
+                // Calculate the next item index
+                let nextItem = (currentIndexPath.item + 1) % numberOfItems
+                let nextIndexPath = IndexPath(item: nextItem, section: currentIndexPath.section)
+                
+                // Scroll to the next item
+                adsCollection.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
+                
+                currentIndexPath = nextIndexPath
+            }
+        }
+    
+    deinit {
+        stopTimer()
     }
 
-    @objc func moveToNextIndex() {
-        if current < photoarr.count - 1 {
-            current += 1
-        } else {
-            current = 0
-        }
-        
-        adsCollection.scrollToItem(at: IndexPath(item: current, section: 0), at: .centeredHorizontally, animated: true)
-        pageControl.currentPage = current
-    }
+//    @objc func moveToNextIndex() {
+//        if current < photoarr.count - 1 {
+//            current += 1
+//        } else {
+//            current = 0
+//        }
+//        
+//        adsCollection.scrollToItem(at: IndexPath(item: current, section: 0), at: .centeredHorizontally, animated: true)
+//        pageControl.currentPage = current
+//    }
 
     
 }
 
 
 //   Mark:- Setup UI
-
 extension HomeScreenViewController{
     func setIndicator(){
         indicator = UIActivityIndicatorView(style: .large)
@@ -115,6 +149,11 @@ extension HomeScreenViewController{
         layout.minimumInteritemSpacing = 2
         brandsCollection.setCollectionViewLayout(layout, animated: true)
         
+        let layout2 = UICollectionViewCompositionalLayout{ indexPath, enviroment in
+            return self.drawSection()
+        }
+        adsCollection.setCollectionViewLayout(layout2, animated: true)
+        
     }
     func showConnectionAlert(){
         let alertController = UIAlertController(title: "No Internet Connection", message: "Check your network and try again", preferredStyle: .alert)
@@ -131,8 +170,7 @@ extension HomeScreenViewController{
 
 
 //   Mark:- Draw Collections
-
-extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == adsCollection{return photoarr.count }
         else{return viewModel?.brands?.count ?? 0}
@@ -141,7 +179,7 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == adsCollection{
             let cell = adsCollection.dequeueReusableCell(withReuseIdentifier: "AdsCVC", for: indexPath) as! AdsCVC
-            cell.imgAds.image = photoarr[indexPath.row]
+            cell.imgAds.image = photoarr[indexPath.row].image
             return cell
         }else{
             let cell = brandsCollection.dequeueReusableCell(withReuseIdentifier: "BrandsCVC", for: indexPath) as! BrandsCVC
@@ -151,6 +189,14 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
         }
     }
     
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { action in
+            return
+        }))
+        self.present(alert, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brandsCollection{
             let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsViewController")as! BrandsViewController
@@ -158,8 +204,14 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
             brandsVC.brandImage = viewModel.brands?[indexPath.row].image.src
             self.present(brandsVC, animated: true)
         }else{
-            
-           
+            if UserDefaults.standard.string(forKey: "coupon\(indexPath.row)") == nil {
+                UserDefaults.standard.set(photoarr[indexPath.row].code, forKey: "coupon\(indexPath.row)")
+                showAlert(title: "'\(photoarr[indexPath.row].code)'", message: "Coupon added to your coupons")
+            } else if UserDefaults.standard.string(forKey: "coupon\(indexPath.row)") == "used" {
+                showAlert(title: "Coupon used", message: "")
+            } else {
+                showAlert(title: "Coupon already added", message: "")
+            }
         }
         
     }
@@ -182,7 +234,25 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
         }
     }
     
-    
+    func drawSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.orthogonalScrollingBehavior = .paging
+        
+        section.visibleItemsInvalidationHandler = { [weak self] visibleItems, point, environment in
+            self?.startTimer()
+            let indexPath = visibleItems.last!.indexPath
+            self?.currentIndexPath = indexPath
+            self?.pageControl.currentPage = indexPath.item
+        }
+        
+        return section
     }
+}
 

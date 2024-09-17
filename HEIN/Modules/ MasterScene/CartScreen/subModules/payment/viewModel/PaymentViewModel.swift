@@ -57,6 +57,18 @@ class PaymentViewModel {
             guard orderResponse != nil else {return}
             self.clearDraftOrderItems()
             self.adjustInventory()
+            if draftOrder.appliedDiscount != nil {
+                self.removeCoupon(discount: draftOrder.appliedDiscount!)
+            }
+        }
+    }
+    
+    func removeCoupon(discount: AppliedDiscount) {
+        for i in 0...2 {
+            if discount.description == UserDefaults.standard.string(forKey: "coupon\(i)") {
+                UserDefaults.standard.set("used", forKey: "coupon\(i)")
+                break
+            }
         }
     }
     

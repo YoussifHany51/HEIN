@@ -32,7 +32,7 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         viewModel?.bindResultToViewController = { binding in
             switch binding {
             case .priceRulesReady:
-                self.loadingView.isHidden = true
+                self.loadingView.isHidden = self.viewModel?.priceRules?.count ?? 0 > 0
                 self.couponsTableIndicator.stopAnimating()
                 self.emptyCouponsTableLabel.isHidden = self.viewModel?.priceRules?.count ?? 0 > 0
             case .appliedDiscount:
@@ -44,6 +44,10 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    @IBAction func dismisCoupons(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.priceRules?.count ?? 0
     }
@@ -53,7 +57,9 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         cell.discountTitle.text = viewModel?.priceRules?[indexPath.row].title
         cell.discountRemaningDays.text =  "\((viewModel?.priceRules?[indexPath.row].endsAt)!.prefix(10))"
-        cell.discountCode.text = viewModel?.discountCodes[indexPath.row].code
+        cell.discountCode.text = (viewModel?.discountCodes.first(where: { discount in
+            discount.priceRuleId == viewModel?.priceRules?[indexPath.row].id
+        }) )?.code
         cell.applyDiscount = {
             self.loadingView.isHidden = false
             self.couponsTableIndicator.startAnimating()
