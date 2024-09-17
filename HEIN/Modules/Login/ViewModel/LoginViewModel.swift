@@ -124,7 +124,7 @@ class LoginViewModel{
     
     private func postCustomer() {
         guard let user = Auth.auth().currentUser else { return }
-        let name = user.displayName ?? ""
+        guard let name = UserDefaults.standard.string(forKey: Auth.auth().currentUser!.uid) else { return }
         let email = user.email
         let userID = user.uid
         
