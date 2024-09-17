@@ -72,9 +72,8 @@ class LoginViewController: UIViewController {
         self.present(master, animated: true)
     }
     
-    @IBAction func DoNotHaveAccountButton(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController")
-        self.navigationController?.pushViewController(vc!, animated: true)
+
+    @IBAction func dontHaveAccount(_ sender: Any) {
     }
     @IBAction func loginButton(_ sender: Any) {
         if !viewModel.isInvalidTextFields(email: emailTextField.text!, password: passwordTextField.text!) {
