@@ -111,12 +111,15 @@ class CartScreenViewModel {
                 return product.variants
             }
         
+        var Stock : [(id: Int, stock: Int)] = []
+        
         for i in 0..<(lineItems?.count ?? 0) {
             for variant in variants[i] {
                 if self.lineItems?[i].variantID == variant.id {
-                    self.variantsStock.append((id: variant.id, stock: variant.inventoryQuantity))
+                    Stock.append((id: variant.id, stock: variant.inventoryQuantity))
                 }
             }
         }
+        self.variantsStock = Stock
     }
 }

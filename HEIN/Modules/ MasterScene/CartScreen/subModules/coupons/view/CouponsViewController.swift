@@ -53,10 +53,11 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         cell.discountTitle.text = viewModel?.priceRules?[indexPath.row].title
         cell.discountRemaningDays.text =  "\((viewModel?.priceRules?[indexPath.row].endsAt)!.prefix(10))"
+        cell.discountCode.text = viewModel?.discountCodes[indexPath.row].code
         cell.applyDiscount = {
             self.loadingView.isHidden = false
             self.couponsTableIndicator.startAnimating()
-            self.viewModel?.updateDraftOrder(priceRule: (self.viewModel?.priceRules?[indexPath.row])!)
+            self.viewModel?.updateDraftOrder(priceRule: (self.viewModel?.priceRules?[indexPath.row])!, discountCode: (self.viewModel?.discountCodes[indexPath.row].code)!)
         }
         
         return cell

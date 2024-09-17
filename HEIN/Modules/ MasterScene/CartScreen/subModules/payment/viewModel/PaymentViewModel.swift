@@ -45,14 +45,33 @@ class PaymentViewModel {
         
         let lineItems = extractLineItemsOrderData(lineItems: filterLineItems(lineItems: draftOrder.lineItems))
         let customer = extractCustomerOrderData(customer: draftOrder.customer!)
-        //let appliedDiscount = extractOrderDiscountData(discount: draftOrder.appliedDiscount!)
+        var discountCodes: [String : Any] = [:]
+        if draftOrder.appliedDiscount != nil {
+            discountCodes = extractOrderDiscountData(discount: draftOrder.appliedDiscount!)
+        }
         let address = extractShippingAddressOrderData(address: draftOrder.shippingAddress!)
-        let discount = draftOrder.appliedDiscount?.amount
+        //let discount = draftOrder.appliedDiscount!
         
-        nwService.postWithResponse(url: APIHandler.urlForGetting(.orders), type: OrderResponse.self, parameters: ["order": [ "line_items": lineItems, "created_at": draftOrder.updatedAt, "currency": "EGP", "customer": customer], "shipping_address": address, "refund": ["transactions": ["amount": discount ?? "0.0"] ], "total_discounts": discount ?? "0.0"]) { orderResponse in
+        nwService.postWithResponse(url: APIHandler.urlForGetting(.orders), type: OrderResponse.self, parameters: ["order": [ "line_items": lineItems, "created_at": draftOrder.updatedAt, "currency": "EGP", "discount_codes": [discountCodes], "customer": customer], "shipping_address": address]) { orderResponse in
             
             guard orderResponse != nil else {return}
             self.clearDraftOrderItems()
+            self.adjustInventory()
+        }
+    }
+    
+    func adjustInventory() {
+        guard let draftOrder = draftOrder else {return}
+        let filterdLineItems = filterLineItems(lineItems: draftOrder.lineItems)
+        print(filterdLineItems)
+        
+        for item in filterdLineItems {
+            nwService.fetch(url: APIHandler.urlForGetting(.productVarient(id: "\(item.variantID ?? 0)")), type: VariantResponse.self) { variantResponse in
+                
+                self.nwService.postWithResponse(url: APIHandler.urlForGetting(.inventoryLevels), type: ProductType.self, parameters: ["location_id":100800790824, "inventory_item_id":variantResponse?.variant.inventoryItemID ?? 0,"available_adjustment":-item.quantity]) { rubish in
+                    //
+                }
+            }
         }
     }
     
@@ -88,7 +107,7 @@ class PaymentViewModel {
     
     func extractOrderDiscountData(discount: AppliedDiscount) -> [String: Any]{
         var result: [String: Any] = [:]
-        result = ["title": discount.title, "description": discount.title, "value": discount.value, "value_type": discount.valueType, "amount": discount.amount]
+        result = ["code": discount.description, "value_type": discount.valueType, "amount": discount.amount]
         return result
     }
     
