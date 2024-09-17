@@ -36,6 +36,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             return
         }
         
+        self.title = "HEIN"
+        self.navigationController?.navigationBar.tintColor = UIColor(.red)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")
+        
         cartTable.delegate = self
         cartTable.dataSource = self
         

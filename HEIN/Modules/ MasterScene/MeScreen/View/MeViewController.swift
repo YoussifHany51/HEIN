@@ -19,6 +19,11 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        print(UserDefaults.standard.string(forKey: "User_id"))
+        print(UserDefaults.standard.string(forKey: "User_name"))
+        print(UserDefaults.standard.string(forKey: "DraftOrder_Id"))
+        
         guard (UserDefaults.standard.string(forKey: "User_id") != nil) else {
             let guestMeVC = storyboard?.instantiateViewController(withIdentifier: "guestMe") as! GuestMeViewController
             navigationController?.pushViewController(guestMeVC, animated: true)
