@@ -41,8 +41,22 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         paymentViewModel?.configurePaymentRequest(request: paymentRequest)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+    }
 
     @IBAction func submitOrder(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         if (paymentViewModel?.paymentMethods[0].isSelected)! {
             loadingView.isHidden = false
             paymentViewModel?.postOrder()

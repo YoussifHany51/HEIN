@@ -40,6 +40,8 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
         self.title = "HEIN"
         
+        self.hideKeyboardWhenTappedAround()
+        
         fieldsTable.delegate = self
         fieldsTable.dataSource = self
         
@@ -60,12 +62,26 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         setAddAddressViewModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+    }
+    
     func updateAddressLocation(coordinates: String) {
         self.addressLocation = coordinates
         self.fieldsTable.reloadData()
     }
     
     @IBAction func chooseOnMap(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         let mapVC = storyboard?.instantiateViewController(withIdentifier: "map") as! MapViewController
         if addressLocation != nil {
             mapVC.editingLocation = CLLocation(latitude: Double(addressLocation!.components(separatedBy: "-").first!) ?? 30.033333, longitude: Double(addressLocation!.components(separatedBy: "-").last!) ?? 31.233334)
@@ -112,6 +128,12 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func saveAddreess(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         var emptyFields : [Int] = []
         for row in 1...5 {
             if getCellAtRow(row).textField.text == "" {
@@ -146,6 +168,12 @@ class AddAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func deleteAddressButtonAction(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         let alert = UIAlertController(title: "Delete.!", message: "Selected address would be deleted", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "delete", style: .destructive, handler: { action in
             self.saveAddressButton.isEnabled = false

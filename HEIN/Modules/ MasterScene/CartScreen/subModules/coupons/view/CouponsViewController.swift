@@ -44,6 +44,14 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+    }
+    
     @IBAction func dismisCoupons(_ sender: Any) {
         self.dismiss(animated: true)
     }

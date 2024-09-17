@@ -82,6 +82,11 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //self.loadingView.isHidden = false
         viewModel?.getDraftOrder()
         currency.text = ExchangeCurrency.getCurrency()
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
     }
     
     func updateCartTable(draftOrder: DraftOrder?) {
@@ -123,6 +128,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func promoCodeAction(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         if viewModel?.draftOrder?.appliedDiscount == nil {
             let couponVc = self.storyboard?.instantiateViewController(withIdentifier: "coupons") as! CouponsViewController
             couponVc.draftOrder = self.viewModel?.draftOrder
@@ -138,6 +149,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func checkout(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         let checkoutVC = storyboard?.instantiateViewController(withIdentifier: "checkout") as! CheckoutViewController
         
         checkoutVC.draftOrder = viewModel?.draftOrder

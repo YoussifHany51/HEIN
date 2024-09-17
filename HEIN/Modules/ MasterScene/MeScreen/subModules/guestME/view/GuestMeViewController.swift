@@ -21,6 +21,14 @@ class GuestMeViewController: UIViewController {
         guestMeNavigationBar.isTranslucent = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+    }
+    
     @IBAction func goToLogin(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let master = storyBoard.instantiateViewController(identifier: "LoginViewController")

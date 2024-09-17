@@ -20,9 +20,9 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        print(UserDefaults.standard.string(forKey: "User_id"))
-        print(UserDefaults.standard.string(forKey: "User_name"))
-        print(UserDefaults.standard.string(forKey: "DraftOrder_Id"))
+//        print(UserDefaults.standard.string(forKey: "User_id"))
+//        print(UserDefaults.standard.string(forKey: "User_name"))
+//        print(UserDefaults.standard.string(forKey: "DraftOrder_Id"))
         
         guard (UserDefaults.standard.string(forKey: "User_id") != nil) else {
             let guestMeVC = storyboard?.instantiateViewController(withIdentifier: "guestMe") as! GuestMeViewController
@@ -51,6 +51,12 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         getOrdersAndAddresses()
+        
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
     }
     
     func getOrdersAndAddresses() {
@@ -98,6 +104,11 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
         
         switch indexPath.row{
         case 0:
