@@ -40,6 +40,7 @@ class ProductsInfoViewController: UIViewController {
     @IBOutlet weak var addToFavRef: UIButton!
     
     var viewModel : ProductInfoViewModel?
+    var network = ReachabilityManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,30 +111,37 @@ class ProductsInfoViewController: UIViewController {
     }
     
     @IBAction func addToCartButton(_ sender: Any) {
-        if Auth.auth().currentUser != nil{
-            guard let variant = self.getProductVarient(product: product) else {
-                self.showAlert(title: "Missing 👀", message: "Choose Color and Size")
-                return
-            }
-            let selectedVariant = viewModel?.lineItems?.filter({ item in
-                item.variantID == variant.id
-            })
-            if selectedVariant?.first == nil {
-                let lineItem = LineItem(id: 0, variantID: variant.id, productID: product.id, price: variant.price, name: productTitle.text, title: productTitle.text, quantity: 1, properties: [NoteAttribute(name: "image", value: (productsImageArray.first?.src) ?? ""),NoteAttribute(name: "size", value: (sizeButtonOutlet.titleLabel?.text)!),NoteAttribute(name: "color", value: (colorButtonOutlet.titleLabel?.text)!)])
-                viewModel?.lineItems?.append(lineItem)
-                nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self,parameters: ["draft_order":["line_items":  viewModel?.extractLineItemsPutData(lineItems: (viewModel?.lineItems)!) ]]) { dratOrder in
-                    guard dratOrder != nil else {
-                        self.showAlert(title: "Error ⚠️", message: "Invalid Add to Cart")
+        network.checkNetworkReachability { [self] isReachable in
+            if isReachable{
+                if Auth.auth().currentUser != nil{
+                    guard let variant = self.getProductVarient(product: product) else {
+                        self.showAlert(title: "Missing 👀", message: "Choose Color and Size")
                         return
                     }
-                    self.showAlert(title: "Done ✅", message: "Added To Cart Successfully")
+                    let selectedVariant = viewModel?.lineItems?.filter({ item in
+                        item.variantID == variant.id
+                    })
+                    if selectedVariant?.first == nil {
+                        let lineItem = LineItem(id: 0, variantID: variant.id, productID: product.id, price: variant.price, name: productTitle.text, title: productTitle.text, quantity: 1, properties: [NoteAttribute(name: "image", value: (productsImageArray.first?.src) ?? ""),NoteAttribute(name: "size", value: (sizeButtonOutlet.titleLabel?.text)!),NoteAttribute(name: "color", value: (colorButtonOutlet.titleLabel?.text)!)])
+                        viewModel?.lineItems?.append(lineItem)
+                        nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self,parameters: ["draft_order":["line_items":  viewModel?.extractLineItemsPutData(lineItems: (viewModel?.lineItems)!) ]]) { dratOrder in
+                            guard dratOrder != nil else {
+                                self.showAlert(title: "Error ⚠️", message: "Invalid Add to Cart")
+                                return
+                            }
+                            self.showAlert(title: "Done ✅", message: "Added To Cart Successfully")
+                        }
+                    }else{
+                        self.showAlert(title: "Hmm..? 💭", message: "Already added to cart")
+                    }
+                }else{
+                    self.showAlert(title: "Error ⚠️", message: "Please Login first")
                 }
             }else{
-                self.showAlert(title: "Hmm..? 💭", message: "Already added to cart")
+                self.showAlert(title: "Error ⚠️", message: "NO Internet Connection")
             }
-        }else{
-            self.showAlert(title: "Error ⚠️", message: "Please Login first")
         }
+        
     }
     
     @IBAction func sizeButton(_ sender: Any) {
