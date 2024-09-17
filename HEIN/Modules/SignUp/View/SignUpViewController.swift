@@ -63,9 +63,12 @@ class SignUpViewController: UIViewController {
         activityIndicator?.center = view.center
         view.addSubview(activityIndicator!)
     }
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func alreadyHaveAccountButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func googleSignUpButton(_ sender: Any) {
         viewModel.googleSignUp(presentingViewController: self,name: nameTextField.text!,email: emailTextField.text!,password: passwordTextField.text!)
