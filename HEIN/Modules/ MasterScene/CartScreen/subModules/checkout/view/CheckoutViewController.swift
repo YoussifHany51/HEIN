@@ -15,6 +15,9 @@ class CheckoutViewController: UIViewController {
     
     @IBOutlet weak var processingOrderView: UIView!
     
+    @IBOutlet weak var subtotalCurrency: UILabel!
+    @IBOutlet weak var shippingCurrency: UILabel!
+    @IBOutlet weak var taxesCurrency: UILabel!
     @IBOutlet weak var currencyLable: UILabel!
     
     @IBOutlet weak var addressPhone: UILabel!
@@ -59,6 +62,9 @@ class CheckoutViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         viewModel?.getAddresses()
         currencyLable.text = ExchangeCurrency.getCurrency()
+        shippingCurrency.text = ExchangeCurrency.getCurrency()
+        taxesCurrency.text = ExchangeCurrency.getCurrency()
+        subtotalCurrency.text = ExchangeCurrency.getCurrency()
     }
     
     func setCheckoutViewModel() {

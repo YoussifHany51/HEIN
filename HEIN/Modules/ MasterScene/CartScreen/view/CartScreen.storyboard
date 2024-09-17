@@ -738,9 +738,12 @@
                         <outlet property="mapView" destination="cgh-2V-iAV" id="Esi-l2-al4"/>
                         <outlet property="paymentButton" destination="OzH-32-Sbb" id="pN4-3E-vDh"/>
                         <outlet property="processingOrderView" destination="67W-Np-H9L" id="qiA-37-ci9"/>
+                        <outlet property="shippingCurrency" destination="4Ro-GQ-V4f" id="ZiF-Z5-pyW"/>
                         <outlet property="shippingFeeAmount" destination="Y1V-fz-OJi" id="moz-O8-Amj"/>
                         <outlet property="subtotalAmount" destination="2hH-YT-MUk" id="K4h-Y7-Trd"/>
+                        <outlet property="subtotalCurrency" destination="Tlj-Yf-ds3" id="a8m-iQ-zWw"/>
                         <outlet property="taxFeeAmount" destination="eP6-IA-f5P" id="IBk-wV-jHb"/>
+                        <outlet property="taxesCurrency" destination="uqB-0B-5LH" id="7os-94-9E0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUA-1d-368" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
