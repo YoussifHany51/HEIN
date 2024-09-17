@@ -60,6 +60,12 @@ class CheckoutViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         viewModel?.getAddresses()
         currencyLable.text = ExchangeCurrency.getCurrency()
         shippingCurrency.text = ExchangeCurrency.getCurrency()
@@ -123,6 +129,12 @@ class CheckoutViewController: UIViewController {
     }
 
     @IBAction func goToPayment(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         processingOrderView.isHidden = false
         viewModel?.updateDraftOrderAddress()
     }

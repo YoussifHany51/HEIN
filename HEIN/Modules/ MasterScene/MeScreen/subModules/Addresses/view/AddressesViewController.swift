@@ -47,6 +47,14 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+    }
+    
     func setAddressesViewModel() {
         viewModel = AddressesViewModel()
         
@@ -104,10 +112,22 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
         cell.isDefault.isOn = addresses?[indexPath.row].addressDefault ?? false
         
         cell.changeDefaultAddress = {
+            ReachabilityManager.checkNetworkReachability { isReachable in
+                if !isReachable {
+                    ReachabilityManager.showConnectionAlert(view: self)
+                }
+            }
+            
             self.viewModel?.SetDefaultAddress(address: (self.addresses?[indexPath.row])!)
         }
         
         cell.editAddress = {
+            ReachabilityManager.checkNetworkReachability { isReachable in
+                if !isReachable {
+                    ReachabilityManager.showConnectionAlert(view: self)
+                }
+            }
+            
             let addAddressVC = self.storyboard?.instantiateViewController(withIdentifier: "addAddress") as! AddAddressViewController
             
             addAddressVC.editingAddress = self.addresses?[indexPath.row]
@@ -124,6 +144,12 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     @IBAction func addNewAddressButtonAction(_ sender: Any) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         let addAddressVC = storyboard?.instantiateViewController(withIdentifier: "addAddress") as! AddAddressViewController
         
         addAddressVC.ref = self

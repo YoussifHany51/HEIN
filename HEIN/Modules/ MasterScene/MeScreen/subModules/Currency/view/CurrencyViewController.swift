@@ -55,6 +55,14 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+    }
+    
     func showGenericAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
@@ -75,6 +83,12 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ReachabilityManager.checkNetworkReachability { isReachable in
+            if !isReachable {
+                ReachabilityManager.showConnectionAlert(view: self)
+            }
+        }
+        
         let alert = UIAlertController(title: filterdCurrencies?[indexPath.row].short, message: "App currency will be changed to \(filterdCurrencies?[indexPath.row].short ?? "")", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "change", style: .destructive, handler: { action in
             // Chang app currency
