@@ -42,6 +42,9 @@ class CheckoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = "HEIN"
+        self.navigationController?.navigationBar.tintColor = UIColor(.red)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         self.loadingView.isHidden = false
         
