@@ -17,49 +17,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IpL-Dp-Tke">
-                                <rect key="frame" x="0.0" y="113" width="393" height="193"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IpL-Dp-Tke">
+                                <rect key="frame" x="0.0" y="113" width="393" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lud-0z-KQb">
-                                    <size key="itemSize" width="305" height="175"/>
+                                    <size key="itemSize" width="393" height="175"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AdsCVC" id="fQN-yr-Uux" customClass="AdsCVC" customModule="HEIN" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="9" width="305" height="175"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hbH-0s-UKL">
-                                            <rect key="frame" x="0.0" y="0.0" width="305" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-BU-DKg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="175"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="R9i-J5-LzO">
+                                                    <rect key="frame" x="19" y="0.0" width="374" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="4F4-BU-DKg" firstAttribute="leading" secondItem="hbH-0s-UKL" secondAttribute="leading" id="8bs-kC-erp"/>
-                                                <constraint firstItem="4F4-BU-DKg" firstAttribute="top" secondItem="hbH-0s-UKL" secondAttribute="top" id="XLe-8n-iaO"/>
-                                                <constraint firstAttribute="bottom" secondItem="4F4-BU-DKg" secondAttribute="bottom" id="aey-N0-0vr"/>
-                                                <constraint firstAttribute="trailing" secondItem="4F4-BU-DKg" secondAttribute="trailing" id="w9I-wD-kA3"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="305" height="175"/>
+                                        <size key="customSize" width="393" height="200"/>
                                         <connections>
-                                            <outlet property="imgAds" destination="4F4-BU-DKg" id="ZqN-Tr-tzb"/>
+                                            <outlet property="imgAds" destination="R9i-J5-LzO" id="BaN-8n-XMk"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SES-p7-Gpo">
-                                <rect key="frame" x="10" y="316" width="361" height="53"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zRg-OG-SDj">
-                                <rect key="frame" x="10" y="379" width="375" height="417"/>
+                                <rect key="frame" x="0.0" y="380" width="393" height="472"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4i6-oy-C08">
                                     <size key="itemSize" width="365" height="281"/>
@@ -69,7 +58,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="GSi-yS-qRA">
-                                        <rect key="frame" x="5" y="0.0" width="365" height="281"/>
+                                        <rect key="frame" x="14" y="0.0" width="365" height="281"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zib-wp-Zd4">
                                             <rect key="frame" x="0.0" y="0.0" width="365" height="281"/>
@@ -98,34 +87,38 @@
                                 </items>
                             </navigationBar>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="NEf-jG-lP2">
-                                <rect key="frame" x="138.66666666666666" y="280" width="116" height="26"/>
+                                <rect key="frame" x="138.66666666666666" y="287" width="116" height="26"/>
                                 <color key="pageIndicatorTintColor" systemColor="opaqueSeparatorColor"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SES-p7-Gpo">
+                                <rect key="frame" x="10" y="323" width="361" height="53"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.1696105148" blue="0.1628606665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CrB-oe-eNd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RVr-2e-NxE" firstAttribute="width" secondItem="cHv-yX-ZwJ" secondAttribute="width" id="0FZ-PX-Jdk"/>
-                            <constraint firstItem="zRg-OG-SDj" firstAttribute="leading" secondItem="SES-p7-Gpo" secondAttribute="leading" id="0lW-9S-oZ4"/>
-                            <constraint firstItem="SES-p7-Gpo" firstAttribute="top" secondItem="NEf-jG-lP2" secondAttribute="bottom" constant="10" id="6DS-7x-llw"/>
-                            <constraint firstItem="SES-p7-Gpo" firstAttribute="height" secondItem="IpL-Dp-Tke" secondAttribute="height" multiplier="0.274611" id="AnM-jJ-0IQ"/>
-                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="top" secondItem="RVr-2e-NxE" secondAttribute="bottom" id="EWp-Iy-0Qq"/>
-                            <constraint firstItem="CrB-oe-eNd" firstAttribute="top" secondItem="RVr-2e-NxE" secondAttribute="top" constant="-10" id="Opo-J0-uwe"/>
-                            <constraint firstItem="zRg-OG-SDj" firstAttribute="width" secondItem="cHv-yX-ZwJ" secondAttribute="width" multiplier="0.954198" id="Uzl-fG-xUO"/>
-                            <constraint firstItem="RVr-2e-NxE" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.0516432" id="YUY-rx-7Iy"/>
-                            <constraint firstItem="CrB-oe-eNd" firstAttribute="trailing" secondItem="IpL-Dp-Tke" secondAttribute="trailing" id="ZGn-O9-UYV"/>
-                            <constraint firstItem="SES-p7-Gpo" firstAttribute="leading" secondItem="IpL-Dp-Tke" secondAttribute="leading" constant="10" id="ceP-X3-tbs"/>
-                            <constraint firstItem="NEf-jG-lP2" firstAttribute="bottom" secondItem="IpL-Dp-Tke" secondAttribute="bottom" id="dRe-qp-5XI"/>
-                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="width" secondItem="cHv-yX-ZwJ" secondAttribute="width" id="eau-z3-cxK"/>
-                            <constraint firstItem="zRg-OG-SDj" firstAttribute="top" secondItem="SES-p7-Gpo" secondAttribute="bottom" constant="10" id="eg9-dR-IpP"/>
-                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.226526" id="f2O-2C-y1i"/>
-                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" id="hjy-YG-u8p"/>
-                            <constraint firstItem="NEf-jG-lP2" firstAttribute="centerX" secondItem="IpL-Dp-Tke" secondAttribute="centerX" id="kc8-AW-OKg"/>
-                            <constraint firstItem="SES-p7-Gpo" firstAttribute="width" secondItem="IpL-Dp-Tke" secondAttribute="width" multiplier="0.918575" id="vl3-SQ-HmQ"/>
-                            <constraint firstItem="zRg-OG-SDj" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.489437" id="xAb-9i-xxy"/>
-                            <constraint firstItem="RVr-2e-NxE" firstAttribute="trailing" secondItem="zRg-OG-SDj" secondAttribute="trailing" id="yrj-pm-zS6"/>
-                            <constraint firstItem="zRg-OG-SDj" firstAttribute="width" secondItem="SES-p7-Gpo" secondAttribute="width" multiplier="1.03878" id="zoF-3Z-PyN"/>
+                            <constraint firstItem="SES-p7-Gpo" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.0622066" id="06b-sp-gTg"/>
+                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" id="2QO-hc-lDX"/>
+                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="height" secondItem="CrB-oe-eNd" secondAttribute="height" multiplier="0.28169" id="9yz-XP-1I4"/>
+                            <constraint firstItem="RVr-2e-NxE" firstAttribute="top" secondItem="CrB-oe-eNd" secondAttribute="top" constant="10" id="AEr-h1-ayb"/>
+                            <constraint firstItem="zRg-OG-SDj" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" id="BLe-DA-sMx"/>
+                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="top" secondItem="RVr-2e-NxE" secondAttribute="bottom" id="F4R-8N-zg6"/>
+                            <constraint firstItem="SES-p7-Gpo" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" constant="10" id="KAe-Ry-s6E"/>
+                            <constraint firstItem="zRg-OG-SDj" firstAttribute="top" secondItem="SES-p7-Gpo" secondAttribute="bottom" constant="4" id="NsL-Lz-Ans"/>
+                            <constraint firstAttribute="bottom" secondItem="zRg-OG-SDj" secondAttribute="bottom" id="Ouv-J1-lDX"/>
+                            <constraint firstItem="NEf-jG-lP2" firstAttribute="bottom" secondItem="IpL-Dp-Tke" secondAttribute="bottom" id="SiO-z7-pQW"/>
+                            <constraint firstItem="CrB-oe-eNd" firstAttribute="leading" secondItem="RVr-2e-NxE" secondAttribute="leading" constant="8" id="X3z-HN-S2X"/>
+                            <constraint firstItem="NEf-jG-lP2" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" constant="138.66666666666666" id="ZDV-aH-8el"/>
+                            <constraint firstItem="SES-p7-Gpo" firstAttribute="width" secondItem="cHv-yX-ZwJ" secondAttribute="width" multiplier="0.918575" id="iaS-QI-ONH"/>
+                            <constraint firstItem="RVr-2e-NxE" firstAttribute="width" secondItem="cHv-yX-ZwJ" secondAttribute="width" id="p3a-wl-gtK"/>
+                            <constraint firstItem="SES-p7-Gpo" firstAttribute="top" secondItem="IpL-Dp-Tke" secondAttribute="bottom" constant="10" id="pgt-Xs-Y5Q"/>
+                            <constraint firstItem="RVr-2e-NxE" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.0516432" id="wC6-xy-0tx"/>
+                            <constraint firstItem="IpL-Dp-Tke" firstAttribute="width" secondItem="CrB-oe-eNd" secondAttribute="width" id="y9R-Me-WmS"/>
+                            <constraint firstItem="CrB-oe-eNd" firstAttribute="trailing" secondItem="zRg-OG-SDj" secondAttribute="trailing" id="zOK-dl-yDR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" selectedImage="house.fill" id="ONg-Ju-mhx"/>

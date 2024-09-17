@@ -14,7 +14,7 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var brandsCollection: UICollectionView!
     var indicator : UIActivityIndicatorView?
     var viewModel:HomeProtocol!
-    var photoarr = [UIImage(named: "sale1"),UIImage(named: "sale2"),UIImage(named: "sale3"),UIImage(named: "sale4"),UIImage(named: "sale5"),UIImage(named: "sale6")]
+    var photoarr = [UIImage(named: "sale1"),UIImage(named: "sale2"),UIImage(named: "sale3"),UIImage(named: "sale1"),UIImage(named: "sale5"),UIImage(named: "sale6")]
     var search:UIBarButtonItem!
     var timer : Timer?
     var current = 0
@@ -166,7 +166,7 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 if collectionView == adsCollection{
-                    return CGSize(width: (UIScreen.main.bounds.width) - 50, height: (adsCollection.frame.height) - 50)
+                    return CGSize(width: view.frame.width, height: adsCollection.frame.height)
                 } else{
                     let widthPerItem = brandsCollection.frame.width / 2 - 5
                     let heightPerItem = brandsCollection.frame.height / 2 - 20
@@ -181,6 +181,8 @@ extension  HomeScreenViewController:UICollectionViewDelegate,UICollectionViewDat
             return 0
         }
     }
+    
+    
         
     }
 
