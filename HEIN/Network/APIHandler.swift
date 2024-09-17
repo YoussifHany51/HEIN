@@ -42,6 +42,8 @@ class APIHandler{
         case menProducts(id:String)
         case womenProducts(id:String)
         case kidsProducts(id:String)
+        case inventoryLevels
+        case productVarient(id:String)
         var order:String{
             switch self{
             case .priceRule:
@@ -90,8 +92,10 @@ class APIHandler{
                         return "products.json?collection_id=WOMEN_\(collectionId)D"
             case .kidsProducts(id: let collectionId):
                         return "products.json?collection_id=KIDS_\(collectionId)"
-           
-                
+            case .inventoryLevels:
+                return "inventory_levels/adjust.json"
+            case .productVarient(id: let varrientId):
+                return "variants/\(varrientId).json"
             }
         }
     }

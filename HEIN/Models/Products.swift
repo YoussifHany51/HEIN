@@ -198,3 +198,9 @@ extension Product {
         self.image = ProductImage(id: 0, position: 0, productID: 0, createdAt: "", updatedAt: "", adminGraphqlAPIID: "", width: 0, height: 0, src: favoriteProduct.imageSrc ?? "")
     }
 }
+
+class VariantResponse: Codable {
+    let variant: Variant
+}
+
+

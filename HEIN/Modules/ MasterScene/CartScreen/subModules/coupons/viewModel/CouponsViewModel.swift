@@ -38,22 +38,33 @@ class CouponsViewModel {
         getPriceRules()
     }
     
+    // MARK: change
+    let discountCodes = [(code:"SUMMERSALE50FF", priceRuleId:1481131360552), (code:"SUMMERSALE20FF", priceRuleId:1481011790120)]
+    
     func getPriceRules() {
         nwService.fetch(url: APIHandler.urlForGetting(.priceRule), type: PriceRules.self) { priceRules in
             
-            self.priceRules = priceRules?.priceRules
+            self.priceRules = priceRules?.priceRules.filter({ priceRule in
+                var isIn: Bool = false
+                for code in self.discountCodes {
+                    if priceRule.id == code.priceRuleId {
+                        isIn = true
+                    }
+                }
+                return isIn
+            })
         }
     }
     
-    func updateDraftOrder(priceRule: PriceRule) {
-        nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: "\(draftOrderId)")), type: DraftOrderContainer.self, parameters: ["draft_order":["applied_discount": extractDiscountPutData(priceRule: priceRule) ]]) { draftOrderContainer in
+    func updateDraftOrder(priceRule: PriceRule, discountCode: String) {
+        nwService.putWithResponse(url: APIHandler.urlForGetting(.draftOrder(id: "\(draftOrderId)")), type: DraftOrderContainer.self, parameters: ["draft_order":["applied_discount": extractDiscountPutData(priceRule: priceRule, discountCode: discountCode) ]]) { draftOrderContainer in
             
             self.draftOrder = draftOrderContainer?.draftOrder
         }
     }
     
-    func extractDiscountPutData(priceRule: PriceRule) -> [String: Any]{
-        let result: [String: Any] = ["title": priceRule.title, "value_type": priceRule.valueType, "value": "\(priceRule.value.dropFirst())"]
+    func extractDiscountPutData(priceRule: PriceRule, discountCode: String) -> [String: Any]{
+        let result: [String: Any] = ["title": priceRule.title, "value_type": priceRule.valueType, "value": "\(priceRule.value.dropFirst())", "description": discountCode,]
         
         print(result)
                 
