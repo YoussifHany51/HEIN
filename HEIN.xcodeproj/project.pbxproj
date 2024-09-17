@@ -71,6 +71,8 @@
 		1E2250272C88BE52007E39DA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2250262C88BE52007E39DA /* HomeViewModel.swift */; };
 		1E22502A2C88BF02007E39DA /* BrandsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2250282C88BF02007E39DA /* BrandsCVC.swift */; };
 		1E4A56172C889D9100DFE010 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1E4A56162C889D9100DFE010 /* Alamofire */; };
+		1E73E95D2C99FAEF00C11D3A /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73E95B2C99FAED00C11D3A /* NetworkManagerTests.swift */; };
+		1E73E95E2C99FAEF00C11D3A /* ReachabilityManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73E95C2C99FAEE00C11D3A /* ReachabilityManagerTests.swift */; };
 		1E8F6AD22C906E44003E819C /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F6AD12C906E44003E819C /* CategoryViewModel.swift */; };
 		1EB071E62C88E8C600AEFD0F /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 1EB071E52C88E8C600AEFD0F /* Reachability */; };
 		1EB071E92C88E97D00AEFD0F /* ReachabilityManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB071E82C88E97D00AEFD0F /* ReachabilityManger.swift */; };
@@ -196,6 +198,8 @@
 		09E7537A2C8CE168008E4E83 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E2250262C88BE52007E39DA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1E2250282C88BF02007E39DA /* BrandsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCVC.swift; sourceTree = "<group>"; };
+		1E73E95B2C99FAED00C11D3A /* NetworkManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		1E73E95C2C99FAEE00C11D3A /* ReachabilityManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManagerTests.swift; sourceTree = "<group>"; };
 		1E8F6AD12C906E44003E819C /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		1EB071E82C88E97D00AEFD0F /* ReachabilityManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManger.swift; sourceTree = "<group>"; };
 		1EB071EB2C88FD5300AEFD0F /* AdsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCVC.swift; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 			isa = PBXGroup;
 			children = (
 				099AD4FC2C87519100E2191D /* HEINTests.swift */,
+				1E73E95B2C99FAED00C11D3A /* NetworkManagerTests.swift */,
+				1E73E95C2C99FAEE00C11D3A /* ReachabilityManagerTests.swift */,
 			);
 			path = HEINTests;
 			sourceTree = "<group>";
@@ -1272,6 +1278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E73E95D2C99FAEF00C11D3A /* NetworkManagerTests.swift in Sources */,
+				1E73E95E2C99FAEF00C11D3A /* ReachabilityManagerTests.swift in Sources */,
 				099AD4FD2C87519100E2191D /* HEINTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
