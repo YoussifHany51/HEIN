@@ -24,9 +24,29 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         viewModel?.loadFavorites()
         favoriteTableView.reloadData()
+        favoriteHasData()
     }
     
-    
+    func favoriteHasData(){
+        if viewModel?.favoriteProducts.isEmpty ?? true {
+              favoriteTableView.isHidden = true
+              if let imgErrorPhoto = self.view.viewWithTag(100) as? UIImageView {
+                  imgErrorPhoto.isHidden = false
+              } else {
+                  let imgErrorPhoto = UIImageView(frame: CGRect(x: 50, y: 100, width: self.view.frame.width - 100, height: 200))
+                  imgErrorPhoto.image = UIImage(named: "NoProducts")
+                  imgErrorPhoto.tintColor = .gray
+                  imgErrorPhoto.tag = 100 // Set a tag to identify the image view
+                  self.view.addSubview(imgErrorPhoto)
+              }
+              
+          } else {
+              favoriteTableView.isHidden = false
+              if let imgErrorPhoto = self.view.viewWithTag(100) as? UIImageView {
+                  imgErrorPhoto.isHidden = true
+              }
+          }
+    }
 }
 
 extension FavoriteViewController{

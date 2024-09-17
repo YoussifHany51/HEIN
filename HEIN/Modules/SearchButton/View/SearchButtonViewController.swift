@@ -17,6 +17,7 @@ class SearchButtonViewController: UIViewController,UITableViewDelegate,UITableVi
     var filteredData = [Product]()
     var filtered = false
     var searchVM:SearchButtonViewModel?
+    var network = ReachabilityManager()
     private var searchCancellable: AnyCancellable?
     private var loadingSpinner: UIActivityIndicatorView?
     
@@ -43,9 +44,19 @@ class SearchButtonViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func setupData() {
-           guard let products = searchVM?.result?.products else { return }
-           data = products
-           tableView.reloadData()
+        network.checkNetworkReachability {[weak self] isReachable in
+            if isReachable{
+                guard let products = self?.searchVM?.result?.products else { return }
+                self?.data = products
+                self?.tableView.reloadData()
+            }else{
+                let alert = UIAlertController(title: "Ops.. ☹️", message: "NO Internet Connection", preferredStyle: .alert)
+                let okayButton = UIAlertAction(title: "Got it 👍", style: .default)
+                alert.addAction(okayButton)
+                self?.present(alert, animated: true)
+            }
+        }
+           
     }
     
     func setupSearchDebounce() {
