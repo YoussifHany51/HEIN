@@ -39,16 +39,27 @@ class CouponsViewModel {
     }
     
     // MARK: change
-    let discountCodes = [(code:"SUMMERSALE50FF", priceRuleId:1481131360552), (code:"SUMMERSALE20FF", priceRuleId:1481011790120)]
+    let discountCodes = [(code:"SUMMERSALE50FF", priceRuleId:1481131360552), (code:"SUMMERSALE20FF", priceRuleId:1481011790120),(code:"LAST10WAITING", priceRuleId:1482065740072)]
     
     func getPriceRules() {
+        var userCoupons: [String] = []
+        for i in 0...2 {
+            if let coupon = UserDefaults.standard.string(forKey: "coupon\(i)"){
+                if coupon != "used" {
+                    userCoupons.append(coupon)
+                }
+            }
+        }
+        
         nwService.fetch(url: APIHandler.urlForGetting(.priceRule), type: PriceRules.self) { priceRules in
             
             self.priceRules = priceRules?.priceRules.filter({ priceRule in
                 var isIn: Bool = false
                 for code in self.discountCodes {
                     if priceRule.id == code.priceRuleId {
-                        isIn = true
+                        if let coupon = userCoupons.firstIndex(where: {$0 == code.code}) {
+                            isIn = true
+                        }
                     }
                 }
                 return isIn

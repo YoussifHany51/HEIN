@@ -54,7 +54,7 @@ class CheckoutViewController: UIViewController {
         setCheckoutViewModel()
         
         self.subtotalAmount.text = ExchangeCurrency.exchangeCurrency(amount: draftOrder?.subtotalPrice)
-        self.discountAmount.text = draftOrder?.appliedDiscount != nil ? ExchangeCurrency.exchangeCurrency(amount: draftOrder?.appliedDiscount?.value) : "" 
+        self.discountAmount.text = draftOrder?.appliedDiscount != nil ? "\(ExchangeCurrency.exchangeCurrency(amount: draftOrder?.appliedDiscount?.value)) \(draftOrder?.appliedDiscount?.valueType == "fixed_amount" ? "\(ExchangeCurrency.getCurrency())" : "%")" : "" 
         self.taxFeeAmount.text = ExchangeCurrency.exchangeCurrency(amount: draftOrder?.totalTax)
         self.grandTotalAmount.text = ExchangeCurrency.exchangeCurrency(amount: draftOrder?.totalPrice)
     }

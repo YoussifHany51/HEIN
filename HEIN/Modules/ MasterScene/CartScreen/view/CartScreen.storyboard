@@ -201,7 +201,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJJ-S8-9eg" customClass="CustomButton" customModule="HEIN" customModuleProvider="target">
                                 <rect key="frame" x="324.33333333333331" y="74" width="53.666666666666686" height="54"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="arrowshape.right.fill" catalog="system">
+                                <buttonConfiguration key="configuration" style="filled" image="xmark" catalog="system">
                                     <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -211,6 +211,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="dismisCoupons:" destination="pcC-Zr-Vae" eventType="touchUpInside" id="1Vo-xS-nhc"/>
                                     <action selector="promoCodeAction:" destination="qpq-ao-32e" eventType="touchUpInside" id="9Z4-Ny-1Jo"/>
                                 </connections>
                             </button>
@@ -312,9 +313,9 @@
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="VtZ-st-CWY">
                                         <rect key="frame" x="178" y="317.66666666666669" width="37" height="37"/>
                                     </activityIndicatorView>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No available coupons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPX-hR-U49">
-                                        <rect key="frame" x="116" y="362.66666666666663" width="161" height="19.333333333333314"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No available coupons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPX-hR-U49">
+                                        <rect key="frame" x="97.000000000000014" y="283.66666666666669" width="199.33333333333337" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -322,7 +323,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="wPX-hR-U49" firstAttribute="centerX" secondItem="VtZ-st-CWY" secondAttribute="centerX" id="60O-r8-vot"/>
-                                    <constraint firstItem="wPX-hR-U49" firstAttribute="top" secondItem="VtZ-st-CWY" secondAttribute="bottom" constant="8" symbolic="YES" id="KHH-WE-zzJ"/>
+                                    <constraint firstItem="VtZ-st-CWY" firstAttribute="top" secondItem="wPX-hR-U49" secondAttribute="bottom" constant="10" id="Nde-tt-EIn"/>
                                     <constraint firstItem="VtZ-st-CWY" firstAttribute="centerY" secondItem="qpx-Og-2qp" secondAttribute="centerY" id="RdB-7D-GTP"/>
                                     <constraint firstItem="VtZ-st-CWY" firstAttribute="centerX" secondItem="qpx-Og-2qp" secondAttribute="centerX" id="x4r-6x-Ago"/>
                                 </constraints>
@@ -966,6 +967,7 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="checkmark.seal" catalog="system" width="128" height="124"/>
         <image name="discount" width="1562" height="1554"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
