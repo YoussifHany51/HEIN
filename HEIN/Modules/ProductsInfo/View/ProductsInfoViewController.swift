@@ -40,6 +40,7 @@ class ProductsInfoViewController: UIViewController {
     @IBOutlet weak var addToFavRef: UIButton!
     
     var viewModel : ProductInfoViewModel?
+    @IBOutlet weak var reviewsRef: UIButton!
     var network = ReachabilityManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +88,16 @@ class ProductsInfoViewController: UIViewController {
         productDescription.contentInsetAdjustmentBehavior = .never
         addToFavRef.tintColor = .red
         updateFavoriteButton(for: product)
+        let yourAttributes: [NSAttributedString.Key: Any] = [
+              .font: UIFont.systemFont(ofSize: 14),
+              .foregroundColor: UIColor.blue,
+              .underlineStyle: NSUnderlineStyle.single.rawValue
+          ] // .double.rawValue, .thick.rawValue
+        let attributeString = NSMutableAttributedString(
+                string: "Reviews",
+                attributes: yourAttributes
+             )
+             reviewsRef.setAttributedTitle(attributeString, for: .normal)
     }
     
     
@@ -201,6 +212,10 @@ class ProductsInfoViewController: UIViewController {
            present(alertController, animated: true, completion: nil)
     }
  
+    @IBAction func goToReviews(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "ReviewsViewController")
+        present(vc!, animated: true)
+    }
     func showAlert(title:String,message:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okayButton = UIAlertAction(title: "Got it 👍", style: .default)

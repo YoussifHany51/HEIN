@@ -51,7 +51,7 @@ class SignUpViewController: UIViewController {
         viewModel.onSuccess = { [weak self] in
             self?.stopLoading()
             self?.showAlert(title: "Done 🥳💃", message: "User created successfully!")
-            self?.navigationController?.popViewController(animated: true)
+            self?.dismiss(animated: true, completion: nil)
         }
         
         viewModel.onLoadingStateChange = { [weak self] isLoading in
