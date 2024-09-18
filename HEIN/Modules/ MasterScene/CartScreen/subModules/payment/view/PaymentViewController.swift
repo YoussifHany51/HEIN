@@ -28,6 +28,14 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         paymentTable.delegate = self
         paymentTable.dataSource = self
         
+        setViewModel()
+        
+        submitOrderButton.isEnabled = false
+        
+        paymentViewModel?.configurePaymentRequest(request: paymentRequest)
+    }
+    
+    func setViewModel() {
         paymentViewModel = PaymentViewModel(draftOrder: draftOrder)
         paymentViewModel?.bindResultToViewController = {
             let orderConfirmedVC = self.storyboard?.instantiateViewController(withIdentifier: "orderConfirmed")
@@ -36,10 +44,6 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.navigationController?.popToRootViewController(animated: false)
             })
         }
-        
-        submitOrderButton.isEnabled = false
-        
-        paymentViewModel?.configurePaymentRequest(request: paymentRequest)
     }
     
     override func viewWillAppear(_ animated: Bool) {

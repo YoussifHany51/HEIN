@@ -26,13 +26,14 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
             defaultAddressIndex = addresses?.firstIndex(where: {$0.addressDefault == true})
         }
     }
+    
     var defaultAddressIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.title = "HEIN"
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        
+        setNavigationBar()
         
         addressesTable.delegate = self
         addressesTable.dataSource = self
@@ -54,6 +55,11 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
                 ReachabilityManager.showConnectionAlert(view: self)
             }
         }
+    }
+    
+    func setNavigationBar() {
+        self.title = "HEIN"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
     }
     
     func setAddressesViewModel() {

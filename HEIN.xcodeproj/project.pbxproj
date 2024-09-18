@@ -102,6 +102,7 @@
 		F4691DEF2C94ECCE00852226 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DEE2C94ECCE00852226 /* PaymentTableViewCell.swift */; };
 		F4691DF12C94F0BC00852226 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DF02C94F0BC00852226 /* PaymentViewModel.swift */; };
 		F4691DF62C95F2A100852226 /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4691DF52C95F2A100852226 /* OrderConfirmedViewController.swift */; };
+		F46C20262C9B09B600AE44AC /* CustomClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C20252C9B09B600AE44AC /* CustomClasses.swift */; };
 		F47BD4302C8BE25D00A8A8AD /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */; };
 		F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */; };
 		F47BD4382C8BE33200A8A8AD /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */; };
@@ -231,6 +232,7 @@
 		F4691DEE2C94ECCE00852226 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		F4691DF02C94F0BC00852226 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		F4691DF52C95F2A100852226 /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
+		F46C20252C9B09B600AE44AC /* CustomClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClasses.swift; sourceTree = "<group>"; };
 		F47BD42F2C8BE25D00A8A8AD /* MeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		F47BD4352C8BE2FA00A8A8AD /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		F47BD4372C8BE33200A8A8AD /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 		1EB071E72C88E92A00AEFD0F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F46C20242C9B099700AE44AC /* Custom UI Classes */,
 				090761072C958A2A001BA001 /* CoreData */,
 				F4B1B6072C96FA1E0090606E /* Currencies */,
 				1EB071EA2C88E9BF00AEFD0F /* Reachability */,
@@ -839,6 +842,14 @@
 			children = (
 			);
 			path = viewModel;
+			sourceTree = "<group>";
+		};
+		F46C20242C9B099700AE44AC /* Custom UI Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F46C20252C9B09B600AE44AC /* CustomClasses.swift */,
+			);
+			path = "Custom UI Classes";
 			sourceTree = "<group>";
 		};
 		F47BD42D2C8BE22C00A8A8AD /* View */ = {
@@ -1247,6 +1258,7 @@
 				1EB072092C8A06B900AEFD0F /* CartTableViewCell.swift in Sources */,
 				1ED1F0992C98727E007F0CF9 /* FavoriteProduct.xcdatamodeld in Sources */,
 				F47BD4362C8BE2FA00A8A8AD /* OrdersViewController.swift in Sources */,
+				F46C20262C9B09B600AE44AC /* CustomClasses.swift in Sources */,
 				099AD51B2C8751EB00E2191D /* APIKeys.swift in Sources */,
 				099AD4E62C87518F00E2191D /* AppDelegate.swift in Sources */,
 				F4691DEF2C94ECCE00852226 /* PaymentTableViewCell.swift in Sources */,

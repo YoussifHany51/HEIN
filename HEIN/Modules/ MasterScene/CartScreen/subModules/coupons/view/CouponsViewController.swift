@@ -28,6 +28,10 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         couponsTable.delegate = self
         couponsTable.dataSource = self
         
+        setViewModel()
+    }
+    
+    func setViewModel() {
         viewModel = CouponsViewModel(draftOrder: draftOrder!)
         viewModel?.bindResultToViewController = { binding in
             switch binding {

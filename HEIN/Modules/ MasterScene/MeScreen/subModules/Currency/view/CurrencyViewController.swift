@@ -38,6 +38,10 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
         
         selectedCurrency.text = UserDefaults.standard.string(forKey: "currencyTitle") ?? "USD"
         
+        setCurrencyViewModel()
+    }
+    
+    func setCurrencyViewModel() {
         viewModel = CurrencyViewModel()
         self.filterdCurrencies  = self.viewModel?.allCurrencies
         viewModel?.bindResultToViewController = { [weak self] result in

@@ -110,6 +110,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGs-up-gfm">
+                                <rect key="frame" x="109.66666666666667" y="120.66666666666669" width="28.000000000000014" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not a valid coupon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTy-WD-cgh">
                                 <rect key="frame" x="133.66666666666666" y="626.66666666666663" width="121" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -140,12 +146,14 @@
                             <constraint firstItem="TN4-ou-1pt" firstAttribute="trailing" secondItem="vpQ-yh-jsr" secondAttribute="trailing" id="2gk-gr-INN"/>
                             <constraint firstItem="5eg-H4-KlW" firstAttribute="trailing" secondItem="PYL-7g-Xc6" secondAttribute="trailing" id="8QR-zk-gtY"/>
                             <constraint firstItem="5eg-H4-KlW" firstAttribute="centerY" secondItem="bu2-ht-aVv" secondAttribute="centerY" id="94C-F2-A8e"/>
+                            <constraint firstItem="GGs-up-gfm" firstAttribute="leading" secondItem="ZXf-XA-UKT" secondAttribute="trailing" constant="8" symbolic="YES" id="A7c-uO-a1e"/>
                             <constraint firstItem="s8z-26-8sA" firstAttribute="trailing" secondItem="PYL-7g-Xc6" secondAttribute="trailing" id="FFM-ZU-AhB"/>
                             <constraint firstItem="rTy-WD-cgh" firstAttribute="centerX" secondItem="aC6-dS-db7" secondAttribute="centerX" id="GtL-So-kBj"/>
                             <constraint firstItem="ZXf-XA-UKT" firstAttribute="top" secondItem="vpQ-yh-jsr" secondAttribute="top" constant="15" id="I9S-iY-1jg"/>
                             <constraint firstItem="bu2-ht-aVv" firstAttribute="leading" secondItem="PYL-7g-Xc6" secondAttribute="leading" id="IOH-pW-tWb"/>
                             <constraint firstItem="PYL-7g-Xc6" firstAttribute="leading" secondItem="vpQ-yh-jsr" secondAttribute="leading" constant="15" id="MVG-KA-5n5"/>
                             <constraint firstItem="aC6-dS-db7" firstAttribute="trailing" secondItem="s8z-26-8sA" secondAttribute="trailing" constant="-5" id="NqQ-Ha-zRt"/>
+                            <constraint firstItem="GGs-up-gfm" firstAttribute="centerY" secondItem="ZXf-XA-UKT" secondAttribute="centerY" id="Pr7-Cf-j6a"/>
                             <constraint firstItem="s8z-26-8sA" firstAttribute="top" secondItem="EU0-LV-Zpk" secondAttribute="bottom" constant="25" id="Rxg-Fq-HGX"/>
                             <constraint firstItem="KVW-uJ-2bc" firstAttribute="centerY" secondItem="bu2-ht-aVv" secondAttribute="centerY" id="SIS-aM-qXV"/>
                             <constraint firstItem="TN4-ou-1pt" firstAttribute="top" secondItem="vpQ-yh-jsr" secondAttribute="top" id="U6r-xR-TAr"/>
@@ -169,6 +177,7 @@
                     <navigationItem key="navigationItem" id="wsI-nK-TjA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cartCountLabel" destination="GGs-up-gfm" id="93f-yk-Rig"/>
                         <outlet property="cartTable" destination="EU0-LV-Zpk" id="rOT-hA-AAF"/>
                         <outlet property="checkOutButton" destination="PYL-7g-Xc6" id="F76-gi-SZN"/>
                         <outlet property="currency" destination="5eg-H4-KlW" id="Ile-PA-JvN"/>
