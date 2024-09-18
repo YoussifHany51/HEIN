@@ -14,6 +14,7 @@ protocol CartProtocol {
 
 class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CartProtocol {
     
+    @IBOutlet weak var cartCountLabel: UILabel!
     @IBOutlet weak var promoCodeTextLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var discountAmount: UILabel!
@@ -36,11 +37,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             return
         }
         
-        self.title = "HEIN"
-        self.navigationController?.navigationBar.tintColor = UIColor(.red)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")
+        setNavigationBar()
         
         cartTable.delegate = self
         cartTable.dataSource = self
@@ -50,28 +47,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         self.loadingView.isHidden = false
         
-        viewModel = CartScreenViewModel()
-        viewModel?.bindResultToViewController = {
-            self.loadingView.isHidden = true
-            
-            if self.viewModel?.lineItems?.count == 0 || self.viewModel?.lineItems == nil {
-                self.emptyCartLabel.isHidden = false
-                self.totalAmount.text = "0"
-                self.checkOutButton.isEnabled = false
-                self.promoCodeButton.isEnabled = false
-                if self.viewModel?.lineItems == nil {
-                    self.showAlert()
-                }
-                self.setDiscountUI()
-            } else {
-                self.totalAmount.text = ExchangeCurrency.exchangeCurrency(amount: self.viewModel?.draftOrder?.subtotalPrice)
-                self.emptyCartLabel.isHidden = true
-                self.checkOutButton.isEnabled = true
-                self.promoCodeButton.isEnabled = true
-                self.setDiscountUI()
-            }
-            self.cartTable.reloadData()
-        }
+        setViewModel()
         
 //        for i in 0...2 {
 //            UserDefaults.standard.removeObject(forKey: "coupon\(i)")
@@ -86,6 +62,48 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             if !isReachable {
                 ReachabilityManager.showConnectionAlert(view: self)
             }
+        }
+    }
+    
+    func setNavigationBar() {
+        self.title = "HEIN"
+        self.navigationController?.navigationBar.tintColor = UIColor(.red)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")
+    }
+    
+    func setViewModel() {
+        viewModel = CartScreenViewModel()
+        viewModel?.bindResultToViewController = {
+            self.loadingView.isHidden = true
+            
+            if self.viewModel?.lineItems?.count == 0 || self.viewModel?.lineItems == nil {
+                self.emptyCartLabel.isHidden = false
+                self.totalAmount.text = "0"
+                self.checkOutButton.isEnabled = false
+                self.promoCodeButton.isEnabled = false
+                self.cartCountLabel.isHidden = true
+                if self.viewModel?.lineItems == nil {
+                    self.showAlert()
+                }
+                self.setDiscountUI()
+            } else {
+                self.totalAmount.text = ExchangeCurrency.exchangeCurrency(amount: self.viewModel?.draftOrder?.subtotalPrice)
+                
+                var quantity = 0
+                for item in (self.viewModel?.lineItems)! {
+                    quantity += Int(item.quantity)
+                }
+                self.cartCountLabel.text = "(\(quantity))"
+                self.cartCountLabel.isHidden = false
+                
+                self.emptyCartLabel.isHidden = true
+                self.checkOutButton.isEnabled = true
+                self.promoCodeButton.isEnabled = true
+                self.setDiscountUI()
+            }
+            self.cartTable.reloadData()
         }
     }
     
@@ -227,60 +245,6 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 172
-    }
-
-}
-
-//@IBDesignable
-class CustomButton: UIButton {
-    @IBInspectable var isRounded: Bool = false {
-        didSet {
-            layer.cornerRadius = isRounded ? min(frame.width, frame.height) / 2 : 0
-            layer.masksToBounds = isRounded ? true : false
-        }
-    }
-}
-
-//@IBDesignable
-class CustomView: UIView {
-    @IBInspectable var Rounded: Bool = false {
-        didSet {
-            layer.cornerRadius = Rounded ? 10 : 0
-            //layer.masksToBounds = Rounded ? true : false
-        }
-    }
-    
-    @IBInspectable var Shadowed: Bool = false {
-        didSet {
-            layer.shadowRadius = 12
-            layer.shadowOpacity = 0.28
-            layer.shadowOffset = CGSize(width: 0, height: 4)
-            layer.shadowColor = UIColor.gray.cgColor
-            //layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-            //clipsToBounds = false
-        }
-    }
-
-}
-
-//@IBDesignable
-class CustomImageView: UIImageView {
-    @IBInspectable var Rounded: Bool = false {
-        didSet {
-            layer.cornerRadius = Rounded ? 10 : 0
-            //layer.masksToBounds = Rounded ? true : false
-        }
-    }
-    
-    @IBInspectable var Shadowed: Bool = false {
-        didSet {
-            layer.shadowRadius = 12
-            layer.shadowOpacity = 0.28
-            layer.shadowOffset = CGSize(width: 0, height: 4)
-            layer.shadowColor = UIColor.gray.cgColor
-            //layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-            //clipsToBounds = false
-        }
     }
 
 }
