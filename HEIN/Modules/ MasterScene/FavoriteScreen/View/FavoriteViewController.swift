@@ -18,7 +18,7 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         let favoriteCellNib = UINib(nibName: "FavoriteTableViewCell", bundle: nil)
         favoriteTableView.register(favoriteCellNib, forCellReuseIdentifier: "favoriteCell")
-        navigationItem.title = "Wishlist ♥️"
+        navigationItem.title = "HEIN"
         viewModel = FavoriteViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
