@@ -107,14 +107,21 @@ class CartScreenViewModel {
     }
     
     func getVariantsStock(products: [Product]){
-        let variants = products.map { product in
+        let productVariantsArr = products.map { product in
                 return product.variants
             }
+        
+        var variants: [Variant] = []
+        for productVariants in productVariantsArr {
+            for variant in productVariants {
+                variants.append(variant)
+            }
+        }
         
         var Stock : [(id: Int, stock: Int)] = []
         
         for i in 0..<(lineItems?.count ?? 0) {
-            for variant in variants[i] {
+            for variant in variants {
                 if self.lineItems?[i].variantID == variant.id {
                     Stock.append((id: variant.id, stock: variant.inventoryQuantity))
                 }
