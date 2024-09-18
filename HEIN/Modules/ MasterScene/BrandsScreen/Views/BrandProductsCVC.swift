@@ -33,10 +33,13 @@ class BrandProductsCVC: UICollectionViewCell {
     func configureCell(product:Product?){
         guard let url = URL(string: product?.image.src ?? "") else{return}
         imgProduct.kf.setImage(with: url,placeholder:UIImage(named: "placeHolder"))
-        let Price = Double(product?.variants.first?.price ?? "0.0")
-        price.text = String(format: "%.2f" ,Price ?? "0.0")
+        price.text = ExchangeCurrency.exchangeCurrency(amount: product?.variants.first?.price)
         productName.text = product?.title
         productBrand.text = product?.vendor
+        currency.text =  ExchangeCurrency.getCurrency()
     }
 
 }
+
+
+

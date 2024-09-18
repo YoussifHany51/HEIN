@@ -9,85 +9,87 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
+import FirebaseCore
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButtonOutlet: UIButton!
+    private var activityIndicator: UIActivityIndicatorView?
     var viewModel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
+        setupUI()
+        bindViewModel()
+        showLoadingSpinner()
+    }
+    
+    private func setupUI() {
         loginButtonOutlet.tintColor = .red
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .password
         emailTextField.textContentType = .emailAddress
+        activityIndicator?.isHidden = true
     }
     
-    @IBAction func DoNotHaveAccountButton(_ sender: Any) {
+    private func bindViewModel() {
+        viewModel.showLoading = { [weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.activityIndicator?.startAnimating()
+                    self?.activityIndicator?.isHidden = false
+                } else {
+                    self?.activityIndicator?.stopAnimating()
+                    self?.activityIndicator?.isHidden = true
+                }
+            }
+        }
+        
+        viewModel.showAlert = { [weak self] message in
+            DispatchQueue.main.async {
+                self?.showAlert(message: message)
+            }
+        }
+        
+        viewModel.navigateToMaster = { [weak self] in
+            DispatchQueue.main.async {
+                let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+                let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+                self?.present(master, animated: true)
+            }
+        }
+    }
+    func showLoadingSpinner() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator?.center = view.center
+        view.addSubview(activityIndicator!)
+    }
+    
+    @IBAction func skipButton(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
+        let master = storyBoard.instantiateViewController(identifier: "TabBarController")
+        self.present(master, animated: true)
+    }
+    
+
+    @IBAction func dontHaveAccount(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController")
-        self.navigationController?.pushViewController(vc!, animated: true)
+        present(vc!, animated: true)
     }
     @IBAction func loginButton(_ sender: Any) {
         if !viewModel.isInvalidTextFields(email: emailTextField.text!, password: passwordTextField.text!) {
             
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) {[weak self] authResult, error in
-                guard error == nil else{
-                    let error = error as NSError?
-                    switch AuthErrorCode(rawValue: error!.code) {
-                    case .wrongPassword:
-                        self?.showAlert(message: "Wrong Email or Password❗️")
-                        break
-                    case .invalidUserToken: #warning("Check User NOT found")
-                        self?.showAlert(message: "Please Sign Up First")
-                        break
-                    case .networkError:
-                        self?.showAlert(message: "Network Connection Failed❗️ 😞")
-                        break
-                    default:
-                        self?.showAlert(message: "Error: \(error!.localizedDescription)")
-                        print("Error: \(error!.localizedDescription)")
-                        break
-                    }
-                    return
-                }
-                // Successful sign-in, navigate to the master view controller
-                let master = self?.storyboard?.instantiateViewController(withIdentifier: "master")
-                self?.navigationController?.pushViewController(master!, animated: true)
-                print("Logged in Successfully")
-            }
+            guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+            viewModel.login(email: email, password: password)
         } else {
             self.showAlert(message: "Please fill in all fields correctly.")
         }
     }
     
     @IBAction func googleSignInButton(_ sender: Any) {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-
-        // Create Google Sign In configuration object.
-        let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = config
-
-        // Start the sign in flow!
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
-          guard error == nil else {
-              return
-          }
-
-          guard let user = result?.user,
-            let idToken = user.idToken?.tokenString
-          else {
-              return
-          }
-
-          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                         accessToken: user.accessToken.tokenString)
-
-            Auth.auth().signIn(with: credential) { result, error in
-
-              // At this point, our user is signed in
-            }
-        }
+        viewModel.googleSignIn(with: self)
     }
     func showAlert(message:String){
         let alert = UIAlertController(title: "Error ⚠️", message: message, preferredStyle: .alert)

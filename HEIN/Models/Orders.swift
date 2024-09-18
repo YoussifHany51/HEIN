@@ -13,6 +13,10 @@ struct Orders: Codable {
     var orders: [Order]
 }
 
+struct OrderResponse: Codable {
+    var order: Order
+}
+
 // MARK: - Order
 struct Order: Codable {
     let id: Int
@@ -27,6 +31,7 @@ struct Order: Codable {
     let currentTotalDiscounts: String
     let totalDiscounts: String
     let appliedDiscount: AppliedDiscount?
+    let totalOutstanding: String
 
    
     enum CodingKeys: String, CodingKey {
@@ -42,6 +47,7 @@ struct Order: Codable {
         case totalPrice = "total_price"
         case subtotalPrice = "subtotal_price"
         case appliedDiscount = "applied_discount"
+        case totalOutstanding = "total_outstanding"
 
         
       

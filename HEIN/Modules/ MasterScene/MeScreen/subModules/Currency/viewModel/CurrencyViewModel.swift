@@ -11,32 +11,43 @@ class CurrencyViewModel {
     
     let nwService : NetworkManager
     
-    var bindResultToViewController: (() -> Void) = {}
+    var bindResultToViewController: (( _ result: ExchangeResult) -> Void) = {result in }
     
-    var allCurrencies : [(short: String, full: String)]? {
-        didSet {
-            bindResultToViewController()
-        }
+    enum ExchangeResult {
+        case success
+        case failure
     }
+    
+    var allCurrencies : [(short: String, full: String)]?
     
     init() {
         nwService = NetworkManager()
-        getCurrencies()
-    }
-    
-    func getCurrencies() {
-        nwService.fetch(url: APIHandler.currenciesUrl(.listOfAllCurrencies), type: CurrencyResponse.self) { responce in
-            
-            guard let responce = responce else {
-                self.bindResultToViewController()
-                return
-            }
-
-            self.allCurrencies = responce.currencies.map({ (key, value) in
+        allCurrencies = currencies.map({ (key, value) in
                 (short: key, full: value)
             })
-        }
+        //getCurrencies()
     }
+    
+    func getExchageRates(currency: String) {
+        if currency == "USD" {
+            UserDefaults.standard.setValue(1, forKey: "factor")
+            UserDefaults.standard.setValue(currency, forKey: "currencyTitle")
+            self.bindResultToViewController(.success)
+            
+            return
+        }
+        
+        nwService.fetch(url: APIHandler.currenciesUrl(.liveCurrencies(wantedCurrencies: "\(currency),")), type: ExchangeRates.self, complitionHandler: { container in
+            guard let container = container else {
+                self.bindResultToViewController(.failure)
+                return
+            }
+            UserDefaults.standard.setValue(container.quotes.first?.value, forKey: "factor")
+            UserDefaults.standard.setValue(currency, forKey: "currencyTitle")
+            self.bindResultToViewController(.success)
+        }, headers: ["apiKey":APIHandler.currencyApiKey])
+    }
+    
     
     struct CurrencyResponse: Codable {
         let currencies : [String: String]

@@ -30,16 +30,17 @@ struct DraftOrder: Codable {
     let id: Int
     let name: String
     let customer: CustomerModel?
-    let shippingAddress, billingAddress: Address?
+    let shippingAddress, billingAddress: shippingOrBillingAddress?
     let note: String?
     let noteAttributes: [NoteAttribute]
     let email, currency: String?
-    let lineItems: [LineItem]
+    var lineItems: [LineItem]
     let paymentTerms: PaymentTerms?
     let appliedDiscount: AppliedDiscount?
     let subtotalPrice, totalPrice: String
     let updatedAt :String
     let status: String
+    let totalTax: String
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -56,6 +57,7 @@ struct DraftOrder: Codable {
         case totalPrice = "total_price"
         case status
         case updatedAt = "updated_at"
+        case totalTax = "total_tax"
     }
 }
 
@@ -107,5 +109,15 @@ struct PaymentSchedule: Codable {
         case completedAt = "completed_at"
         case expectedPaymentMethod = "expected_payment_method"
     }
+}
+
+// MARK: Shipping and billing addresse
+struct shippingOrBillingAddress: Codable {
+    let address1: String
+    let address2: String?
+    let phone: String
+    let city: String
+    let country: String
+    let name: String
 }
 

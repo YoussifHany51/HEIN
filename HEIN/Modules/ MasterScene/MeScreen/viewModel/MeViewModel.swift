@@ -14,29 +14,46 @@ class MeViewModel {
     
     var customerId : Int
     
-    var orders : [Order]?{
-        didSet{
+    var orders : [Order]? {
+        didSet {
             bindResultToViewController()
         }
     }
     
-    init(customerId: Int) {
+    var addresses : [Address]? {
+        didSet {
+            bindResultToViewController()
+        }
+    }
+    
+    init() {
         nwService = NetworkManager()
-        self.customerId = customerId
+        self.customerId = Int(UserDefaults.standard.string(forKey: "User_id") ?? "0")!
     }
     
     func getOrders() {
-        nwService.fetch(url: APIHandler.urlForGetting(.orders), type: Orders.self) { responce in
+        nwService.fetch(url: APIHandler.urlForGetting(.orders), type: Orders.self) { response in
             
-            guard let responce = responce else {
-                self.bindResultToViewController()
+            guard let response = response else {
                 return
             }
 
-            self.orders = responce.orders.filter({ order in
+            self.orders = response.orders.filter({ order in
                 order.customer.id == self.customerId
             })
         }
     }
+    
+    func getAddresses() {
+        nwService.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: "\(customerId)")), type: Addresses.self) { response in
+            
+            guard let response = response else {
+                return
+            }
+
+            self.addresses = response.addresses
+        }
+    }
+    
 }
 

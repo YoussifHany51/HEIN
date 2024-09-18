@@ -39,6 +39,11 @@ class APIHandler{
         case shopConfiguration
         case liveCurrencies(wantedCurrencies: String)
         case listOfAllCurrencies
+        case menProducts(id:String)
+        case womenProducts(id:String)
+        case kidsProducts(id:String)
+        case inventoryLevels
+        case productVarient(id:String)
         var order:String{
             switch self{
             case .priceRule:
@@ -81,7 +86,16 @@ class APIHandler{
                 return "live?source=usd&currencies=\(wantedCurrencies)"
             case .listOfAllCurrencies:
                 return "list"
-                
+            case .menProducts(id: let collectionId):
+                        return "products.json?collection_id=MEN_\(collectionId))"
+            case .womenProducts(id: let collectionId):
+                        return "products.json?collection_id=WOMEN_\(collectionId)D"
+            case .kidsProducts(id: let collectionId):
+                        return "products.json?collection_id=KIDS_\(collectionId)"
+            case .inventoryLevels:
+                return "inventory_levels/adjust.json"
+            case .productVarient(id: let varrientId):
+                return "variants/\(varrientId).json"
             }
         }
     }

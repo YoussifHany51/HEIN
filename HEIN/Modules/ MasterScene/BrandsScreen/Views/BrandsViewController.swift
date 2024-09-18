@@ -9,8 +9,7 @@ import UIKit
 
 class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UISearchBarDelegate,UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    @IBOutlet weak var imgNoData: UIImageView!
+    @IBOutlet weak var noProductsImg: UIImageView!
     @IBOutlet weak var BrandProductsCollection: UICollectionView!
     @IBOutlet weak var imgBrand: UIImageView!
     @IBOutlet weak var productNumbers: UILabel!
@@ -23,20 +22,20 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     var searchWord = ""
     var searching = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        noProductsImg.isHidden = true
         self.hideKeyboardWhenTappedAround()
-        imgNoData.isHidden = true
+        brandsViewModel = BrandsViewMode()
+        setIndicator()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         BrandProductsCollection.delegate = self
         BrandProductsCollection.dataSource = self
-        brandsViewModel = BrandsViewMode()
         setupCollectionView()
-        setIndicator()
         searchBar.delegate = self
         registerCell()
-        //self.navigationItem.hidesBackButton = true
-        self.navigationItem.title = "HEIN"
         brandsViewModel?.checkNetworkReachability{ isReachable in
             if isReachable {
                 self.loadData()
@@ -46,6 +45,10 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
                 }
             }
         }
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     @IBAction func sortedByPrice(_ sender: Any) {
         brandsViewModel.sortByPrice()
@@ -69,10 +72,10 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         brandsViewModel?.getBrands(vendor: vendor ?? " ")
         if (brandsViewModel?.brandProducts?.count  == 0) {
             BrandProductsCollection.isHidden = true
-            imgNoData.isHidden = false
+            noProductsImg.isHidden = false
         } else {
             BrandProductsCollection.isHidden = false
-            imgNoData.isHidden = true
+            noProductsImg.isHidden = true
         }
         
     }
@@ -140,6 +143,12 @@ extension BrandsViewController{
         }
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
+        let productInfovc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController //{
+        productInfovc.product = brandsViewModel.brandProducts?[indexPath.row]
+        self.present(productInfovc, animated: true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthPerItem = BrandProductsCollection.frame.width / 2 - 10
@@ -156,7 +165,9 @@ extension BrandsViewController{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
     }
-        
+    
+   
+    
 }
 
 
