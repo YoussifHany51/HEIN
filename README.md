@@ -47,7 +47,7 @@
 
 <br>
 
-- Comolete your order :<br>
+- Complete your order :<br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/18f04d15-714c-4839-b1a0-96bc7d08db8d" width="400" height="800"/>
   <img src="https://github.com/user-attachments/assets/f655c1ab-a4fd-42b6-9b8d-05d026129308" width="400" height="800"/>
