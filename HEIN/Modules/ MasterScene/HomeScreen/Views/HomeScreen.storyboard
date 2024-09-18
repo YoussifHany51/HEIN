@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wuf-lz-gHg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wuf-lz-gHg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -68,7 +68,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zRg-OG-SDj">
-                                <rect key="frame" x="0.0" y="419" width="393" height="433"/>
+                                <rect key="frame" x="5" y="415" width="383" height="417"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4i6-oy-C08">
                                     <size key="itemSize" width="365" height="281"/>
@@ -78,7 +78,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="GSi-yS-qRA">
-                                        <rect key="frame" x="14" y="0.0" width="365" height="281"/>
+                                        <rect key="frame" x="9" y="0.0" width="365" height="281"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zib-wp-Zd4">
                                             <rect key="frame" x="0.0" y="0.0" width="365" height="281"/>
@@ -124,12 +124,12 @@
                             <constraint firstItem="SES-p7-Gpo" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.0622066" id="06b-sp-gTg"/>
                             <constraint firstItem="IpL-Dp-Tke" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" id="2QO-hc-lDX"/>
                             <constraint firstItem="RVr-2e-NxE" firstAttribute="top" secondItem="CrB-oe-eNd" secondAttribute="top" constant="10" id="AEr-h1-ayb"/>
-                            <constraint firstItem="zRg-OG-SDj" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" id="BLe-DA-sMx"/>
+                            <constraint firstItem="zRg-OG-SDj" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" constant="5" id="BLe-DA-sMx"/>
                             <constraint firstItem="IpL-Dp-Tke" firstAttribute="top" secondItem="RVr-2e-NxE" secondAttribute="bottom" id="F4R-8N-zg6"/>
                             <constraint firstItem="SES-p7-Gpo" firstAttribute="leading" secondItem="CrB-oe-eNd" secondAttribute="leading" constant="10" id="KAe-Ry-s6E"/>
                             <constraint firstItem="IpL-Dp-Tke" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.25" id="KJ3-bg-YXK"/>
-                            <constraint firstItem="zRg-OG-SDj" firstAttribute="top" secondItem="SES-p7-Gpo" secondAttribute="bottom" constant="4" id="NsL-Lz-Ans"/>
-                            <constraint firstAttribute="bottom" secondItem="zRg-OG-SDj" secondAttribute="bottom" id="Ouv-J1-lDX"/>
+                            <constraint firstItem="zRg-OG-SDj" firstAttribute="top" secondItem="SES-p7-Gpo" secondAttribute="bottom" id="NsL-Lz-Ans"/>
+                            <constraint firstAttribute="bottom" secondItem="zRg-OG-SDj" secondAttribute="bottom" constant="20" symbolic="YES" id="Ouv-J1-lDX"/>
                             <constraint firstItem="NEf-jG-lP2" firstAttribute="centerX" secondItem="IpL-Dp-Tke" secondAttribute="centerX" id="VYB-8Q-1RB"/>
                             <constraint firstItem="CrB-oe-eNd" firstAttribute="leading" secondItem="RVr-2e-NxE" secondAttribute="leading" constant="8" id="X3z-HN-S2X"/>
                             <constraint firstItem="SES-p7-Gpo" firstAttribute="top" secondItem="NEf-jG-lP2" secondAttribute="bottom" constant="10" id="g3z-3E-ruH"/>
@@ -138,7 +138,7 @@
                             <constraint firstItem="NEf-jG-lP2" firstAttribute="top" secondItem="IpL-Dp-Tke" secondAttribute="bottom" id="wAW-rb-waX"/>
                             <constraint firstItem="RVr-2e-NxE" firstAttribute="height" secondItem="cHv-yX-ZwJ" secondAttribute="height" multiplier="0.0516432" id="wC6-xy-0tx"/>
                             <constraint firstItem="IpL-Dp-Tke" firstAttribute="width" secondItem="CrB-oe-eNd" secondAttribute="width" id="y9R-Me-WmS"/>
-                            <constraint firstItem="CrB-oe-eNd" firstAttribute="trailing" secondItem="zRg-OG-SDj" secondAttribute="trailing" id="zOK-dl-yDR"/>
+                            <constraint firstItem="CrB-oe-eNd" firstAttribute="trailing" secondItem="zRg-OG-SDj" secondAttribute="trailing" constant="5" id="zOK-dl-yDR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" selectedImage="house.fill" id="ONg-Ju-mhx"/>
@@ -302,7 +302,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="sale1" width="474" height="335"/>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

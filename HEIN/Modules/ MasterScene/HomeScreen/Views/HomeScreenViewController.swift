@@ -18,7 +18,6 @@ class HomeScreenViewController: UIViewController {
     var search:UIBarButtonItem!
     var timer : Timer?
     
-    //var current = 0
     private var currentIndexPath: IndexPath = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
@@ -78,10 +77,6 @@ class HomeScreenViewController: UIViewController {
         self.present(seearcchVC, animated: true)
     }
     
-//    func startTimer() {
-//        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNextIndex), userInfo: nil, repeats: true)
-//    }
-    
     //Invokes Timer to start Automatic Animation with repeat enabled
     func startTimer() {
         // To Restart the timer
@@ -113,16 +108,7 @@ class HomeScreenViewController: UIViewController {
         stopTimer()
     }
 
-//    @objc func moveToNextIndex() {
-//        if current < photoarr.count - 1 {
-//            current += 1
-//        } else {
-//            current = 0
-//        }
-//        
-//        adsCollection.scrollToItem(at: IndexPath(item: current, section: 0), at: .centeredHorizontally, animated: true)
-//        pageControl.currentPage = current
-//    }
+
 
     
 }
