@@ -52,7 +52,7 @@ class PaymentViewModel {
         let address = extractShippingAddressOrderData(address: draftOrder.shippingAddress!)
         //let discount = draftOrder.appliedDiscount!
         
-        nwService.postWithResponse(url: APIHandler.urlForGetting(.orders), type: OrderResponse.self, parameters: ["order": [ "line_items": lineItems, "created_at": draftOrder.updatedAt, "currency": "\(ExchangeCurrency.getCurrency())", "tax_lines": [["price": draftOrder.totalTax]], "discount_codes": [discountCodes],  "shipping_address": address, "customer": customer]]) { orderResponse in
+        nwService.postWithResponse(url: APIHandler.urlForGetting(.orders), type: OrderResponse.self, parameters: ["order": [ "line_items": lineItems, "created_at": draftOrder.updatedAt, "currency": "\(ExchangeCurrency.getCurrency())", "tax_lines": [["price": draftOrder.totalTax]], "discount_codes": [discountCodes],  "shipping_address": address, "send_receipt": true, "send_fulfillment_receipt": true, "customer": customer]]) { orderResponse in
             
             guard orderResponse != nil else {return}
             self.clearDraftOrderItems()
