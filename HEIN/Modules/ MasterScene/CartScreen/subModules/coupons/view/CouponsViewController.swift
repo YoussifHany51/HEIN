@@ -71,7 +71,9 @@ class CouponsViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.applyDiscount = {
             self.loadingView.isHidden = false
             self.couponsTableIndicator.startAnimating()
-            self.viewModel?.updateDraftOrder(priceRule: (self.viewModel?.priceRules?[indexPath.row])!, discountCode: (self.viewModel?.discountCodes[indexPath.row].code)!)
+            self.viewModel?.updateDraftOrder(priceRule: (self.viewModel?.priceRules?[indexPath.row])!, discountCode: (self.viewModel?.discountCodes.first(where: {
+                $0.priceRuleId == (self.viewModel?.priceRules?[indexPath.row].id)!
+            }))!.code )
         }
         
         return cell

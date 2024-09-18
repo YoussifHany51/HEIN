@@ -119,6 +119,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             self.promoCodeTextLabel.isHidden = true
         }
         
+        self.promoCodeButton.layer.backgroundColor = UIColor.lightGray.cgColor
     }
     
     func showAlert() {

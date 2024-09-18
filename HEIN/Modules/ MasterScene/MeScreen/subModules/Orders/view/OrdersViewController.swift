@@ -27,12 +27,31 @@ class OrdersViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         ordersTableIndicator.isHidden = true
         
+        setOrdersViewModel()
         
         if orders?.count == 0 {
             emptyOrdersLable.isHidden = false
         } else if orders == nil {
-            emptyOrdersLable.text = "Couldn't find any orders"
-            emptyOrdersLable.isHidden = false
+            self.ordersTableIndicator.startAnimating()
+            viewModel?.getOrders()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel?.getOrders()
+    }
+    
+    func setOrdersViewModel() {
+        viewModel = OrdersViewModel()
+        viewModel?.bindResultToViewController = {
+            if let orders = self.viewModel?.orders {
+                self.orders = orders
+            } else {
+                self.emptyOrdersLable.text = "Couldn't find any orders"
+                self.emptyOrdersLable.isHidden = false
+            }
+            self.ordersTableIndicator.stopAnimating()
+            self.ordersTable.reloadData()
         }
     }
     
@@ -45,8 +64,14 @@ class OrdersViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         cell.orderNumberLabel.text = orders?[indexPath.row].id.description
         cell.orderDateLabel.text = String((orders?[indexPath.row].createdAt ?? "").prefix(10))
-        cell.orderQuantityLabel.text = orders?[indexPath.row].lineItems.count.description
-        cell.totalAmountLabel.text = ExchangeCurrency.exchangeCurrency(amount: orders?[indexPath.row].subtotalPrice)
+        
+        var quantity = 0
+        for item in (orders?[indexPath.row].lineItems)! {
+            quantity += Int(item.quantity)
+        }
+        cell.orderQuantityLabel.text = "\(quantity)" //orders?[indexPath.row].lineItems.count.description
+        
+        cell.totalAmountLabel.text = ExchangeCurrency.exchangeCurrency(amount: orders?[indexPath.row].totalOutstanding)
         cell.currencyLabel.text = ExchangeCurrency.getCurrency()
         
         return cell

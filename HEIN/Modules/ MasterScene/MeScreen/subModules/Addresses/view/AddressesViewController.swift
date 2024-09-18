@@ -48,6 +48,7 @@ class AddressesViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel?.getAddresses()
         ReachabilityManager.checkNetworkReachability { isReachable in
             if !isReachable {
                 ReachabilityManager.showConnectionAlert(view: self)
