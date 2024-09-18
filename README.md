@@ -10,6 +10,14 @@
 
 - Dive into our deep product catalogue and add to your wishList :<br>
 <p align="center">
+  <img src="https://github.com/user-attachments/assets/2339fb1b-4a21-4b7c-b947-c228ff2ed36d" width="400" height="800"/>
+  <img src="https://github.com/user-attachments/assets/fcf53597-8349-479b-9a93-9174662cffd7" width="400" height="800"/>
+</p>
+
+<br>
+
+- Different product variants with user reviews :<br>
+<p align="center">
   <img src="https://github.com/user-attachments/assets/a86b45d0-6b47-4da0-bfc7-695b90be93df" width="400" height="800"/>
   <img src="https://github.com/user-attachments/assets/49b2c81b-2df4-4622-9fbf-7a48ed6c2efa" width="400" height="800"/>
 </p>
