@@ -29,6 +29,14 @@ class CurrencyViewModel {
     }
     
     func getExchageRates(currency: String) {
+        if currency == "USD" {
+            UserDefaults.standard.setValue(1, forKey: "factor")
+            UserDefaults.standard.setValue(currency, forKey: "currencyTitle")
+            self.bindResultToViewController(.success)
+            
+            return
+        }
+        
         nwService.fetch(url: APIHandler.currenciesUrl(.liveCurrencies(wantedCurrencies: "\(currency),")), type: ExchangeRates.self, complitionHandler: { container in
             guard let container = container else {
                 self.bindResultToViewController(.failure)
