@@ -18,7 +18,7 @@
 
  - Manage your cart and apply coupons :<br>
 <p align="center">
-  <img src="(https://github.com/user-attachments/assets/7f4d98d9-836d-40d4-ba7b-348bfa4fa671" width="400" height="800"/>
+  <img src="https://github.com/user-attachments/assets/7f4d98d9-836d-40d4-ba7b-348bfa4fa671" width="400" height="800"/>
   <img src="https://github.com/user-attachments/assets/f6d9a7b4-55b8-4de2-ac3a-d95ae9eaee87" width="400" height="800"/>
 </p>
 
