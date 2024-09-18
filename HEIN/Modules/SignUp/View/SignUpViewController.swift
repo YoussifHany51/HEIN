@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         configureUI()
         bindViewModel()
         showLoadingSpinner()
@@ -50,7 +51,7 @@ class SignUpViewController: UIViewController {
         
         viewModel.onSuccess = { [weak self] in
             self?.stopLoading()
-            self?.showAlert(title: "Done 🥳💃", message: "User created successfully!")
+            self?.showAlert(title: "Done 🥳💃", message: "Your email has been successfully created.")
             self?.dismiss(animated: true, completion: nil)
         }
         
