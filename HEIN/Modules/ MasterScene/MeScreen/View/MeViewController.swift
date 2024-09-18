@@ -56,7 +56,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func setNavigationBar() {
-        self.title = "HEIN"
+        self.navigationItem.title = "HEIN"
         self.navigationController?.navigationBar.tintColor = UIColor(.red)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
