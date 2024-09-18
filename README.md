@@ -8,7 +8,7 @@
 
 <br>
 
--Dive into our deep product catalogue and add to your wishList :<br>
+- Dive into our deep product catalogue and add to your wishList :<br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a86b45d0-6b47-4da0-bfc7-695b90be93df" width="400" height="800"/>
   <img src="https://github.com/user-attachments/assets/49b2c81b-2df4-4622-9fbf-7a48ed6c2efa" width="400" height="800"/>
