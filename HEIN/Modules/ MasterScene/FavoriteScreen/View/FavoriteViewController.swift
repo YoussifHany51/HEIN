@@ -34,7 +34,7 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
                   imgErrorPhoto.isHidden = false
               } else {
                   let imgErrorPhoto = UIImageView()
-                  imgErrorPhoto.image = UIImage(named: "NoFav")
+                  imgErrorPhoto.image = UIImage(named: "NoProducts")
                   imgErrorPhoto.tintColor = .gray
                   imgErrorPhoto.tag = 100 // Set a tag to identify the image view
                   imgErrorPhoto.translatesAutoresizingMaskIntoConstraints = false
