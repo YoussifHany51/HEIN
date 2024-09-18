@@ -12,8 +12,8 @@ import XCTest
 final class NetworkManagerTests: XCTestCase {
 
     var networkManager :NetworkManager?
-    let dummyCustomerId = "7440718856437"
-    let dummyName = "luka modrić"
+    let dummyCustomerId = "8416898973992"
+    let dummyName = "toni kross"
     
     override func setUpWithError() throws {
         networkManager = NetworkManager()
@@ -56,7 +56,7 @@ final class NetworkManagerTests: XCTestCase {
     func testPostFunction(){
         let expectation = self.expectation(description: "Network request expectation")
         let apiUrl = APIHandler.urlForGetting(.allAddressesOf(customer_id: dummyCustomerId))
-        let parameters = ["address":["name": "toni kross","phone": "44521", "address1": "Munich", "city": "Munich"]]
+        let parameters = ["address":["name": "toni kross", "phone": "44521", "address1": "Munich", "city": "Munich", "country": "Germany"]]
         networkManager?.PostToApi(url: apiUrl, parameters: parameters)
         Thread.sleep(forTimeInterval: 3)
         networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: dummyCustomerId)), type: Addresses.self) { addressesContainer in
@@ -125,5 +125,65 @@ final class NetworkManagerTests: XCTestCase {
              XCTAssertNil(error, "Timeout waiting for API request")
         }
     }
+    
+    func testPostWithResponseSuccess() {
+        let expectation = self.expectation(description: "Network request expectation")
+        let apiUrl = APIHandler.urlForGetting(.allAddressesOf(customer_id: dummyCustomerId))
+        let parameters = ["address":["name": "toni kross", "phone": "44521", "address1": "Munich", "city": "Munich", "country": "Germany"]]
+        networkManager?.postWithResponse(url: apiUrl, type: CustomerAddressResponse.self, parameters: parameters, completion: { response in
+//            XCTAssertNotNil(response, "Error")
+//            expectation.fulfill()
+        })
+        Thread.sleep(forTimeInterval: 3)
+        networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: dummyCustomerId)), type: Addresses.self) { addressesContainer in
+            XCTAssert(addressesContainer?.addresses.last?.name == "toni kross", "Post function not working properly")
+                    expectation.fulfill()
+        }
+        waitForExpectations(timeout: 30, handler: nil)
+    }
+    
+    func testPutWithResponseFunction(){
+        let expectation = self.expectation(description: "Network request expectation")
+        var addressID: String?
+        let queue = DispatchQueue(label: "Serially Do")
+        queue.async {
+            let group = DispatchGroup()
+            
+            group.enter()
+            self.networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: self.dummyCustomerId)), type: Addresses.self) { addressesContainer in
+                for address in (addressesContainer?.addresses) ?? [] {
+                    if address.name == self.dummyName {
+                        print("\(address.name) assigninig id")
+                        addressID = String(address.id)
+                        group.leave()
+                        break
+                    }
+                }
+            }
+            group.wait()
+            
+            let apiUrl = APIHandler.urlForGetting(.makeDefaultAddress(customer_id: self.dummyCustomerId, address_id: addressID ?? ""))
+            self.networkManager?.putWithResponse(url: apiUrl, type: CustomerAddressResponse.self, completion: { addressRespons in
+                //
+            })
+            
+            group.enter()
+            Thread.sleep(forTimeInterval: 3)
+            self.networkManager?.fetch(url: APIHandler.urlForGetting(.allAddressesOf(customer_id: self.dummyCustomerId)), type: Addresses.self) { addressesContainer in
+                for address in (addressesContainer?.addresses) ?? [] {
+                    if String(address.id) == addressID ?? "" {
+                            print(address.id)
+                        XCTAssertTrue(address.addressDefault, "Put not working properly")
+                            expectation.fulfill()
+                            group.leave()
+                            break
+                    }
+                }
+            }
+            group.wait()
+        }
+        waitForExpectations(timeout: 30, handler: nil)
+    }
+    
 
 }
