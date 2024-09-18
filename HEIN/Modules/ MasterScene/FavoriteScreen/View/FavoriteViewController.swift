@@ -33,11 +33,18 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
               if let imgErrorPhoto = self.view.viewWithTag(100) as? UIImageView {
                   imgErrorPhoto.isHidden = false
               } else {
-                  let imgErrorPhoto = UIImageView(frame: CGRect(x: 50, y: 100, width: self.view.frame.width - 100, height: 200))
-                  imgErrorPhoto.image = UIImage(named: "NoProducts")
+                  let imgErrorPhoto = UIImageView()
+                  imgErrorPhoto.image = UIImage(named: "NoFav")
                   imgErrorPhoto.tintColor = .gray
                   imgErrorPhoto.tag = 100 // Set a tag to identify the image view
+                  imgErrorPhoto.translatesAutoresizingMaskIntoConstraints = false
                   self.view.addSubview(imgErrorPhoto)
+                  NSLayoutConstraint.activate([
+                    imgErrorPhoto.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                    imgErrorPhoto.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                    imgErrorPhoto.widthAnchor.constraint(equalToConstant: self.view.frame.width - 100),
+                    imgErrorPhoto.heightAnchor.constraint(equalToConstant: 200)
+                  ])
               }
               
           } else {

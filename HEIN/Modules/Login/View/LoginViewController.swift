@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         setupUI()
         bindViewModel()
         showLoadingSpinner()
