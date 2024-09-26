@@ -132,6 +132,16 @@ class ProductsInfoViewController: UIViewController {
                     let selectedVariant = viewModel?.lineItems?.filter({ item in
                         item.variantID == variant.id
                     })
+                    
+                    let productVariant = product.variants.filter({ variant in
+                        variant.option1 == sizeButtonOutlet.currentTitle && variant.option2.rawValue == colorButtonOutlet.currentTitle ?? "color" && variant.inventoryQuantity > 0
+                    })
+                    
+                    if productVariant.count == 0 {
+                        self.showAlert(title: "Sorry..!", message: "Out of stock")
+                        return
+                    }
+                    
                     if selectedVariant?.first == nil {
                         let lineItem = LineItem(id: 0, variantID: variant.id, productID: product.id, price: variant.price, name: productTitle.text, title: productTitle.text, quantity: 1, properties: [NoteAttribute(name: "image", value: (productsImageArray.first?.src) ?? ""),NoteAttribute(name: "size", value: (sizeButtonOutlet.titleLabel?.text)!),NoteAttribute(name: "color", value: (colorButtonOutlet.titleLabel?.text)!)])
                         viewModel?.lineItems?.append(lineItem)

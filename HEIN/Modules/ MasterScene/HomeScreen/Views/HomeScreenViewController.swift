@@ -190,13 +190,15 @@ extension HomeScreenViewController:UICollectionViewDelegate,UICollectionViewData
             brandsVC.brandImage = viewModel.brands?[indexPath.row].image.src
             self.present(brandsVC, animated: true)
         }else{
-            if UserDefaults.standard.string(forKey: "coupon\(indexPath.row)") == nil {
-                UserDefaults.standard.set(photoarr[indexPath.row].code, forKey: "coupon\(indexPath.row)")
-                showAlert(title: "'\(photoarr[indexPath.row].code)'", message: "Coupon added to your coupons")
-            } else if UserDefaults.standard.string(forKey: "coupon\(indexPath.row)") == "used" {
-                showAlert(title: "Coupon used", message: "")
-            } else {
-                showAlert(title: "Coupon already added", message: "")
+            if UserDefaults.standard.string(forKey: "User_id") != nil {
+                if UserDefaults.standard.string(forKey: "coupon\(indexPath.row)") == nil {
+                    UserDefaults.standard.set(photoarr[indexPath.row].code, forKey: "coupon\(indexPath.row)")
+                    showAlert(title: "'\(photoarr[indexPath.row].code)'", message: "Coupon added to your coupons")
+                } else if UserDefaults.standard.string(forKey: "coupon\(indexPath.row)") == "used" {
+                    showAlert(title: "Coupon used", message: "")
+                } else {
+                    showAlert(title: "Coupon already added", message: "")
+                }
             }
         }
         
