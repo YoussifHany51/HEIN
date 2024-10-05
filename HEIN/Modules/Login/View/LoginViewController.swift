@@ -57,7 +57,12 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async {
                 let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
                 let master = storyBoard.instantiateViewController(identifier: "TabBarController")
-                self?.present(master, animated: true)
+                // Replace the root view controller
+                if let window = UIApplication.shared.windows.first {
+                    window.rootViewController = master
+                    window.makeKeyAndVisible()
+                }
+                //self?.present(master, animated: true)
             }
         }
     }
@@ -70,7 +75,15 @@ class LoginViewController: UIViewController {
     @IBAction func skipButton(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "MasterStoryBoard", bundle: nil)
         let master = storyBoard.instantiateViewController(identifier: "TabBarController")
-        self.present(master, animated: true)
+        //navigationController?.pushViewController(master, animated: true)
+
+        // Replace the root view controller
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = master
+            window.makeKeyAndVisible()
+        }
+        
+        //self.present(master, animated: true)
     }
     
 
