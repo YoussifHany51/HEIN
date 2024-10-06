@@ -127,6 +127,12 @@ class SearchButtonViewController: UIViewController,UITableViewDelegate,UITableVi
             productInfovc.product = data[indexPath.row]
         }
         self.present(productInfovc, animated: true)
+        
+        // Using navigation controller:
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+//        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")
+//        navigationController?.pushViewController(productInfovc, animated: true)
     }
 
 }

@@ -38,7 +38,13 @@ class GuestCartViewController: UIViewController {
     @IBAction func goToLogin(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let master = storyBoard.instantiateViewController(identifier: "LoginViewController")
-        self.present(master, animated: true)
+        //self.present(master, animated: true)
+        
+        // Replace the root view controller
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = master
+            window.makeKeyAndVisible()
+        }
     }
 
 }

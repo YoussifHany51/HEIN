@@ -149,7 +149,11 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     defaults.removeObject(forKey: "User_name")
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                     let master = storyBoard.instantiateViewController(identifier: "LoginViewController")
-                    self.present(master, animated: true)
+                    //self.present(master, animated: true)
+                    if let window = UIApplication.shared.windows.first {
+                        window.rootViewController = master
+                        window.makeKeyAndVisible()
+                    }
 
                 }catch let error{
                     print(error.localizedDescription)

@@ -74,6 +74,12 @@ class HomeScreenViewController: UIViewController {
         let seearcchVC = storyboard.instantiateViewController(withIdentifier: "SearchButtonViewController") as! SearchButtonViewController
        
         self.present(seearcchVC, animated: true)
+        
+        // Using navigation controller:
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+//        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrowshape.turn.up.backward")
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrowshape.turn.up.backward")
+//        self.navigationController?.pushViewController(seearcchVC, animated: true)
     }
     deinit {
         stopTimer()
