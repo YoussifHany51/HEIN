@@ -46,12 +46,12 @@ class SignUpViewController: UIViewController {
     private func bindViewModel() {
         viewModel.onError = { [weak self] errorMessage in
             self?.stopLoading()
-            self?.showAlert(title: "Error ⚠️", message: errorMessage)
+            self?.showAlert(title: "Sorry", message: errorMessage)
         }
         
         viewModel.onSuccess = { [weak self] in
             self?.stopLoading()
-            self?.showAlert(title: "Done 🥳💃", message: "Your email has been successfully created.", isSuccess: true)
+            self?.showAlert(title: "Done✔️", message: "Your email has been successfully created.", isSuccess: true)
         }
         
         viewModel.onLoadingStateChange = { [weak self] isLoading in
@@ -81,14 +81,14 @@ class SignUpViewController: UIViewController {
             
             viewModel.signUp(name: name, email: email, password: password)
         } else {
-            self.showAlert(title: "Error ⚠️", message: "Please fill in all fields correctly.")
+            self.showAlert(title: "Sorry", message: "Please fill in all fields correctly.")
         }
         print("Sign Up Button Tapped")
         
     }
     func showAlert(title:String,message:String,isSuccess:Bool = false){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okayButton = UIAlertAction(title: "Okay", style: .default) { action in
+        let okayButton = UIAlertAction(title: "ok", style: .default) { action in
             if isSuccess {
                 self.dismiss(animated: true, completion: nil)
             }

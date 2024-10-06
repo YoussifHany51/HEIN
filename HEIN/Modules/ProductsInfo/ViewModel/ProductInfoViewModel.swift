@@ -16,7 +16,7 @@ class ProductInfoViewModel{
     }
     var lineItems : [LineItem]?
     func getDraftOrder() {
-        nwService.fetch(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id")!)), type: DraftOrderContainer.self) { draftOrderContainer in
+        nwService.fetch(url: APIHandler.urlForGetting(.draftOrder(id: UserDefaults().string(forKey: "DraftOrder_Id") ?? "")), type: DraftOrderContainer.self) { draftOrderContainer in
             self.draftOrder = draftOrderContainer?.draftOrder
         }
     }

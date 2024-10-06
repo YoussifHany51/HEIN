@@ -105,8 +105,8 @@ class LoginViewController: UIViewController {
         viewModel.googleSignIn(with: self)
     }
     func showAlert(message:String){
-        let alert = UIAlertController(title: "Error ⚠️", message: message, preferredStyle: .alert)
-        let okayButton = UIAlertAction(title: "Okay", style: .default)
+        let alert = UIAlertController(title: "Sorry", message: message, preferredStyle: .alert)
+        let okayButton = UIAlertAction(title: "ok", style: .default)
         alert.addAction(okayButton)
         self.present(alert, animated: true)
     }
