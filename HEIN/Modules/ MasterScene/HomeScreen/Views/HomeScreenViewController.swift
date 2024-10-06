@@ -9,23 +9,23 @@ import Kingfisher
 class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var adsCollection: UICollectionView!
-    
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var brandsCollection: UICollectionView!
     var indicator : UIActivityIndicatorView?
     var viewModel:HomeProtocol!
     var photoarr = [(image: UIImage(named: "sale1"), code: "SUMMERSALE50FF"), (image: UIImage(named: "sale3"), code: "SUMMERSALE20FF"), (image: UIImage(named: "sale5"), code: "LAST10WAITING")]
-    var search:UIBarButtonItem!
+    var back:UIBarButtonItem!
     var timer : Timer?
     
     private var currentIndexPath: IndexPath = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        back = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward"), style: .plain, target: self, action: #selector(backButton))
+        back.tintColor = UIColor.red
         pageControl.numberOfPages = photoarr.count
         viewModel = HomeViewModel()
         setIndicator()
-        
         pageControl.currentPage = currentIndexPath.item
         startTimer()
     }
@@ -55,7 +55,6 @@ class HomeScreenViewController: UIViewController {
     }
     
      func loadData(){
-        
          viewModel?.loadBrandCollectionData()
          viewModel?.bindBrandsToViewController = { [weak self] in
              DispatchQueue.main.async {
@@ -70,47 +69,15 @@ class HomeScreenViewController: UIViewController {
                  self?.adsCollection.reloadData()
              }}}
      
-    @IBAction func search(_ sender: Any) {
+    @IBAction func homeSearch(_ sender: Any) {
         let storyboard = UIStoryboard(name: "SearchButtonSB", bundle: nil)
-        let seearcchVC = storyboard.instantiateViewController(withIdentifier: "SearchButtonViewController") as! SearchButtonViewController 
+        let seearcchVC = storyboard.instantiateViewController(withIdentifier: "SearchButtonViewController") as! SearchButtonViewController
        
         self.present(seearcchVC, animated: true)
     }
-    
-    //Invokes Timer to start Automatic Animation with repeat enabled
-    func startTimer() {
-        // To Restart the timer
-        timer?.invalidate()
-        
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(scrollToNextItem), userInfo: nil, repeats: true);
-    }
-    
-    func stopTimer() {
-        timer?.invalidate()
-    }
-    
-    // Scroll to Next Cell
-    @objc private func scrollToNextItem() {
-            let numberOfItems = adsCollection.numberOfItems(inSection: currentIndexPath.section)
-            if numberOfItems > 0 {
-                // Calculate the next item index
-                let nextItem = (currentIndexPath.item + 1) % numberOfItems
-                let nextIndexPath = IndexPath(item: nextItem, section: currentIndexPath.section)
-                
-                // Scroll to the next item
-                adsCollection.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
-                
-                currentIndexPath = nextIndexPath
-            }
-        }
-    
     deinit {
         stopTimer()
     }
-
-
-
-    
 }
 
 
@@ -152,6 +119,43 @@ extension HomeScreenViewController{
         
         self.present(alertController, animated: true, completion: nil)
     }
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { action in
+            return
+        }))
+        self.present(alert, animated: true)
+    }
+    @objc func backButton() {
+        self.navigationController?.popViewController(animated: true)
+       }
+    @objc private func scrollToNextItem() {
+            let numberOfItems = adsCollection.numberOfItems(inSection: currentIndexPath.section)
+            if numberOfItems > 0 {
+                // Calculate the next item index
+                let nextItem = (currentIndexPath.item + 1) % numberOfItems
+                let nextIndexPath = IndexPath(item: nextItem, section: currentIndexPath.section)
+                
+                // Scroll to the next item
+                adsCollection.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
+                
+                currentIndexPath = nextIndexPath
+            }
+        }
+    //Invokes Timer to start Automatic Animation with repeat enabled
+    func startTimer() {
+        // To Restart the timer
+        timer?.invalidate()
+        
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(scrollToNextItem), userInfo: nil, repeats: true);
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    // Scroll to Next Cell
+    
 }
 
 
@@ -175,20 +179,16 @@ extension HomeScreenViewController:UICollectionViewDelegate,UICollectionViewData
         }
     }
     
-    func showAlert(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { action in
-            return
-        }))
-        self.present(alert, animated: true)
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brandsCollection{
             let brandsVC = storyboard?.instantiateViewController(identifier: "BrandsViewController")as! BrandsViewController
             brandsVC.vendor = viewModel.brands?[indexPath.row].title
             brandsVC.brandImage = viewModel.brands?[indexPath.row].image.src
-            self.present(brandsVC, animated: true)
+            //self.present(brandsVC, animated: true)
+            brandsVC.navigationItem.leftBarButtonItem = back
+            brandsVC.navigationItem.title = "HEIN"
+            self.navigationController?.pushViewController(brandsVC, animated: true)
         }else{
             if UserDefaults.standard.string(forKey: "User_id") != nil {
                 if UserDefaults.standard.string(forKey: "coupon\(indexPath.row)") == nil {

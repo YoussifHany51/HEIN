@@ -9,13 +9,14 @@ import UIKit
 
 class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var favoriteTableView: UITableView!
-    
+    var back:UIBarButtonItem!
     var viewModel : FavoriteViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteTableView.dataSource = self
         favoriteTableView.delegate = self
-        
+        back = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward"), style: .plain, target: self, action: #selector(backButton))
         let favoriteCellNib = UINib(nibName: "FavoriteTableViewCell", bundle: nil)
         favoriteTableView.register(favoriteCellNib, forCellReuseIdentifier: "favoriteCell")
         navigationItem.title = "HEIN"
@@ -27,6 +28,15 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
         favoriteHasData()
     }
     
+    @IBAction func searchButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SearchButtonSB", bundle: nil)
+        let seearcchVC = storyboard.instantiateViewController(withIdentifier: "SearchButtonViewController") as! SearchButtonViewController
+       
+        self.present(seearcchVC, animated: true)
+    }
+    @objc func backButton() {
+        self.navigationController?.popViewController(animated: true)
+       }
     func favoriteHasData(){
         if viewModel?.favoriteProducts.isEmpty ?? true {
               favoriteTableView.isHidden = true
@@ -82,6 +92,8 @@ extension FavoriteViewController{
 
         let vc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController
         vc.product = product
+        vc.navigationItem.title = "HEIN"
+        vc.navigationItem.leftBarButtonItem = back
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

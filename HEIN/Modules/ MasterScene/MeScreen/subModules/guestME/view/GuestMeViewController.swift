@@ -29,6 +29,11 @@ class GuestMeViewController: UIViewController {
         }
     }
     
+    @IBAction func SearchButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SearchButtonSB", bundle: nil)
+        let seearcchVC = storyboard.instantiateViewController(withIdentifier: "SearchButtonViewController") as! SearchButtonViewController
+        self.present(seearcchVC, animated: true)
+    }
     @IBAction func goToLogin(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let master = storyBoard.instantiateViewController(identifier: "LoginViewController")

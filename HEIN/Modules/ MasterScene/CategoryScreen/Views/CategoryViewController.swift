@@ -19,9 +19,11 @@ class CategoryViewController: UIViewController {
     var indicator : UIActivityIndicatorView?
     var categoriesViewModel : CategoryProtocol!
     var alert:UIAlertController!
+    var back:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        back = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward"), style: .plain, target: self, action: #selector(backButton))
         setIndicator()
         noProductsImg.isHidden = true
         categoriesViewModel = CategoriesViewModel()
@@ -74,7 +76,6 @@ extension CategoryViewController{
         
     }
     func setupCollectionView(){
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 2
@@ -100,6 +101,9 @@ extension CategoryViewController{
         
         self.present(alertController, animated: true, completion: nil)
     }
+    @objc func backButton() {
+        self.navigationController?.popViewController(animated: true)
+       }
 }
 // MARK: - UIcollectionView
 
@@ -118,7 +122,9 @@ extension CategoryViewController: UICollectionViewDelegate,UICollectionViewDataS
         let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
         let productInfovc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController //{
         productInfovc.product = categoriesViewModel.filteredResultArr?[indexPath.row]
-        self.present(productInfovc, animated: true)
+        productInfovc.navigationItem.title = "HEIN"
+        productInfovc.navigationItem.leftBarButtonItem = back
+        navigationController?.pushViewController(productInfovc, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthPerItem = categoryCollection.frame.width / 2 - 10

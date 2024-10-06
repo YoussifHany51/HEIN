@@ -21,9 +21,11 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
     var flag = false
     var searchWord = ""
     var searching = false
+    var back:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        back = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward"), style: .plain, target: self, action: #selector(backButton))
         noProductsImg.isHidden = true
         self.hideKeyboardWhenTappedAround()
         brandsViewModel = BrandsViewMode()
@@ -47,9 +49,6 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
     }
     
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
     @IBAction func sortedByPrice(_ sender: Any) {
         brandsViewModel.sortByPrice()
         flag = !flag
@@ -67,7 +66,12 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
             self?.productNumbers.text =  "\(self?.brandsViewModel.brandProducts?.count ?? 0) Items"
         }
     }
-    
+}
+
+
+// Mark:-  Setup UI
+
+extension BrandsViewController{
     func display() {
         brandsViewModel?.getBrands(vendor: vendor ?? " ")
         if (brandsViewModel?.brandProducts?.count  == 0) {
@@ -79,14 +83,9 @@ class BrandsViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
         
     }
-    
-
-}
-
-
-// Mark:-  Setup UI
-
-extension BrandsViewController{
+     @objc func backButton() {
+         self.navigationController?.popViewController(animated: true)
+        }
     func registerCell(){
         BrandProductsCollection.register(BrandProductsCVC.nib(), forCellWithReuseIdentifier: "BrandProductsCVC")
     }
@@ -147,7 +146,11 @@ extension BrandsViewController{
         let storyboard = UIStoryboard(name: "ProductsInfoSB", bundle: nil)
         let productInfovc = storyboard.instantiateViewController(withIdentifier: "ProductsInfoViewController") as! ProductsInfoViewController //{
         productInfovc.product = brandsViewModel.brandProducts?[indexPath.row]
-        self.present(productInfovc, animated: true)
+        productInfovc.navigationItem.title = "HEIN"
+        productInfovc.navigationItem.leftBarButtonItem = back
+        
+        navigationController?.pushViewController(productInfovc, animated: true)
+        //self.present(productInfovc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

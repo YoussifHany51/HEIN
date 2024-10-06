@@ -65,6 +65,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     
+    @IBAction func searchButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SearchButtonSB", bundle: nil)
+        let seearcchVC = storyboard.instantiateViewController(withIdentifier: "SearchButtonViewController") as! SearchButtonViewController
+       
+        self.present(seearcchVC, animated: true)
+    }
     func setNavigationBar() {
         self.navigationItem.title = "HEIN"
         self.navigationController?.navigationBar.tintColor = UIColor(.red)

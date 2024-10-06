@@ -42,29 +42,31 @@ class ProductsInfoViewController: UIViewController {
     var viewModel : ProductInfoViewModel?
     @IBOutlet weak var reviewsRef: UIButton!
     var network = ReachabilityManager()
+    var back:UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        back = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward"), style: .plain, target: self, action: #selector(backButton))
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(scrollingProductImagessetup), userInfo: nil,repeats:true)
         viewModel = ProductInfoViewModel()
-        title = product.vendor
+       // title = product.vendor
         
         pageControl.numberOfPages = productsImageArray.count
-        let titleLabel = UILabel()
-        titleLabel.text = product.vendor
-            titleLabel.textAlignment = .left
-            titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-            titleLabel.textColor = .red
-            self.view.addSubview(titleLabel)
+//        let titleLabel = UILabel()
+//        titleLabel.text = product.vendor
+//            titleLabel.textAlignment = .left
+//            titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+//            titleLabel.textColor = .red
+//            self.view.addSubview(titleLabel)
 
             // Set constraints for the title label
-            titleLabel.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16), // Align to the left with padding
-                titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10), // Position below the status bar
-                titleLabel.heightAnchor.constraint(equalToConstant: 40), // Set a fixed height
-                titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200) // Optional: Set a max width
-            ])
+//            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.activate([
+//                titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16), // Align to the left with padding
+//                titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10), // Position below the status bar
+//                titleLabel.heightAnchor.constraint(equalToConstant: 40), // Set a fixed height
+//                titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200) // Optional: Set a max width
+//            ])
         setUpData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +102,9 @@ class ProductsInfoViewController: UIViewController {
              reviewsRef.setAttributedTitle(attributeString, for: .normal)
     }
     
-    
+    @objc func backButton() {
+        self.navigationController?.popViewController(animated: true)
+       }
     @objc func scrollingProductImagessetup(){
         if index < productsImageArray.count - 1 {
             index += 1
@@ -223,12 +227,16 @@ class ProductsInfoViewController: UIViewController {
     }
  
     @IBAction func goToReviews(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "ReviewsViewController")
-        present(vc!, animated: true)
+        let vc = self.storyboard?.instantiateViewController(identifier: "ReviewsViewController") as! ReviewsViewController
+        vc.navigationItem.title = "HEIN"
+        vc.navigationItem.leftBarButtonItem = back
+        navigationController?.pushViewController(vc, animated: true)
+        
+       // present(vc!, animated: true)
     }
     func showAlert(title:String,message:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okayButton = UIAlertAction(title: "Got it 👍", style: .default)
+        let okayButton = UIAlertAction(title: "ok", style: .default)
         alert.addAction(okayButton)
         self.present(alert, animated: true)
     }
